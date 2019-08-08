@@ -1,0 +1,32 @@
+<style>
+    body{
+      background: radial-gradient(#212121 , #000);
+      background-size: cover;
+      background-attachment: fixed;
+      opacity: 0.9;
+      margin: 0 auto;
+      font-family: Tahoma, sans-serif; /* google fonts with fallback */  
+      }
+
+    #comedies_vids, #trending_now_vids{
+      margin-top: -26px;
+    }
+
+    #comedies{
+      margin-top: -26px;
+      padding-top: 10px;
+      clear: both;
+    }
+
+    
+    footer{
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    footer p{
+      text-align: center;
+    } 
+  </style>

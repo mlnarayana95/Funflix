@@ -1,0 +1,12 @@
+/* This is a CSS document */
+
+header,
+footer,
+nav,
+main,
+section,
+article,
+aside,
+video{
+	display: block;
+}

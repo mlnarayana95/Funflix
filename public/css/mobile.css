@@ -1,0 +1,191 @@
+  @media screen and (max-width: 768px){
+        
+    h1{
+      font-weight: 700;
+      font-size: 30px;
+      text-shadow: 2px 2px 10px #000;
+      font-family: Roboto, sans-serif;
+    }
+    
+    h2{
+      font-size:15px;
+      font-weight: 400;
+      font-family: Roboto, sans-serif;
+    }
+     
+     #wrapper
+    {
+      width: 100%;
+    }
+    
+     a#menu-toggle:hover + ul,
+    ul:hover{
+        display: block;
+      }
+      
+    a#menu-toggle {
+      display: inline-block;
+      
+
+            }
+    
+    ul{
+      margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+    padding-left: 6px;
+    position: absolute;
+    }
+    
+            nav > ul {
+                 display: none;
+    background-color: #ccc;
+            }
+
+            nav ul li {
+                display: block;
+                border-bottom: 1px solid #999;
+                position: relative;
+            }
+
+            nav > ul > li:first-child {
+                border-top: 1px solid #999;
+            }
+
+            nav ul li a {
+                display: block;
+            }
+        
+            nav li a:hover,
+            nav li a:active,
+            nav li.current a{
+              color: #c32121;
+              text-shadow: 2px 1px rgba(0, 0, 0, 0.7);
+              -webkit-transform: scale(1);
+              -moz-transform: scale(1);
+              -o-transform: scale(1);
+              transform: scale(1);
+              font-weight: bold;
+            }
+     .zoom{
+    width: 18%;
+           transform: scale(1);
+  }
+  
+  .zoom1{
+    width: 18%;
+    height: 200px;
+  }
+  
+    .zoom:hover{
+        transform: scale(1);
+    }
+    
+    .zoom1:hover{
+        transform: scale(1);
+    }
+    
+  }
+
+@media screen and (min-width: 768px) and (max-width: 980px){
+  
+    .zoom:hover{
+        transform: scale(1);
+    }
+    
+    .zoom1:hover{
+        transform: scale(1);
+    }
+  
+  #wrapper{
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 767px){
+  #wrapper
+    {
+      width: 100%;
+    }
+  .zoom{
+    width: 19%;
+  }
+  
+  #box1, #box2, #box3, #box4, #box5, #box10, #box6, #box7, #box8, #box9{
+    height: 100px;
+  }
+  .zoom1{
+    width: 19%;
+    height: 200px;
+  }
+  
+    .zoom:hover{
+        transform: scale(1);
+    }
+    
+    .zoom1:hover{
+        transform: scale(1);
+    }
+  #box10, #box6, #box7, #box8, #box9 {
+    box-sizing: border-box;
+    font-size: 20px;
+    height: 215px;
+    min-height: 100px;
+    float: left;
+    margin: 20px 3px;
+
+}
+  
+}
+  @media screen and (max-width: 639px) {
+     #box1, #box2, #box3, #box4, #box5, #box10, #box6, #box7, #box8, #box9{
+    height: 100px;
+  }
+    
+    body{
+         margin: 0;
+    }
+    
+    #wrapper
+    {
+      width: 100%;
+    }
+    
+    
+  }
+
+@media screen and (max-width: 1020px) and (min-width: 768px){
+    #wrapper
+    {
+      width: 100%;
+    }
+    .zoom{
+     width: 18%;
+    }
+  
+    #box1, #box2, #box3, #box4, #box5, #box10, #box6, #box7, #box8, #box9{
+    height: 100px;
+    }
+    .zoom1{
+    width: 18%;
+    height: 200px;
+    }
+  
+    .zoom:hover{
+        width: 18%;
+        transform: scale(1);
+    }
+    
+    .zoom1:hover{
+        width: 18%;
+        transform: scale(1);
+    }
+  #box10, #box6, #box7, #box8, #box9 {
+    box-sizing: border-box;
+    font-size: 20px;
+    height: 215px;
+    min-height: 100px;
+    float: left;
+    margin: 20px 3px;
+
+  }}

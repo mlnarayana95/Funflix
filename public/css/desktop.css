@@ -1,0 +1,308 @@
+      #wrapper{
+        width: 960px;
+        margin: 0 auto; /* to centers the div */
+        color: #fff;
+      }
+
+
+      header{
+        display: inline-block;
+        background: #000;
+        height: 70px;
+        width: 100%;
+      }
+
+
+      #navlist{
+        padding-left: 24px;
+      }
+
+      #header_button{
+        padding-top: 12px;
+        margin-top: 10px;
+        margin-right: 10px;
+        float: right;
+      }
+
+      #landing_logo{
+        height:45px;
+        margin-left: 10px;
+        margin-top:10px
+      }
+
+      body{
+        background: radial-gradient(transparent, #000), url('../images/bckground_img1.jpg');
+        background-size: cover;
+        min-height: 530px;
+        opacity: 0.95;
+        margin: 0;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        padding: 0;
+        font-family: 'Josefin Sans', Arial, sans-serif; /* google fonts with fallback */  
+      }
+
+      #tag_line{
+        margin-top: 75px;
+      }
+
+      #join_now{
+        margin-top:44px
+      }
+
+      #h1_landing{
+        font-weight: 700;
+        font-size: 40px;
+        text-shadow: 2px 2px 10px #000;
+        font-family: Roboto, sans-serif;
+      }
+
+      #h2_landing{
+        font-size:40px;
+        font-weight: 400;
+        font-family: Roboto, sans-serif;
+      }
+
+      .btn1{
+        color: #fff;
+        background-color: #e50914;
+        line-height: normal;
+        padding: 7px 17px;
+        font-weight: 400;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        font-size: 16px;
+        }
+
+      a{
+        text-decoration: none;
+        font-family: Tahoma;
+        font-weight: 600;
+        }
+
+      .btn2{
+        width: 250px;
+        height: 50px;
+        font-size: 20px;
+        color: #fff;
+        background-color: #e50914;
+        padding: 15px 70px;
+        text-shadow: 2px 2px 10px #000;
+        }
+
+      /* footer */
+      footer{
+        height: 40px;
+        font-size: 12px;
+        background-color: #000;
+        color: #fff;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      footer p{
+        text-align: center;
+      } 
+
+        /*SignUp*/
+
+      #header_button_signup{
+        margin-top: 24px;
+        float: right;
+        margin-right: 13px;
+        text-align: right;
+      }
+
+      .btn{
+        border-radius: 6px;
+        background: #c32625;
+        color: #fff;
+        font-weight: bold;
+        border: 1px solid #5f5353;
+        width: 100px;
+        padding: 5px 20px;
+      }
+            
+      #buttons{
+        margin-left: 39px;
+      }
+      
+      #sign_up{
+        width: 370px;
+        color: #000;
+        padding-top: 77px;
+      }
+      
+      fieldset{
+       margin-top: 30px;
+       margin-left: 39px;
+      }
+      
+      legend{
+        color: #000;
+      }
+      
+      #sign_up label{
+        display: inline-block;
+        width: 120px;
+      }
+      
+      #sign_up input[type="text"],
+      #sign_up input[type="password"],
+      #sign_up input[type="email"],
+      #sign_up input[type="tel"],
+      #sign_up input[type="url"],
+      #sign_up input[type="date"],
+      #sign_up input[list="country"]{
+        width: 200px;
+        height: 20px;
+        line-height: 20px;
+      }
+        /*Login*/
+      #login_submit{
+        display: block;
+        margin-top: 30px;
+        border-radius: 6px;
+        background: #c32625;
+        color: #fff;
+        font-weight: bold;
+        border: 1px solid #5f5353;
+        width: 100px;
+        padding: 5px 20px;
+      }
+
+      #login_form{
+        padding: 60px 68px 40px;
+        width: 500px;
+        box-sizing: border-box;
+        background-color: rgba(0,0,0,0.75);
+        height: 500px;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        margin: -100px 0 0 -229px;
+      }
+
+      #content{
+        margin-top: 49px;
+      }
+
+      #lbl_remember{
+        color: #fff;  
+        margin-top: 20px;
+      }
+
+      /* Home Page */
+      nav{
+        display:inline-block;
+        background-color: transparent;
+        font-weight: 700;
+      }
+
+      ul{
+        padding: 0;
+        list-style-type: none;
+        padding-left: 6px;
+      }
+
+      nav li a{
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        line-height: 50px;
+        font-weight: 300;
+        display: inline-block;
+        padding-left: 12px;
+      }
+
+      li{
+        display:inline-block; 
+        padding: 0 22px;
+      }
+
+      nav li a:hover,
+      nav li a:active,
+      nav li.current a{
+        color: #c32121;
+        text-shadow: 2px 2px #000;
+        -webkit-transform: scale(1.3);
+        -moz-transform: scale(1.3);
+        -o-transform: scale(1.3);
+        transform: scale(1.3);
+        font-weight: bold;
+      }
+
+      a#menu-toggle {
+        display: none;
+      }
+
+      #daredevil{
+        width: 100%;
+        height: auto;
+      }
+
+      #box1, #box2, #box3, #box4, #box5, #box10,
+      #box6, #box7, #box8, #box9
+      {
+        box-sizing: border-box;
+        font-size: 15px;
+        height: 125px;
+        min-height: 100px;
+        float: left;
+        margin: 20px 3px;
+      }
+
+      #comedies_vids, #trending_now_vids{
+        margin-top: -26px;
+      }
+
+      #comedies{
+        margin-top: -26px;
+        padding-top: 10px;
+        clear: both;
+      }
+
+      .zoom{
+        transition: transform .2s; /* Animation */
+        width: 19%;
+        height: 200px;
+        font-size: 10px;
+        margin: 0 auto;
+      }
+
+      .zoom:hover {
+        transform: scale(1.5);
+        right:0;
+      }
+
+      .zoom1{
+        transition: transform .2s; /* Animation */
+        width: 19%;
+        height: 200px;    
+      }
+
+      .zoom1:hover {
+        transform: scale(1.5);
+      }
+
+      .zoom1 img{
+        margin-bottom: 140px;
+      }
+
+      /* My Profile */
+      .text_left{
+        font-family: Tahoma, sans-serif;
+        font-size: 20px;
+        line-height: 18px;
+        float: left;
+      }
+
+      .text_right{
+        float: left;
+        padding-left: 100px;
+      }
+
+  
