@@ -148,7 +148,9 @@
       
       #sign_up label{
         display: inline-block;
-        width: 150px;
+        width: 150px;   
+        font-weight: 700;
+        font-family: Tahoma;
       }
       
       #sign_up input[type="text"],

@@ -62,23 +62,23 @@ if('POST' == $_SERVER['REQUEST_METHOD']) {
     }
 
 
-     if(empty($_POST['email'])) {
-        $errors['email'] = 'Email is a required field';
-    } elseif( (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email']) > 100)) {
-       $errors['email'] = 'Please enter a valid email address and maximum of 100 characters';
+     if(empty($_POST['email_address'])) {
+        $errors['email_address'] = 'Email is a required field';
+    } elseif( (!filter_var($_POST['email_address'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email_address']) > 100)) {
+       $errors['email_address'] = 'Please enter a valid email address and maximum of 100 characters';
     }
 
 
-    if(empty($_POST['password'])) {
-        $errors['password'] = 'Password is a required field';
-    }elseif((strlen($_POST['password']) < 3) && (strlen($_POST['password']) > 20)) {
-        $errors['password'] = 'Password must be a minimum of 6 characters and maximum of 20 characters';
+    if(empty($_POST['pass'])) {
+        $errors['pass'] = 'Password is a required field';
+    }elseif((strlen($_POST['pass']) < 3) && (strlen($_POST['pass']) > 20)) {
+        $errors['pass'] = 'Password must be a minimum of 6 characters and maximum of 20 characters';
     }
 
-    if(empty($_POST['confirm_password'])) {
-        $errors['confirm_password'] = 'Confirm password is a required field';
-    }elseif($_POST['confirm_password'] != $_POST['password']){
-        $errors['confirm_password']  = 'Password does not match with confirm password';
+    if(empty($_POST['confirm_pass'])) {
+        $errors['confirm_pass'] = 'Confirm password is a required field';
+    }elseif($_POST['confirm_pass'] != $_POST['pass']){
+        $errors['confirm_pass']  = 'Password does not match with confirm password';
     }
  
  
@@ -117,8 +117,8 @@ if (empty($errors)){
       ':province' => $_POST['province'],
       ':country'=> $_POST['country'],
       ':phone'=> $_POST['phone'],
-      ':email'=> $_POST['email'],
-      ':password'=> $_POST['password']
+      ':email'=> $_POST['email_address'],
+      ':password'=> $_POST['pass']
   );
 
   $stmt->execute($params);
@@ -151,7 +151,8 @@ if (empty($errors)){
 
         <div id="wrapper"> <!-- 960px width to wrap a page -->
            <form id="sign_up" name="sign_up" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
-              <h2>Let us know you better</h2>
+                <h2 style="font-weight: 700;font-family: Tahoma;padding-bottom: 35px;"
+                >Let us know you better</h2>
               <p >    
                 <label for="first_name">First Name</label>
                 <input type="text" name="first_name" id="first_name" required placeholder="First name" value="<?= clean('first_name')?>"/>
@@ -170,7 +171,7 @@ if (empty($errors)){
               </p>
               <p>
                 <label for="postalcode">Postal Code</label>
-                <input type="tel" name="postalcode" id="postalcode" placeholder="Postal Code" value="<?= clean('postal_code')?>"/>
+                <input type="tel" name="postal_code" id="postal_code" placeholder="Postal Code" value="<?= clean('postal_code')?>"/>
               </p>
               <p>
                 <label for="province">Province</label>
@@ -186,7 +187,7 @@ if (empty($errors)){
               </p>
                <p>
                 <label for="email_address">Email</label>
-                <input type="email" name="email_address" id="email_address" placeholder="email"/>
+                <input type="text" name="email_address" id="email_address" placeholder="email"/>
               </p>
                <p>
                 <label for="pass">Password</label>
