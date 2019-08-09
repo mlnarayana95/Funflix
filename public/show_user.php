@@ -1,28 +1,47 @@
 <?php
 
-require '../app/config.php';
+	/**
+	 * Show User Page 
+	 * last_update: 2019-08-09
+	 * Author: Narayana Madabhushi, mlnarayana95@gmail.com
+	 */
+	// Adding the configuration file to set a database connection and fetch data
+	require '../app/config.php';
 
-$user_id = $_GET['user_id'];
+	$user_id = $_GET['user_id'];	
 
-$query = 'SELECT *
-            FROM
-            users
-            WHERE user_id = :user_id';
+	if(empty($user_id){
+		die('Go back to the <a href="sign_up.php">sign up</a> page');
+	}
 
-$stmt = $dbh->prepare($query);
+	// query to fetch the last inserted record by passing 
+	// the last inserted user id from the url
+	$query = 'SELECT *
+              FROM
+              users
+              WHERE user_id = :user_id';
 
-$params = array(
-    ':user_id' => $_GET['user_id']
-);
+    // Preparing the query
+	$stmt = $dbh->prepare($query);
 
-$stmt->execute($params);
+	// Passing the required parameters 
+	$params = array(
+    	':user_id' => $_GET['user_id']
+	);
 
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
+	// Executing the query with params
+	$stmt->execute($params);
 
-$title = 'User Information';
+	// Fetch it as an associative array
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$message = 'Thank you for joining us.'
+	// Title of the page
+	$title = 'User Information';
+
+	// h2 message
+	$message = 'Thank you for joining us.'
 ?>
+
 <?php require '../inc/head.inc.php';?>
 
 <body style="background: none;">
@@ -38,7 +57,7 @@ $message = 'Thank you for joining us.'
 	  <?php endforeach; ?>
 	</ul>
 	<a href="signup.php">Add a new user</a>
-	</div>
-   <?php require '../inc/footer.inc.php'; ?>
+	</div> 
+  <?php require '../inc/footer.inc.php'; ?>
 </body>
 </html>
