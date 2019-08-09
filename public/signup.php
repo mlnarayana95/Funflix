@@ -81,6 +81,60 @@ if('POST' == $_SERVER['REQUEST_METHOD']) {
         $errors['confirm_password']  = 'Password does not match with confirm password';
     }
  
+ 
+if (empty($errors)){
+  $query = "INSERT INTO
+            users
+            (first_name,
+            last_name,
+            street,
+            city,
+            postal_code,
+            province,
+            country,
+            phone,
+            email,
+            password)
+            VALUES
+            (:first_name, 
+            :last_name, 
+            :street, 
+            :city, 
+            :postal_code,
+            :province,
+            :country,
+            :phone,
+            :email,
+            :password)";
+  $stmt = $dbh->prepare($query);
+  
+  $params = array(
+      ':first_name' => $_POST['first_name'],
+      ':last_name'=> $_POST['last_name'],
+      ':street'=> $_POST['street'],
+      ':city'=> $_POST['city'],
+      ':postal_code'=> $_POST['postal_code'],
+      ':province' => $_POST['province'],
+      ':country'=> $_POST['country'],
+      ':phone'=> $_POST['phone'],
+      ':email'=> $_POST['email'],
+      ':password'=> $_POST['password']
+  );
+
+  $stmt->execute($params);
+
+  $user_id = $dbh->lastInsertId();
+    
+        if($user_id) {
+            // redirect to another page (PRG) with the last insert id
+              header('Location: show_user.php?user_id='.$user_id);
+            die;
+        } else {
+        // else 
+            // add a message to the error array
+            $errors[] = 'There was a problem creating a new user';
+        } // end if insert worked
+    } // end if no errors
 } // end of post request
 
     require '../inc/head.inc.php'; 
