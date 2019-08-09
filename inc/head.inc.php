@@ -38,6 +38,8 @@
           include 'myprofile.inc.css';
       }elseif($title == 'Funflix Canada - Home') {
           include 'home.inc.css';
+      }elseif($title == 'User Information') {
+        include 'show_user.inc.css';
       }
   ?>
 </head>

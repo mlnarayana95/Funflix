@@ -19,28 +19,26 @@ $stmt->execute($params);
 
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+$title = 'User Information';
 
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width,intial-scale=1.0" />
-	<meta name="descriptiion" content="" />
-	<title>User Information</title>
-	<style type="text/css">
+$message = 'Thank you for joining us.'
+?>
+<?php require '../inc/head.inc.php';?>
 
-	</style>
-</head>
-<body>
-<h1><?=$result['first_name'] . " " . $result['last_name']?></h1>
-<ul>
-	<?php foreach($result as $key => $value) : ?>
+<body style="background: none;">
+  <?php require '../inc/header.inc.php';?>
+  <div id="user">
+	<h1><?=$result['first_name'] . " " . $result['last_name']?></h1>
+	<h2 style="font-size:30px"><?=$message ?></h2>
+	<ul>
+	  <?php foreach($result as $key => $value) : ?>
 		<?php if($key != 'password' && $key != 'user_id' && $key != 'updated_at') : ?>
-		<li><?="<strong>$key</strong> : $value"?></li>
-		<?php endif; ?>
-	<?php endforeach; ?>
-</ul>
-
-<a href="signup.php">Add a new user</a>
+		  <li><?="<strong>$key</strong> : $value"?></li>
+	    <?php endif; ?>
+	  <?php endforeach; ?>
+	</ul>
+	<a href="signup.php">Add a new user</a>
+	</div>
+   <?php require '../inc/footer.inc.php'; ?>
 </body>
 </html>

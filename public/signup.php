@@ -142,13 +142,11 @@ if (empty($errors)){
 
 ?>
     <body>   
+      <?php require '../inc/header.inc.php'; ?>
       <div id="container">
-        <?php require '../inc/header.inc.php'; ?>
-         <h1><?=$heading?></h1>
+        <h1><?=$heading?></h1>
         <?php require '../inc/errors.inc.php'; ?> 
-        
         <main>
-
         <div id="wrapper"> <!-- 960px width to wrap a page -->
            <form id="sign_up" name="sign_up" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
                 <h2 style="font-weight: 700;font-family: Tahoma;padding-bottom: 35px;"
@@ -199,6 +197,7 @@ if (empty($errors)){
               </p>
             <p id="buttons">
               <input type="submit" style="padding-top: 9px;
+              margin-right: 15px;
               width: 100px;border-radius: 8px;" class="btn1" value="Submit"></input>
               <input type="button" style="padding-top: 9px;
               width: 100px;                 border-radius: 8px;
