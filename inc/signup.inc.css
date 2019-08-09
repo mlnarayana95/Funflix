@@ -1,12 +1,13 @@
  <style>
- 
+
+
       h1{
-        color: #000;
-        left: 5px;
+        color: #fff;
+        margin-left: 50px;
+        margin-top: 50px;
       }
       /* styles for body */  
       body{
-        background: none;
         -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
         -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
@@ -14,7 +15,6 @@
         animation: fadein 2s;
       }
       
-
       /* Firefox < 16 */
       @-moz-keyframes fadein {
         from { opacity: 0; }
@@ -47,8 +47,15 @@
       /* starts: header */ 
       header{
           box-shadow: 0px 0px 15px 0px #000;
-       }
-    
+      }
+
+      .errors{
+      background: #fff;
+      color: #f00;
+      padding: 10px;
+      border: 3px solid #000;
+      }
+
       footer{
         position:relative;
       }

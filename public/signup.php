@@ -18,54 +18,52 @@
         <main>
 
         <div id="wrapper"> <!-- 960px width to wrap a page -->
-           <form id="sign_up" name="sign_up" method="post" action="http://www.scott-media.com/test/form_display.php" autocomplete="on" >
-            <fieldset> 
-              <legend>Personal Info</legend>
-              <p>    
+           <form id="sign_up" name="sign_up" method="post" action="#" autocomplete="on" novalidate>
+              <h2>Let us know you better</h2>
+              <p >    
                 <label for="first_name">First Name</label>
-                <input type="text" name="first_name" id="first_name" maxlength="40" size="25" required placeholder="Type your first name" />
+                <input type="text" name="first_name" id="first_name" required placeholder="First name" />
               </p>
               <p>
                 <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" id="last_name" maxlength="40" size="25" placeholder="Type your last name" />
+                <input type="text" name="last_name" id="last_name" placeholder="Last name" />
               </p>
               <p>
-                <label for="username">User Name</label>
-                <input type="text" id="username" name="username" maxlength="16" title="Username cannot be more than 16 characters" size="16" placeholder="User name" required />
+                <label for="street">Street</label>
+                <input type="text" id="street" name="street" maxlength="40" size="25"  required placeholder="Street"/>
               </p>
               <p>
-                <label for="pass">Password</label>
-                <input style="" type="password" id="pass" name="pass" maxlength="40" size="25"  required />
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" required placeholder="City"/>
               </p>
               <p>
-                <label for="email_address">Email</label>
-                <input type="email" name="email_address" id="email_address" required />
+                <label for="postalcode">Postal Code</label>
+                <input type="tel" name="postalcode" id="postalcode" placeholder="Postal Code"/>
               </p>
               <p>
-                <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" />
-              </p>
-              <p>
-                <label for="birthday">Birthday</label>
-                <input type="date" name="birthday" id="birthday" />
+                <label for="province">Province</label>
+                <input type="text" name="province" id="province" placeholder="Province"/>
               </p>
               <p>
                 <label>Country</label>
-                <input list="country" name="country" placeholder="Country" />
-                <datalist id="country">
-                  <option value="Canada"></option>
-                  <option value="USA"></option>
-                  <option value="India"></option>
-                  <option value="Moldova"></option>
-                  <option value="Columbia"></option>
-                  <option value="Brazil"></option>
-                  <option value="Other"></option>
-                </datalist>
+                <input type="text" name="country" id="country" placeholder="Country" />
               </p>
-            </fieldset>
+               <p>
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" id="phone" placeholder="phone"/>
+              </p>
+               <p>
+                <label for="email_address">Email</label>
+                <input type="email" name="email_address" id="email_address" placeholder="email"/>
+              </p>
+               <p>
+                <label for="pass">Password</label>
+                <input type="password" name="pass" id="pass" placeholder="password"/>
+              </p>
             <p id="buttons">
-              <a href="home.php" class="btn1">Sign Up</a>
-              <input style="padding-top: 9px;
+              <input type="button" style="padding-top: 9px;
+              width: 100px;border-radius: 8px;" class="btn1" value="Submit"></input>
+              <input type="button" style="padding-top: 9px;
               width: 100px;                 border-radius: 8px;
               " class="btn1" type="reset" value="Clear" /> &nbsp;
             </p>
