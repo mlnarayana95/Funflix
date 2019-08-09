@@ -7,7 +7,7 @@
         margin-top: 50px;
       }
 
-      
+
     .errors{
       background: #fff;
       color: #f00;
@@ -22,6 +22,14 @@
         -o-animation: fadein 2s; /* Opera < 12.1 */
         animation: fadein 2s;
       }
+
+      
+    .errors{
+      background: #fff;
+      color: #f00;
+      padding: 10px;
+      border: 3px solid #000;
+    }
       
       /* Firefox < 16 */
       @-moz-keyframes fadein {

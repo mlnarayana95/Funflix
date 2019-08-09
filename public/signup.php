@@ -9,13 +9,89 @@
     
     $heading ="Funflix - Canada Registration Form";
     $title = "Funflix Canada - Sign Up";
+    $errors = [];
+
+if('POST' == $_SERVER['REQUEST_METHOD']) {
+
+    if(empty($_POST['first_name'])) {
+        $errors['first_name'] = 'First Name is a required field';
+    } elseif((strlen($_POST['first_name']) < 3) && (strlen($_POST['first_name']) > 20)) {
+        $errors['make'] = 'First name must have at least 3 characters and maximum of 20 character';
+    }
+
+    if(empty($_POST['last_name'])) {
+        $errors['last_name'] = 'Last Name is a required field';
+    }elseif((strlen($_POST['last_name']) < 3) && (strlen($_POST['last_name']) > 20)){
+        $errors['last_name'] = 'Last Name must have at least 3 characters and maximum of 20 characters';
+    }
+
+     if(empty($_POST['street'])) {
+        $errors['street'] = 'Street is a required field';
+    }elseif((strlen($_POST['street']) < 3) && (strlen($_POST['street']) > 200)) {
+        $errors['street'] = 'Street must have at least 3 characters and maximum of 200 characters';
+    }
+
+     if(empty($_POST['city'])) {
+        $errors['city'] = 'City is a required field';
+    }elseif((strlen($_POST['city']) < 3) && (strlen($_POST['city']) > 20)){
+        $errors['city'] = 'City must have at least 3 characters and maximum of 20 characters';
+    }
+
+     if(empty($_POST['postal_code'])) {
+        $errors['postal_code'] = 'Postal Code is a required field';
+    }elseif(strlen($_POST['postal_code']) != 6) {
+        $errors['postal_code'] = 'Postal Code must be 6 characters long ';
+    }
+
+     if(empty($_POST['province'])) {
+        $errors['province'] = 'Province is a required field';
+    }elseif((strlen($_POST['province']) < 3) && (strlen($_POST['province']) > 20))  {
+        $errors['province'] = 'Province must have at least 3 characters and maximum of 20 characters';
+    }
+
+     if(empty($_POST['country'])) {
+        $errors['country'] = 'Country is a required field';
+    }elseif((strlen($_POST['country']) < 3) && (strlen($_POST['country']) > 20)) {
+        $errors['country'] = 'Country must have at least 3 characters and maximum of 20 characters';
+    }
+
+     if(empty($_POST['phone'])) {
+        $errors['phone'] = 'Phone is a required field';
+    } elseif(strlen($_POST['phone']) != 10) {
+       $errors['phone'] = 'Phone must be of 10 characters';
+    }
+
+
+     if(empty($_POST['email'])) {
+        $errors['email'] = 'Email is a required field';
+    } elseif( (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email']) > 100)) {
+       $errors['email'] = 'Please enter a valid email address and maximum of 100 characters';
+    }
+
+
+    if(empty($_POST['password'])) {
+        $errors['password'] = 'Password is a required field';
+    }elseif((strlen($_POST['password']) < 3) && (strlen($_POST['password']) > 20)) {
+        $errors['password'] = 'Password must be a minimum of 6 characters and maximum of 20 characters';
+    }
+
+    if(empty($_POST['confirm_password'])) {
+        $errors['confirm_password'] = 'Confirm password is a required field';
+    }elseif($_POST['confirm_password'] != $_POST['password']){
+        $errors['confirm_password']  = 'Password does not match with confirm password';
+    }
+ 
+} // end of post request
+
     require '../inc/head.inc.php'; 
+
 
 ?>
     <body>   
       <div id="container">
         <?php require '../inc/header.inc.php'; ?>
          <h1><?=$heading?></h1>
+        <?php require '../inc/errors.inc.php'; ?> 
         
         <main>
 
