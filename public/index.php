@@ -8,12 +8,12 @@
 
     $heading = "Watch TV Shows and Movies anytime, anywhere"; 
     $title = "Funflix Canada - Watch TV Shows and Movies";
-    require 'include/head.inc.php'; 
+    require '../inc/head.inc.php'; 
 ?>
 
 <body>
   <div id="container">
-    <?php require 'include/header.inc.php'; ?>
+    <?php require '../inc/header.inc.php'; ?>
     <main>
       <div id="wrapper">
         <div id="tag_line">
@@ -25,7 +25,7 @@
         </p>
       </div>
     </main>
-    <?php require 'include/footer.inc.php'; ?>
+    <?php require '../inc/footer.inc.php'; ?>
 
   </div>
 </body>

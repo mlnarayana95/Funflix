@@ -8,12 +8,12 @@
 
     $title = "Funflix Canada - TV Shows";
     $heading = "TV Shows";
-    require 'include/head.inc.php'; 
+    require '../inc/head.inc.php'; 
 ?>
 
 <body>
  <div id="container">
-    <?php require 'include/navheader.inc.php'; ?>
+    <?php require '../inc/navheader.inc.php'; ?>
     <div id="wrapper">  
       <h1><?=$heading?></h1>
       <div id="trending_now">

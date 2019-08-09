@@ -8,12 +8,12 @@
 
     $heading = "Funflix - Login"; 
     $title = "Funflix Canada - Login";
-    require 'include/head.inc.php'; 
+    require '../inc/head.inc.php'; 
 ?>
 
 <body>
   <div id="container">
-   <?php require 'include/header.inc.php'; ?>
+   <?php require '../inc/header.inc.php'; ?>
  
     <main><!-- Main Content starts here -->
       <div id="login_form">
@@ -43,7 +43,7 @@
       </div>
     </main><!-- Main content ends here -->
 
-   <?php require 'include/footer.inc.php'; ?>
+   <?php require '../inc/footer.inc.php'; ?>
 
   </div>
 </body>

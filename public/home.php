@@ -8,11 +8,11 @@
 
     $title = "Funflix Canada - Home";
     $heading = "Home";
-    require 'include/head.inc.php'; 
+    require '../inc/head.inc.php'; 
 ?>
 <body>
   <div id="container">
-   <?php require 'include/navheader.inc.php'; ?>
+   <?php require '../inc/navheader.inc.php'; ?>
     
     <main>
     <div id="wrapper">  

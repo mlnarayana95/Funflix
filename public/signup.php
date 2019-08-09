@@ -8,11 +8,11 @@
 
     $heading ="Funflix - Canada Registration Form";
     $title = "Funflix Canada - Sign Up";
-    require 'include/head.inc.php'; 
+    require '../inc/head.inc.php'; 
 ?>
     <body>   
       <div id="container">
-        <?php require 'include/header.inc.php'; ?>
+        <?php require '../inc/header.inc.php'; ?>
          <h1><?=$heading?></h1>
         
         <main>
@@ -72,7 +72,7 @@
           </form>
         </div>
         </main>
-        <?php require 'include/footer.inc.php'; ?>
+        <?php require '../inc/footer.inc.php'; ?>
     </div>
   </body>
 </html>
