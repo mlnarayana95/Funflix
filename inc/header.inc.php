@@ -9,7 +9,7 @@
 
 <header>
     <span id="logo">
-      <img id="landing_logo" src="images/logo.png" alt="logo">
+      <img id="landing_logo" src="../public/images/logo.png" alt="logo">
     </span>
     <div id="header_button">
       <a href="login.php" class="btn1"><strong>Sign In</strong></a>

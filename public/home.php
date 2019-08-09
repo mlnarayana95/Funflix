@@ -73,7 +73,7 @@
     </div>
     </main>
 
-   <?php require 'include/footer.inc.php'; ?>
+   <?php require '../inc/footer.inc.php'; ?>
   </div>
 </body>
 </html>

@@ -22,7 +22,8 @@
   <link rel="stylesheet" href="../public/css/mobile.css" />
   
   <title><?=$title?></title>
-  <?php 
+  <?php
+
       if($title == 'Funflix Canada - Watch TV Shows and Movies') {
           include 'index.inc.css';
       }elseif($title == 'Funflix Canada - Login') {
