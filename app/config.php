@@ -6,9 +6,13 @@
  * @author: Narayana Madabhushi, mlnarayana95@gmail.com
  */
 
+require '../autoloaders.php';
+
+$v = new App\Validator;
+
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL);
-
+/*
 define('DB_DSN', 'mysql:host=localhost;dbname=funflix_video_db');
 define('DB_USER', 'root');
 define('DB_PASS', '');
@@ -18,5 +22,6 @@ define('DB_PASS', '');
 $dbh = new PDO(DB_DSN, DB_USER, DB_PASS);
 // set the $dbh to display errors if there are any 
 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+*/
 require 'functions.php';
+
