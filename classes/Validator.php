@@ -38,6 +38,8 @@ class Validator
 			$this->lengthValidator($key);
 		}
 
+		$this->validateEmailAddress();
+
 		return $this->getErrors();
 	}
 
@@ -100,6 +102,20 @@ class Validator
 				$this->setErrors($field,$message);
 			}
 		}
+	}
+
+	/**
+	 * Validate Email Address using filter_var() function and making sure
+	 * length of email address does not exceed 100 characters
+	 * @return Self 							[Error is Set]
+	 */
+	public function validateEmailAddress(){
+
+		if( !(filter_var($_POST['email_address'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email_address']) > 100)) {
+			$message = 'Please enter a valid email address with a maximum of 100 characters';
+			$this->setErrors('email_address',$message);
+        }
+
 	}
 
 
