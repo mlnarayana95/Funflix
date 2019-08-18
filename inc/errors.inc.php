@@ -1,8 +1,8 @@
-<?php if(!empty($errors)) : ?>
+<?php if(!empty($v->getErrors())) : ?>
 		<div class="errors">
 			<ul>
-				<?php foreach($errors as $error) : ?>
-				  <li><?=$error?></li>
+				<?php foreach($v->getErrors() as $list) : ?>
+				  <li><?=$list?></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>
