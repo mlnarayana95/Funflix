@@ -35,6 +35,7 @@ class Validator
 		// Calling the required function
 		foreach($_POST as $key => $value) {
 			$this->required($key);
+			$this->lengthValidator($key);
 		}
 
 		return $this->getErrors();
@@ -79,7 +80,29 @@ class Validator
 		}
 	}
 
-	
+	/**
+	 * Validates if it is a string field and 
+	 * there is a value passed by the user.
+	 * Checks if each field is between 3 and 255 characters 
+	 * @param  Mixed $field  [Field Name]
+	 * @return Self          [Error is Set]
+	 */
+	public function lengthValidator($field){
+
+		if( ( !is_numeric($_POST[$field]))  && empty($errors[$field]) ){
+
+			$len = strlen($_POST[$field]);
+
+			if ( ($len < 3) || ($len > 255) ){
+				$message = $this->label($field) . 
+				' needs to be between 3 and 255 characters'; 
+
+				$this->setErrors($field,$message);
+			}
+		}
+	}
+
+
     /**
      * Get Validation errors
      * @return array

@@ -51,7 +51,7 @@
               </p>
               <p>
                 <label for="postalcode">Postal Code</label>
-                <input type="tel" name="postal_code" id="postal_code" placeholder="Postal Code" value="<?= clean('postal_code')?>"/>
+                <input type="text" name="postal_code" id="postal_code" placeholder="Postal Code" value="<?= clean('postal_code')?>"/>
               </p>
               <p>
                 <label for="province">Province</label>

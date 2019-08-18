@@ -31,8 +31,8 @@
       }
 
       body{
-        background: radial-gradient(transparent, #000), url('../images/bckground_img1.jpg');
-        background-size: cover;
+    /*    background: radial-gradient(transparent, #000), url('../images/bckground_img1.jpg');
+    */    background-size: cover;
         min-height: 530px;
         opacity: 0.95;
         margin: 0;
