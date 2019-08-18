@@ -10,7 +10,7 @@
 
 	$user_id = $_GET['user_id'];	
 
-	if(empty($user_id){
+	if(empty($user_id)){
 		die('Go back to the <a href="sign_up.php">sign up</a> page');
 	}
 
