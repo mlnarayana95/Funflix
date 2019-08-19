@@ -8,10 +8,10 @@
 ?>
 <header>
     <span id="logo">
-      <img id="landing_logo" src="../public/images/logo.png" alt="logo">
+      <img id="landing_logo" src="images/logo.png" alt="logo">
     </span>
     <nav>
-      <a id="menu-toggle" href="#navlist"><img src="../public/images/menu-white.png" alt="menu toggle" /></a> <!-- starts navigation -->
+      <a id="menu-toggle" href="#navlist"><img src="images/menu-white.png" alt="menu toggle" /></a> <!-- starts navigation -->
       <ul>
         <li <?=($title=='Funflix Canada - Home') ? 'class="current"' : ''; ?>><a href="home.php">HOME</a></li>
         <li <?=($title=='Funflix Canada - TV Shows') ? 'class="current"' : ''; ?>><a href="tvshows.php">TV SHOWS</a></li>
