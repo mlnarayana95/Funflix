@@ -41,7 +41,7 @@ class Validator
 
 		$this->validatePhone();
 		$this->postalCodeValidator();
-		$this->validateEmailAddress();
+		$this->emailValidator();
 		$this->passwordValidator();
 
 
@@ -137,7 +137,7 @@ class Validator
 	 * length of email address does not exceed 100 characters
 	 * @return Self 							[Error is Set]
 	 */
-	public function validateEmailAddress()
+	public function emailValidator()
 	{
 
 		if( !(filter_var($_POST['email_address'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email_address']) > 100)) {
