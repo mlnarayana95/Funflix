@@ -42,6 +42,7 @@ class Validator
 		$this->validatePhone();
 		$this->postalCodeValidator();
 		$this->validateEmailAddress();
+		$this->passwordValidator();
 
 
 		return $this->getErrors();
@@ -109,6 +110,26 @@ class Validator
 				$this->setErrors($field,$message);
 			}
 		}
+	}
+
+
+	/**
+	 * Validates the password such that it meets the minimum requirements
+	 * @return Self       								   [Error is set]
+	 */
+	public function passwordValidator(){
+	
+		$pattern = '/(?=.*[A-Z]+)(?=.*[a-z]+)(?=.*[0-9]+)(?=.*[\!\@\#\$\%\^\&\*\(\)]+).{6,}/';
+		$message = 'Please enter a valid password';
+		if(empty($this->errors['pass'])) {
+			if(preg_match($pattern, $_POST['pass']) !== 1){
+				$this->setErrors('pass',$message);
+			}elseif($_POST['pass'] != $_POST['confirm_pass']){
+				$message = 'Passwords do not match';
+				$this->setErrors('pass',$message);
+			}
+		}
+
 	}
 
 	/**
