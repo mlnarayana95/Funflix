@@ -15,7 +15,6 @@ class Validator
 
 	protected $post = [];
 
-
 	/**
 	 * Constructor
 	 */
@@ -30,12 +29,14 @@ class Validator
 	/**
 	 * Single function that calls all other validation functions
 	 */
-	public function Validation(){
+	public function Validation()
+	{
 
 		// Calling the required function
 		foreach($_POST as $key => $value) {
 			$this->required($key);
 			$this->lengthValidator($key);
+			$this->stringValidator($key);
 		}
 
 		$this->validatePhone();
@@ -51,7 +52,8 @@ class Validator
 	 * @param  String $field [description]
 	 * @return Self        	 [Error is set]
 	 */
-	public function required($field){
+	public function required($field)
+	{
 		if(empty($this->post[$field])){	
 			$label = $this->label($field);
 			$this->setErrors($field,$this->label($field) . " is required");
@@ -76,7 +78,8 @@ class Validator
 	 * @param  String $field [Phone Number]
 	 * @return Self      	 [Error is set]
 	 */
-	public function validatePhone(){
+	public function validatePhone()
+	{
 		
 		$pattern = '/^([0-9]{3})-?([0-9]{3})-?([0-9]{4})$/';
 		$message = 'Please enter a valid phone number';
@@ -92,7 +95,8 @@ class Validator
 	 * @param  Mixed $field  [Field Name]
 	 * @return Self          [Error is Set]
 	 */
-	public function lengthValidator($field){
+	public function lengthValidator($field)
+	{
 
 		if( ( !is_numeric($_POST[$field]))  && empty($errors[$field]) ){
 
@@ -112,7 +116,8 @@ class Validator
 	 * length of email address does not exceed 100 characters
 	 * @return Self 							[Error is Set]
 	 */
-	public function validateEmailAddress(){
+	public function validateEmailAddress()
+	{
 
 		if( !(filter_var($_POST['email_address'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email_address']) > 100)) {
 			$message = 'Please enter a valid email address with a maximum of 100 characters';
@@ -125,7 +130,8 @@ class Validator
 	 * Check if the postal code matches the valid pattern 
 	 * @return self 					   [Error is set]
 	 */
-	public function postalCodeValidator(){
+	public function postalCodeValidator()
+	{
 		
 		$pattern = '/^([A-Za-z0-9]{3}\s?[A-Za-z0-9]{3})$/';
 		$message = 'Please enter a valid postal code';
@@ -133,6 +139,28 @@ class Validator
 			$this->setErrors('postal_code',$message);
 		}
 		
+	}
+
+	/**
+	 * Validation to not allow special characters
+	 * @param  String $field [Field Name]
+	 * @return Self        	 [Error is set]
+	 */
+	public function stringValidator($field)
+	{
+
+		$pattern = '/[#$%^&*()+@]/';
+		if( (preg_match($pattern, $_POST[$field]) == 1 )
+			&& ($field != 'email_address' && 
+				$field != 'phone'  &&
+				$field != 'postal_code'&&
+				$field != 'pass' && $field != 'confirm_pass') )
+		{
+			$message = 'Special characters are not allowed
+			in the field '. $this->label($field);
+			$this->setErrors($field,$message);
+		}
+	
 	}
 
     /**
