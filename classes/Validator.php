@@ -38,7 +38,10 @@ class Validator
 			$this->lengthValidator($key);
 		}
 
+		$this->validatePhone();
+		$this->postalCodeValidator();
 		$this->validateEmailAddress();
+
 
 		return $this->getErrors();
 	}
@@ -73,12 +76,12 @@ class Validator
 	 * @param  String $field [Phone Number]
 	 * @return Self      	 [Error is set]
 	 */
-	public function validatePhone($field){
+	public function validatePhone(){
 		
 		$pattern = '/^([0-9]{3})-?([0-9]{3})-?([0-9]{4})$/';
 		$message = 'Please enter a valid phone number';
-		if(preg_match($pattern, $this->post[$field]) !== 1){
-			$this->setErrors($field,$message);
+		if(preg_match($pattern, $_POST['phone']) !== 1){
+			$this->setErrors('phone',$message);
 		}
 	}
 
@@ -118,6 +121,19 @@ class Validator
 
 	}
 
+	/**
+	 * Check if the postal code matches the valid pattern 
+	 * @return self 					   [Error is set]
+	 */
+	public function postalCodeValidator(){
+		
+		$pattern = '/^([A-Za-z0-9]{3}\s?[A-Za-z0-9]{3})$/';
+		$message = 'Please enter a valid postal code';
+		if(preg_match($pattern, $this->post['postal_code']) !== 1){
+			$this->setErrors('postal_code',$message);
+		}
+		
+	}
 
     /**
      * Get Validation errors
