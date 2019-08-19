@@ -14,11 +14,68 @@
     // Check if the request method of the submitted method is equal to POST 
     if('POST' == $_SERVER['REQUEST_METHOD']) {
 
+
     // Call to a single validate function that in turns calls all the validations
     // Keeping all the Validation code in Validator Method
-    $v->Validation();
+    $errors = $v->Validation();
 
-    }
+    if (empty($errors)){
+                $query = "INSERT INTO
+                    users
+                        (first_name,
+                        last_name,
+                        street,
+                        city,
+                        postal_code,
+                        province,
+                        country,
+                        phone,
+                        email,
+                        password)
+                        VALUES
+                        (:first_name, 
+                        :last_name, 
+                        :street, 
+                        :city, 
+                        :postal_code,
+                        :province,
+                        :country,
+                        :phone,
+                        :email,
+                        :password)";
+            
+            // Preparing the query
+            $stmt = $dbh->prepare($query);
+            
+            // Adding parameters to be passed to the query
+            $params = array(
+                ':first_name' => $_POST['first_name'],
+                ':last_name'=> $_POST['last_name'],
+                ':street'=> $_POST['street'],
+                ':city'=> $_POST['city'],
+                ':postal_code'=> $_POST['postal_code'],
+                ':province' => $_POST['province'],
+                ':country'=> $_POST['country'],
+                ':phone'=> $_POST['phone'],
+                ':email'=> $_POST['email_address'],
+                ':password'=> $_POST['pass']
+            );
+
+            // Execute the query
+            $stmt->execute($params);
+
+            // Fetch the last inserted id value
+            $user_id = $dbh->lastInsertId();
+                  // Redirect to the show_user page
+                  if($user_id) {
+                      header('Location: show_user.php?user_id='.$user_id);
+                      die;
+                  }else {
+                      $errors[] = 'There was a problem creating a new user';
+                  } 
+              }     
+
+  }
 
     require '../inc/head.inc.php'; 
 

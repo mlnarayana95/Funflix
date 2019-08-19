@@ -46,6 +46,7 @@ class Validator
 
 
 		return $this->getErrors();
+
 	}
 
 	/**
