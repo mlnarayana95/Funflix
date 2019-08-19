@@ -47,7 +47,7 @@ class Validator
 
 		return $this->getErrors();
 
-	}
+
 
 	/**
 	 * Validate that all mandatory fields are filled
@@ -171,7 +171,7 @@ class Validator
 	public function stringValidator($field)
 	{
 
-		$pattern = '/[#$%^&*()+@]/';
+		$pattern = '/[#$%^&*()+@\/d]/';
 		if( (preg_match($pattern, $_POST[$field]) == 1 )
 			&& ($field != 'email_address' && 
 				$field != 'phone'  &&
