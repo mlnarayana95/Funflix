@@ -8,18 +8,69 @@
     require '../app/config.php';
     $heading = "Funflix - Login"; 
     $title = "Funflix Canada - Login";
+    $errors = [];
+
+    if(!empty($_GET['logout'])) {
+      session_regenerate_id();
+      unset($_SESSION['logged_in']);
+      $_SESSION['flash'] = 'You have been successfully logged out';
+      header("Location: login.php");
+      die;
+    }
+
+
+    if('POST' == $_SERVER['REQUEST_METHOD']) {
+
+        $v->loginFormValidate();
+
+        if(count($errors) == 0){
+        $query = "SELECT * FROM users WHERE email = :email";
+
+        $params = array(
+          ':email' => $_POST['email_address']
+        );
+
+        $stmt = $dbh->prepare($query);
+
+        $stmt->execute($params);
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if(!$user){
+          $v->setErrors('login','Email address is not linked to any account');
+          $v->getErrors();
+        }
+
+        if(password_verify($_POST['pass'], $user['password'])) {
+          $_SESSION['logged_in'] = true;
+          $_SESSION['user_id'] = $user['user_id'];
+          $_SESSION['flash'] = 'You have successfully logged in';
+          session_regenerate_id(true);  
+          header("Location: home.php");
+          die;
+        }else{
+          unset($_SESSION['logged_in']);
+          $v->setErrors('login','Login Credentials do not match');
+          $v->getErrors();
+        }
+    }
+  }
+
     require '../inc/head.inc.php'; 
 ?>
 
 <body>
   <div id="container">
    <?php require '../inc/header.inc.php'; ?>
- 
+    <?php require '../inc/flash.inc.php'; ?>
+    <?php require '../inc/errors.inc.php'; ?>   
     <main><!-- Main Content starts here -->
       <div id="login_form">
         <h1><?=$heading?></h1>
+
         <div id="content">
-          <form id="login" action="home.php" method="post">
+
+          <form id="login" action="login.php" method="post" novalidate>
             <p>
               <input class="login_fields" id="email_address" name="email_address" type="email" placeholder="Email" required />
             </p>

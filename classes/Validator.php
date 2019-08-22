@@ -190,6 +190,13 @@ class Validator
 		
 	}
 
+	public function loginFormValidate(){
+		if(empty($_POST['email_address']) || empty($_POST['pass'])) {
+          $this->setErrors('login','Both email and password are required');
+
+          return $this->getErrors();
+        }
+	}
 	/**
 	 * Validation to not allow special characters
 	 * @param  String $field [Field Name]

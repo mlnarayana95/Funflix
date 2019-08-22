@@ -13,6 +13,7 @@
 <body>
   <div id="container">
    <?php require '../inc/navheader.inc.php'; ?>
+    <?php require '../inc/flash.inc.php'; ?>
     
     <main>
     <div>
