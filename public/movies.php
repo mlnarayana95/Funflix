@@ -38,7 +38,7 @@
         </div>
       </main>
       </div>
-    <?php require 'include/footer.inc.php'; ?>
+    <?php require '../inc/footer.inc.php'; ?>
  
   </div>
 </body>

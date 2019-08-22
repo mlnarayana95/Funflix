@@ -45,7 +45,7 @@
 <?php require '../inc/head.inc.php';?>
 
 <body style="background: none;">
-  <?php require '../inc/header.inc.php';?>
+  <?php require '../inc/navheader.inc.php';?>
   <div id="user">
 	<h1><?=$result['first_name'] . " " . $result['last_name']?></h1>
 	<h2 style="font-size:30px"><?=$message ?></h2>

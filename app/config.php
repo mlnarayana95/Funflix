@@ -14,8 +14,8 @@ ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL);
 
 define('DB_DSN', 'mysql:host=localhost;dbname=funflix_video_db');
-define('DB_USER', 'mlnarayana95');
-define('DB_PASS', 'mypass');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 
 
 // 1. Create a connection 

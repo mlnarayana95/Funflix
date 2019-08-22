@@ -12,10 +12,19 @@
         width: 100%;
       }
 
-
-      #navlist{
-        padding-left: 24px;
+      .navigation{
+            margin: 12px;
+        float:left;
+        display: inline-block;
       }
+
+      .navigation a{
+        color: #fff;
+        padding: 20px;
+        text-shadow: 2px 2px #000;
+        font-weight: 700;
+      }
+
 
       #header_button{
         padding-top: 12px;
@@ -27,7 +36,6 @@
       #landing_logo{
         height:45px;
         margin-left: 10px;
-        margin-top:10px
       }
 
       body{
@@ -205,38 +213,11 @@
       }
 
       /* Home Page */
-      nav{
-        display:inline-block;
-        background-color: transparent;
-        font-weight: 700;
-      }
-
-      ul{
-        padding: 0;
-        list-style-type: none;
-        padding-left: 6px;
-      }
-
-      nav li a{
-        color: #fff;
-        text-transform: uppercase;
-        text-decoration: none;
-        line-height: 50px;
-        font-weight: 300;
-        display: inline-block;
-        padding-left: 12px;
-      }
-
-      li{
-        display: block; 
-        padding: 0 22px;
-      }
 
       nav li a:hover,
       nav li a:active,
       nav li.current a{
         color: #c32121;
-        text-shadow: 2px 2px #000;
         -webkit-transform: scale(1.3);
         -moz-transform: scale(1.3);
         -o-transform: scale(1.3);
