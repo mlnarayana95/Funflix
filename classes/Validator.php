@@ -141,10 +141,37 @@ class Validator
 	public function emailValidator()
 	{
 
-		if( !(filter_var($_POST['email_address'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email_address']) > 100)) {
+		global $dbh;
+
+		$email = $_POST['email_address'];
+
+		       $query = "SELECT * from 
+                    	users
+                        WHERE 
+                        email = :email
+                        ";
+            
+            // Preparing the query
+            $stmt = $dbh->prepare($query);
+            
+            // Adding parameters to be passed to the query
+            $params = array(
+                ':email'=> $email);
+
+            // Execute the query
+            $stmt->execute($params);
+
+            $result = $stmt->fetchColumn();
+
+            if($result > 0){
+            	$message = 'Email address already exists. To create a new user use another email address';
+            	$this->setErrors('email_address',$message);
+            }elseif( !(filter_var($_POST['email_address'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email_address']) > 100)) {
 			$message = 'Please enter a valid email address with a maximum of 100 characters';
 			$this->setErrors('email_address',$message);
         }
+
+
 
 	}
 

@@ -14,7 +14,6 @@
     // Check if the request method of the submitted method is equal to POST 
     if('POST' == $_SERVER['REQUEST_METHOD']) {
 
-
     // Call to a single validate function that in turns calls all the validations
     // Keeping all the Validation code in Validator Method
     $errors = $v->Validation();
