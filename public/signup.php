@@ -19,6 +19,8 @@
     // Keeping all the Validation code in Validator Method
     $errors = $v->Validation();
 
+    $hashed_password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+
     if (empty($errors)){
                 $query = "INSERT INTO
                     users
@@ -58,8 +60,7 @@
                 ':country'=> $_POST['country'],
                 ':phone'=> $_POST['phone'],
                 ':email'=> $_POST['email_address'],
-                ':password'=> $_POST['pass']
-            );
+                ':password'=> $hashed_password );
 
             // Execute the query
             $stmt->execute($params);

@@ -171,10 +171,11 @@ class Validator
 	public function stringValidator($field)
 	{
 
-		$pattern = '/[#$%^&*()+@\/d]/';
+		$pattern = '/[$%^&*()+@\d]/';
 		if( (preg_match($pattern, $_POST[$field]) == 1 )
 			&& ($field != 'email_address' && 
 				$field != 'phone'  &&
+				$field != 'street' &&
 				$field != 'postal_code'&&
 				$field != 'pass' && $field != 'confirm_pass') )
 		{
