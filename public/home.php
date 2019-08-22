@@ -12,9 +12,7 @@
 ?>
 <body>
   <div id="container">
-   <?php require '../inc/navheader.inc.php'; ?>
-    <?php require '../inc/flash.inc.php'; ?>
-    
+   <?php require '../inc/header_load.inc.php'; ?>
     <main>
     <div>
       <img id="daredevil" src="images/daredevil1000px.jpg" alt="main_banner"/>

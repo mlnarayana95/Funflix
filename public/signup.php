@@ -81,7 +81,7 @@
 
 ?>
     <body>   
-      <?php require '../inc/header.inc.php'; ?>
+       <?php require '../inc/header_load.inc.php'; ?>
       <div id="container">
         <h1><?=$heading?></h1>
         <?php require '../inc/errors.inc.php'; ?> 

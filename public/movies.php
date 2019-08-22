@@ -12,7 +12,7 @@
 ?>
 <body>
   <div id="container">
-    <?php require '../inc/navheader.inc.php'; ?>
+    <?php require '../inc/header_load.inc.php'; ?>
       <div id="wrapper">
         <h1><?=$heading?></h1>
         <main>

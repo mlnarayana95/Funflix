@@ -19,7 +19,7 @@
 ?>
 <body>
  <div id="container">
-  <?php require '../inc/navheader.inc.php'; ?>
+  <?php require '../inc/header_load.inc.php'; ?>
   <div id="wrapper">
   <h1 style="margin-left:19px;"><?=$heading?></h1>
   <h2>Account Info</h2>
