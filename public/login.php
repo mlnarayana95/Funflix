@@ -5,7 +5,7 @@
  * last_update: 2019-08-03
  * Author: Narayana Madabhushi, mlnarayana95@gmail.com
  */
-
+    require '../app/config.php';
     $heading = "Funflix - Login"; 
     $title = "Funflix Canada - Login";
     require '../inc/head.inc.php'; 

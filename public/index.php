@@ -5,7 +5,7 @@
  * last_update: 2019-08-03
  * Author: Narayana Madabhushi, mlnarayana95@gmail.com
  */
-
+    require '../app/config.php';
     $heading = "Watch TV Shows and Movies anytime, anywhere"; 
     $title = "Funflix Canada - Watch TV Shows and Movies";
     require '../inc/head.inc.php'; 
