@@ -21,22 +21,20 @@
         <div id="content">
           <form id="login" action="home.php" method="post">
             <p>
-              <label for="email_address">Email Address</label>
-              <input id="email_address" name="email_address" type="email" placeholder="Email" required />
+              <input class="login_fields" id="email_address" name="email_address" type="email" placeholder="Email" required />
             </p>
             <p>
-              <label for="pass">Password</label>
-              <input id="pass" name="pass" type="password" placeholder="Password" required /> 
+              <input class="login_fields" id="pass" name="pass" type="password" placeholder="Password" required /> 
             </p>   
             <p> 
-              <input type="submit" id="login_submit" name="login_submit" value="Submit"/>  
+              <input type="submit" id="login_submit" class="btn1" name="login_submit" value="Submit"/>  
             </p>
             <p>
               <input type="checkbox" name="remember_me" id="remember_me" />
-              <label id="lbl_remember">Remember me</label> 
+              <label id="lbl_remember" for="remember_me">Remember me</label> 
             </p> 
-            <p style=" margin-top:30px;color:#f3f3f3">
-              Not a user yet? Sign Up
+            <p style="display:inline-block;float:left;color:#f3f3f3">
+              Not a user yet? <a style="color:#c32625" href="signup.php">Sign Up</a>
             </p>     
           </form>
         </div> 

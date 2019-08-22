@@ -135,12 +135,8 @@
                 <input type="password" name="confirm_pass" id="confirm_pass" placeholder="Confirm Password"/>
               </p>
             <p id="buttons">
-              <input type="submit" style="padding-top: 9px;
-              margin-right: 15px;
-              width: 100px;border-radius: 8px;" class="btn1" value="Submit"></input>
-              <input type="button" style="padding-top: 9px;
-              width: 100px; border-radius: 8px;
-              " class="btn1" type="reset" value="Clear" /> &nbsp;
+              <input type="submit"  class="btn1" value="Submit"></input>
+              <input type="button" class="btn1" type="reset" value="Clear" /> &nbsp;
             </p>
           </form>
         </div>

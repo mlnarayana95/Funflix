@@ -67,14 +67,15 @@
         color: #fff;
         background-color: #e50914;
         line-height: normal;
-        padding: 7px 17px;
+        padding: 10px 17px;
         font-weight: 700;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
-        border-radius: 3px;
+        border-radius: 10px;
         font-size: 16px;
-        box-shadow: 1px 0px 2px 0px;
-        }
+        margin-left: 9px;
+        border: 1px solid black;
+      }
 
       a{
         text-decoration: none;
@@ -171,6 +172,7 @@
         margin-top: 30px;
         border-radius: 6px;
         background: #c32625;
+        margin-left: 0px;
         color: #fff;
         font-weight: bold;
         border: 1px solid #5f5353;
@@ -180,13 +182,14 @@
 
       #login_form{
         padding: 60px 68px 40px;
-        width: 500px;
+        width: 401px;
+        text-align: center;
         box-sizing: border-box;
         background-color: rgba(0,0,0,0.75);
         height: 500px;
         position: absolute;
         top: 30%;
-        left: 50%;
+        left: 55%;
         margin: -100px 0 0 -229px;
       }
 
@@ -195,8 +198,10 @@
       }
 
       #lbl_remember{
-        color: #fff;  
-        margin-top: 20px;
+        color: #fff;
+        width: 111px;
+        float: left;
+        padding: 3px;
       }
 
       /* Home Page */
