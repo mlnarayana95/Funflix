@@ -8,6 +8,13 @@
     require '../app/config.php';
     $title = "Funflix Canada - My Profile";
     $heading = "My Profile";
+
+    if(empty($_SESSION['logged_in']) || $_SESSION['logged_in'] != true){
+      $_SESSION['flash'] = 'You must be logged in to view a profile';
+      header("Location: login.php");
+      die;
+    }
+
     require '../inc/head.inc.php'; 
 ?>
 <body>
