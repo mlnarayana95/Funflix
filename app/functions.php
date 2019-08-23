@@ -3,6 +3,18 @@
 //functions 
 
 /**
+ * Logs out user and redirects to the login page
+ * @return [type] [description]
+ */
+function logout()
+{
+   	session_regenerate_id();
+    unset($_SESSION['logged_in']);
+    $_SESSION['flash'] = 'You have been successfully logged out';
+    header("Location: login.php");
+    die;
+}
+/**
  * Dump and die
  * @param  Mixed $var 
  * @return Void

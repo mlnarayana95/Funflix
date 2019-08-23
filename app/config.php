@@ -8,7 +8,6 @@
 
 // Session is started
 session_start();
-
 //Output buffering enabled 
 ob_start();
 
