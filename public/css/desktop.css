@@ -5,8 +5,8 @@
       }
 
       .flash{
-        background: #efefef;
-        color: #666;
+        color: darkgreen;
+        background: lightgrey;
         font-weight: bold;
         text-align: center;
         padding: 10px;
