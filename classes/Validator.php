@@ -163,7 +163,7 @@ class Validator
 
             $result = $stmt->fetchColumn();
 
-            if($result > 0){
+            if($result == true){
             	$message = 'Email address already exists. To create a new user use another email address';
             	$this->setErrors('email_address',$message);
             }elseif( !(filter_var($_POST['email_address'], FILTER_VALIDATE_EMAIL)) || (strlen($_POST['email_address']) > 100)) {

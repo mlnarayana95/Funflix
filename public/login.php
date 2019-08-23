@@ -36,8 +36,9 @@
           $v->setErrors('login','Email address is not linked to any account');
           $v->getErrors();
         }
-
+        
         if(password_verify($_POST['pass'], $user['password'])) {
+
           $_SESSION['logged_in'] = true;
           $_SESSION['user_id'] = $user['user_id'];
           $_SESSION['flash'] = 'Welcome! '.$user['first_name'].' '.$user['last_name'].', you have successfully logged in';
@@ -68,17 +69,13 @@
 
           <form id="login" action="login.php" method="post" novalidate>
             <p>
-              <input class="login_fields" id="email_address" name="email_address" type="email" placeholder="Email" required />
+              <input class="login_fields" id="email_address" name="email_address" type="email" placeholder="Email" required value="<?=clean("email_address")?>"/>
             </p>
             <p>
               <input class="login_fields" id="pass" name="pass" type="password" placeholder="Password" required /> 
             </p>   
             <p> 
               <input type="submit" id="login_submit" class="btn1" name="login_submit" value="Submit"/>  
-            </p>
-            <p>
-              <input type="checkbox" name="remember_me" id="remember_me" />
-              <label id="lbl_remember" for="remember_me">Remember me</label> 
             </p> 
             <p style="display:inline-block;float:left;color:#f3f3f3">
               Not a user yet? <a style="color:#c32625" href="signup.php">Sign Up</a>

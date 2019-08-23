@@ -68,7 +68,11 @@
             $user_id = $dbh->lastInsertId();
                   // Redirect to the show_user page
                   if($user_id) {
-                      header('Location: show_user.php?user_id='.$user_id);
+                      $_SESSION['logged_in'] = true;
+                      $_SESSION['user_id'] = $user_id;
+                      $_SESSION['flash'] = 'Thank you for registering!';
+                      session_regenerate_id(true);  
+                      header("Location: my_profile.php");
                       die;
                   }else {
                       $errors[] = 'There was a problem creating a new user';
