@@ -15,6 +15,10 @@
         z-index: 1;
       }
 
+      li{
+        list-style-type: none;
+      }
+
       header{
         display: inline-block;
         background: #000;

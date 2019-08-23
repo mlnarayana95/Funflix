@@ -40,9 +40,9 @@
         if(password_verify($_POST['pass'], $user['password'])) {
           $_SESSION['logged_in'] = true;
           $_SESSION['user_id'] = $user['user_id'];
-          $_SESSION['flash'] = 'You have successfully logged in';
+          $_SESSION['flash'] = 'Welcome! '.$user['first_name'].' '.$user['last_name'].', you have successfully logged in';
           session_regenerate_id(true);  
-          header("Location: home.php");
+          header("Location: my_profile.php");
           die;
         }else{
           unset($_SESSION['logged_in']);
