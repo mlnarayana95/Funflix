@@ -2,19 +2,18 @@
 
 /**
  * Config Page
- * @last_update: 2019-08-03
+ * @last_update: 2019-08-27
  * @author: Narayana Madabhushi, mlnarayana95@gmail.com
  */
+// Load the composer autoloader 
+require '../vendor/autoload.php';
 
 // Session is started
 session_start();
 //Output buffering enabled 
 ob_start();
 
-require '../autoloaders.php';
-
 $v = new App\Validator;
-
 
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL);
