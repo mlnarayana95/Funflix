@@ -5,10 +5,14 @@
  * last_update: 2019-08-03
  * Author: Narayana Madabhushi, mlnarayana95@gmail.com
  */
+    use \App\Validator;
+
     require '../app/config.php';
     $heading = "Funflix - Login"; 
     $title = "Funflix Canada - Login";
     $errors = [];
+
+    $v = new Validator();
 
     if(!empty($_GET['logout'])) {
       logout();
@@ -60,7 +64,7 @@
   <div id="container">
    <?php require '../inc/header.inc.php'; ?>
     <?php require '../inc/flash.inc.php'; ?>
-    <?php require '../inc/errors.inc.php'; ?>   
+    F<?php require '../inc/errors.inc.php'; ?>   
     <main><!-- Main Content starts here -->
       <div id="login_form">
         <h1><?=$heading?></h1>

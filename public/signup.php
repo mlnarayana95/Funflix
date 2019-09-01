@@ -6,6 +6,10 @@
    * Author: Narayana Madabhushi, mlnarayana95@gmail.com
    */
     require '../app/config.php';
+
+    use \App\Validator;
+
+    $v = new Validator();
     
     $heading ="Funflix - Canada Registration Form";
     $title = "Funflix Canada - Sign Up";
