@@ -6,14 +6,12 @@
  * @author: Narayana Madabhushi, mlnarayana95@gmail.com
  */
 // Load the composer autoloader 
-require '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 // Session is started
 session_start();
 //Output buffering enabled 
 ob_start();
-
-$v = new App\Validator;
 
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL);
