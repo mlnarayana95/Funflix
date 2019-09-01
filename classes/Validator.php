@@ -5,6 +5,7 @@ namespace App;
 class Validator 
 {
 	/**
+	 * 
 	 * Array for tracking validation errors 
 	 * @var array
 	 */
@@ -190,13 +191,17 @@ class Validator
 		
 	}
 
+	/**
+	 * Checking if all form fields of login page are filled
+	 * @return self 						[Error is set]
+	 */	
 	public function loginFormValidate(){
 		if(empty($_POST['email_address']) || empty($_POST['pass'])) {
           $this->setErrors('login','Both email and password are required');
-
           return $this->getErrors();
         }
 	}
+
 	/**
 	 * Validation to not allow special characters
 	 * @param  String $field [Field Name]

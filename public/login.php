@@ -21,9 +21,9 @@
 
     if('POST' == $_SERVER['REQUEST_METHOD']) {
 
-        $v->loginFormValidate();
+        $errors =  $v->loginFormValidate();
 
-        if(count($errors) == 0){
+        if(empty($errors) ) {
         $query = "SELECT * FROM users WHERE email = :email";
 
         $params = array(
@@ -38,7 +38,7 @@
 
         if(!$user){
           $v->setErrors('login','Email address is not linked to any account');
-          $v->getErrors();
+          $errors = $v->getErrors();
         }
         
         if(password_verify($_POST['pass'], $user['password'])) {
@@ -52,7 +52,7 @@
         }else{
           unset($_SESSION['logged_in']);
           $v->setErrors('login','Login Credentials do not match');
-          $v->getErrors();
+          $errors = $v->getErrors();
         }
     }
   }
@@ -62,9 +62,9 @@
 
 <body>
   <div id="container">
-   <?php require '../inc/header.inc.php'; ?>
+    <?php require '../inc/header.inc.php'; ?>
     <?php require '../inc/flash.inc.php'; ?>
-    F<?php require '../inc/errors.inc.php'; ?>   
+    <?php require '../inc/errors.inc.php'; ?>   
     <main><!-- Main Content starts here -->
       <div id="login_form">
         <h1><?=$heading?></h1>
