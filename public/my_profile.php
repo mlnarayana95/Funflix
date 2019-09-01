@@ -34,11 +34,7 @@
 
   // Fetch it as an associative array
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-  // Title of the page
-  $title = 'User Information';
-
-  // h2 message
+  
 }
 ?>
 
