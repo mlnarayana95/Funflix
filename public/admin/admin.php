@@ -2,7 +2,7 @@
 
     require '../../app/config.php';
     $title = "Funflix Canada - Admin Home";
-    $heading = "Home";
+    $heading = "Admin - Home";
 
     use \App\Models\Video;
 
@@ -32,15 +32,16 @@
   <?php require '../../inc/admin_header.inc.php'; ?>
   <?php require '../../inc/flash.inc.php'; ?>
   <div id="container">
-  <h1><?=$title?></h1>
-  <table class="table table-bordered">
-    <thead class="">
+  <h2><?=$heading?></h2>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-light">
     <tr>
       <th>Video ID</th>
       <th>Title</th>
       <th>Video Type</th>
       <th>Language</th>
-      <th></th> 
+      <th>Rating</th>
+      <th>Action</th> 
     </tr>
     </thead>
     <?php foreach ($list as $video): ?>
@@ -49,7 +50,8 @@
       <td><?= $video['title'] ?></td>
       <td><?= $video['video_type'] ?></td>
       <td><?= $video['language'] ?></td>
-      <td><a href="#">Edit</td>
+      <td><?= $video['rating'] ?></td>
+      <td><a href="edit.php?video_id=<?= $video['video_id'] ?>">Edit</a> | <a href="#">Delete</a></td>
       </tr>
     <?php endforeach ?>
 
