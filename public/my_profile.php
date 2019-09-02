@@ -34,14 +34,12 @@
 
   // Fetch it as an associative array
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
-  
+
 }
 ?>
 
 <?php require '../inc/head.inc.php';?>
-
-<body style="background: none;">
-  <?php require '../inc/header_load.inc.php'; ?>
+<?php require '../inc/header_load.inc.php'; ?>
   <div id="user">
   <h1><?=$result['first_name'] . " " . $result['last_name']?></h1>
   <ul>
