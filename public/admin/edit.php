@@ -5,14 +5,18 @@
     $heading = "Admin - Edit";
 
     use \App\Models\Video;
+    Video::init($dbh);
+    $video = new Video();
+
     if(!empty($_GET['video_id']))
     {
-      Video::init($dbh);
       $id = $_GET['video_id'];
-      $video = new Video();
-      $vid = $video->one($id);
-      var_dump($vid);
+      $vid = $video->one($id);   
+    }else{
+      $vid = $_POST;
+      $video->update($vid);
     }
+
     
 ?><!DOCTYPE html>
 <html lang="en">
@@ -35,13 +39,15 @@
 <body>   
   <?php require '../../inc/admin_header.inc.php'; ?>
   <?php require '../../inc/flash.inc.php'; ?>
-  <div id="container">
+  
+ 
+ <div id="container">
   <h2><?=$heading?></h2>
-
-  <form>
+  <div id="wrapper">
+    <form action="edit.php" method="POST">
     <div class="form-group">
       <label for="video_id">Video ID</label>
-      <input type="text" class="form-control" id="video_id" name="video_id" value="<?= $vid['video_id'] ?>" disabled>
+      <input type="text" class="form-control" id="video_id" name="video_id" value="<?= $vid['video_id'] ?>" hidden>
     </div>
 
     <div class="form-group">
@@ -83,23 +89,36 @@
       </select>
     </div>
 
-    <?php if ($vid['video_type'] == 'TVSHOW'): ?>
-     <div class="form-group">
-      <label for="number_of_season">Number of Seasons</label>
-      <input type="text" class="form-control" id="number_of_season" name="number_of_season" value="<?= $vid['num_of_season']?> " >
-    </div> 
-    <?php endif ?>
-    
+    <div class="form-group">
+      <label for="rating">RATING</label>
+      <input type="text" class="form-control" id="rating" name="rating" value="<?= $vid['rating'] ?>" >
+    </div>
 
     <div class="form-group">
-      <label for="synopsis">Synopsis</label>
-      <textarea class="form-control" id="synopsis" name="synopsis" rows="3"></textarea>
+      <label for="synopsis">SYNOPSIS</label>
+      <textarea class="form-control" id="synopsis" name="synopsis" rows="3"><?= $vid['synopsis']?></textarea>
     </div>
+
+    <?php if ($vid['video_type'] == 'TVSHOW'): ?>
+    <div class="form-group">
+      <label for="num_of_season">NUMBER OF SEASONS</label>
+      <input type="text" class="form-control" id="num_of_season" name="num_of_season" value="<?= $vid['num_of_season'] ?>" >
+    </div>
+    <?php endif ?>
     
-    <div>
-      
+    <div class="form-group">
+      <label for="release_date">RELEASE DATE</label>
+      <input type="text" class="form-control" id="release_date" name="release_date" value="<?= $vid['release_date'] ?>">
     </div>
+
+    <div class="form-group">
+      <button style=" background:#e50914" type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+
+    </div>
+
   </form>
+
+  </div>
 
  </div>
  
