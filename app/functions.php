@@ -57,3 +57,13 @@ function clean($field){
 		return '';
 	}
 }
+	
+/**
+ * [label description]
+ * @param  [type] $string [description]
+ * @return [type]         [description]
+ */
+function label($string) 
+{	
+	return ucwords(str_replace('_',' ',$string) );
+}

@@ -45,7 +45,7 @@
   <ul>
     <?php foreach($result as $key => $value) : ?>
     <?php if($key != 'password' && $key != 'user_id' && $key != 'updated_at') : ?>
-      <li><?="<strong>$key</strong> : $value"?></li>
+      <li><strong><?=label($key)?></strong> : <?= $value?></li>
       <?php endif; ?>
     <?php endforeach; ?>
   </ul>
