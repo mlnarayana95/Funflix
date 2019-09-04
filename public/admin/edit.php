@@ -5,16 +5,37 @@
     $heading = "Admin - Edit";
 
     use \App\Models\Video;
+    use \App\Models\Genre;
+    use \App\Models\Genre_Video;
     Video::init($dbh);
     $video = new Video();
+
+    Genre::init($dbh);
+    $genre = new Genre();
+    $genre_list = $genre->all();
+
+    Genre_Video::init($dbh);
+    $genre_video = new Genre_Video();
+    $genre_video_list = $genre_video->all();  
 
     if(!empty($_GET['video_id']))
     {
       $id = $_GET['video_id'];
-      $vid = $video->one($id);   
+      $vid = $video->one($id);  
+      $vid['associated_genre_id'] = $genre_video->one($id);
+      $target_genre_id = ($vid['associated_genre_id']['genre_id']);
+      foreach ($genre_list as $genre) {
+        if($genre['genre_id'] == $target_genre_id)
+        {
+          $vid['genre'] = $genre['genre_name'];
+        }
+      }
     }else{
       $vid = $_POST;
       $video->update($vid);
+      $_SESSION['flash'] = 'Record with Video ID: '. $vid['video_id']. ' has been successfully updated';
+      header("Location:admin.php");
+      die;
     }
 
     
@@ -39,6 +60,7 @@
 <body>   
   <?php require '../../inc/admin_header.inc.php'; ?>
   <?php require '../../inc/flash.inc.php'; ?>
+  <?php require '../../inc/errors.inc.php'; ?>   
   
  
  <div id="container">
@@ -46,7 +68,6 @@
   <div id="wrapper">
     <form action="edit.php" method="POST">
     <div class="form-group">
-      <label for="video_id">Video ID</label>
       <input type="text" class="form-control" id="video_id" name="video_id" value="<?= $vid['video_id'] ?>" hidden>
     </div>
 
@@ -60,11 +81,24 @@
       <select class="form-control" id="video_type"  name="video_type">
         <?php if ($vid['video_type'] == 'TVSHOW'): ?>
           <option value="MOVIES">MOVIES</option> 
-          <option value="TVSHOW" selected="selected">TVSHOW</option> 
+          <option value="TVSHOW" selected="selected">TV SHOW</option> 
         <?php elseif($vid['video_type'] == 'MOVIES'):  ?>
           <option value="MOVIES" selected="selected">MOVIES</option> 
           <option value="TVSHOW" >TVSHOW</option> 
         <?php endif ?>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="genre">GENRE</label>
+      <select class="form-control" id="genre"  name="genre">
+        <?php foreach ($genre_list as $genre): ?>
+          <?php if ($vid['genre'] == $genre['genre_name']): ?>
+             <option value="<?= $genre['genre_id'] ?>" selected="selected"><?= $genre['genre_name'] ?></option>
+             <?php else: ?>
+               <option value="<?= $genre['genre_id'] ?>"><?= $genre['genre_name'] ?></option>
+          <?php endif ?>
+        <?php endforeach ?>
       </select>
     </div>
 

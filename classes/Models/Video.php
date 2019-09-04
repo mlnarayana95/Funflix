@@ -53,7 +53,14 @@ class Video extends Model
           WHERE
           video_id = :video_id';
 
+        $query1 = 'UPDATE genre_video
+        SET 
+        genre_id = :genre_id
+        WHERE 
+        video_id = :video_id';
+
       	$stmt = static::$dbh->prepare($query);
+      	$stmt1 = static::$dbh->prepare($query1);
 
       	$params = array('title' => $data['title'],
               'video_type' => $data['video_type'],
@@ -64,6 +71,10 @@ class Video extends Model
               'release_date' => $data['release_date'],
           	  'video_id' => $data['video_id']);
 
+      	$params1 = array('genre_id' => $data['genre'],
+      					'video_id' => $data['video_id']);
+
+      	$stmt1->execute($params1);
         return $stmt->execute($params);
 	}
 }
