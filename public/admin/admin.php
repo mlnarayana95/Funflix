@@ -6,6 +6,7 @@
 
     use \App\Models\Video;
 
+
     Video::init($dbh);
     $video = new Video();
     $list = $video->all();
@@ -28,6 +29,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <?php require '../../inc/admin.inc.css'; ?>
   <title><?=$title?></title>
+</head>
+
 <body>   
   <?php require '../../inc/admin_header.inc.php'; ?>
   <?php require '../../inc/flash.inc.php'; ?>
@@ -47,9 +50,9 @@
     <?php foreach ($list as $video): ?>
       <tr>
       <td><?= $video['video_id'] ?></td>
-      <td><?= $video['title'] ?></td>
+      <td><?= ucwords(strtolower(($video['title']))) ?></td>
       <td><?= $video['video_type'] ?></td>
-      <td><?= $video['language'] ?></td>
+      <td><?= ucwords(strtolower($video['language'])) ?></td>
       <td><?= $video['rating'] ?></td>
       <td><a href="edit.php?video_id=<?= $video['video_id'] ?>">Edit</a> | <a href="#">Delete</a></td>
       </tr>

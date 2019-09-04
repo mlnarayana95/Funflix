@@ -77,4 +77,14 @@ class Video extends Model
       	$stmt1->execute($params1);
         return $stmt->execute($params);
 	}
+
+	public function searchVideo($data)
+	{
+		$search = '%'. $data . '%';
+		$query = "SELECT * FROM vid_collection WHERE title LIKE :search ";
+		$stmt = static::$dbh->prepare($query);
+		$params = array(':search' => $search);
+		$stmt->execute($params);
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 }

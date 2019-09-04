@@ -1,5 +1,14 @@
 <?php
 
+use \App\Models\Video;
+
+Video::init($dbh);
+
+if (isset($_POST['search'])) {
+  $search_value = $_POST['search'];
+  $video = new Video();
+  $list = $video->searchVideo($search_value);
+}
 /**
  * Navigation Header Page 
  * last_update: 2019-08-03
@@ -27,4 +36,10 @@
         <li class="navigation<?=($title=='Funflix Canada - Admin Genre') ? ' current' : ''; ?>"><a href="my_profile.php">GENRE</a></li>
       </ul>
     </nav> 
+    <?php if (!isset($_GET['video_id'])): ?>
+    <form method="post" class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search with title" name="search" />
+            <button class="btn1" type="submit">Search</button>
+    </form>
+    <?php endif ?>
 </header>
