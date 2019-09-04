@@ -17,9 +17,9 @@ if (isset($_POST['search'])) {
 ?>
 <header style="display: inline-block;">
     <p  style="display: inline-block;float: left;">
-      <span id="logo">
+      <a href="admin.php"><span id="logo">
         <img id="landing_logo" src="../images/logo.png" alt="logo">
-      </span>
+      </span></a>
     </p>
     <p style="display: inline-block;
               float: right;
@@ -30,10 +30,10 @@ if (isset($_POST['search'])) {
     <nav>
       <a id="menu-toggle" href="#navlist"><img src="../images/menu-white.png" alt="menu toggle" /></a> <!-- starts navigation -->
       <ul>
-        <li class="navigation<?=($title=='Funflix Canada - Admin Home') ? ' current' : ''; ?>"><a href="home.php">HOME</a></li>
-        <li class="navigation<?=($title=='Funflix Canada - Admin Users') ? ' current' : ''; ?>"><a href="tvshows.php">USERS</a></li>
-        <li class="navigation<?=($title=='Funflix Canada - Admin Orders') ? ' current' : ''; ?>"><a href="movies.php">ORDERS</a></li>
-        <li class="navigation<?=($title=='Funflix Canada - Admin Genre') ? ' current' : ''; ?>"><a href="my_profile.php">GENRE</a></li>
+        <li class="navigation<?=($title=='Funflix Canada - Admin Home') ? ' current' : ''; ?>"><a href="admin.php">HOME</a></li>
+        <li class="navigation<?=($title=='Funflix Canada - Admin Users') ? ' current' : ''; ?>"><a href="#">USERS</a></li>
+        <li class="navigation<?=($title=='Funflix Canada - Admin Orders') ? ' current' : ''; ?>"><a href="#">ORDERS</a></li>
+        <li class="navigation<?=($title=='Funflix Canada - Admin Genre') ? ' current' : ''; ?>"><a href="#">GENRE</a></li>
       </ul>
     </nav> 
     <?php if (!isset($_GET['video_id'])): ?>

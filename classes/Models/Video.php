@@ -2,26 +2,20 @@
 
 namespace App\Models;
 
+/**
+ * 	Video Class
+ */
 class Video extends Model
 {
 	protected $table = 'vid_collection';
 
 	protected $key = 'video_id';
 
-	public $title;
-
-	public $video_type;
-
-	public $language;
-
-	public $rating;
-
-	public $synopsis;
-
-	public $num_of_season;
-
-	public $release_date;
-
+	/**
+	 * Inserts a new record in Video Table
+	 * @param   Video  $video 
+	 * @return  int
+	 */
 	public function save($video)
 	{	
 		$query = "INSERT INTO {$this->table} (title, video_type, language, rating, synopsis, num_of_season, release_date) VALUES(:title, :video_type, :language, :rating, :synopsis, :num_of_season, :release_date)";
@@ -38,6 +32,12 @@ class Video extends Model
 		return static::$dbh->lastInsertId();
 	}
 		
+
+	/**
+	 * 	Edit existing records in the table using the video_id
+	 * @param  Array $data  [Video Details]
+	 * @return [type]       [description]
+	 */
 	public function update($data)
 	{
 		$data['release_date'] = date("Y-m-d H:i:s", strtotime($data['release_date'])); 
@@ -78,6 +78,11 @@ class Video extends Model
         return $stmt->execute($params);
 	}
 
+	/**
+	 * Returns search results based on title
+	 * @param  String $data [Search keyword]
+	 * @return Array        [Records returned]
+	 */
 	public function searchVideo($data)
 	{
 		$search = '%'. $data . '%';
@@ -85,6 +90,13 @@ class Video extends Model
 		$stmt = static::$dbh->prepare($query);
 		$params = array(':search' => $search);
 		$stmt->execute($params);
+		$count = $stmt->rowCount();
+		if ($count > 0) {
+			$_SESSION['flash'] = 'Search results returned 1 - '.$count;
+		}else{
+			$_SESSION['flash'] = 'No records found';
+
+		}
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 }
