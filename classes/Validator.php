@@ -211,6 +211,25 @@ class Validator
 		}
 	}
 
+		
+	/* A function that does something useful in an unusual way
+	* @source:https://stackoverflow.com/questions/19271381/correctly-determine-if-date-string-is-a-valid-date-in-that-format
+	* @param  string  $date  [Input date]
+	* @return self           [Error is set]
+	*/	public function validateDate($date)
+	{	
+		
+		$format = 'Y-m-d';
+		$d = \DateTime::createFromFormat($format, $date);
+		$condition = $d && $d->format($format) === $date;
+    	if(!$condition)
+    	{
+    		$message = 'Please enter a valid date in the format YYYY-MM-DD';
+    		$this->setErrors('release_date',$message);
+    	}
+   
+	}
+
     /**
      * Get Validation errors
      * @return array

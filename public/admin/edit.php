@@ -55,6 +55,8 @@
         $v->lengthValidator($key);
       }
 
+      $v->validateDate($_POST['release_date']);
+
       $errors = $v->getErrors();
 
       if(empty($errors))
