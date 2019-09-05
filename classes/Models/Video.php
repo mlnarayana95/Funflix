@@ -40,7 +40,7 @@ class Video extends Model
 	 */
 	public function update($data)
 	{
-		$data['release_date'] = date("Y-m-d H:i:s", strtotime($data['release_date'])); 
+		$data['release_date'] = date("Y-m-d", strtotime($data['release_date'])); 
 		$query = 'UPDATE vid_collection
           SET
           title = :title,

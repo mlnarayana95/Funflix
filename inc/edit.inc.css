@@ -12,6 +12,17 @@
         margin-top:40px;
     }
 
+
+    .errors{
+           background: #bbb;
+    color: #f00;
+    font-weight: 700;
+    padding: 10px;
+    margin: 1px auto;
+    border: 3px solid #000;
+    position: relative;
+    z-index: 1;    }
+
     #container{
     	padding: 20px;
     }

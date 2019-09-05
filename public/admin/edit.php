@@ -23,7 +23,8 @@
     if(!empty($_GET['video_id']))
     {
       $id = $_GET['video_id'];
-      $vid = $video->one($id);  
+      $vid = $video->one($id); 
+      $vid['release_date'] =  date("Y-m-d", strtotime($vid['release_date']));
       $vid['associated_genre_id'] = $genre_video->one($id);
       $target_genre_id = ($vid['associated_genre_id']['genre_id']);
       foreach ($genre_list as $genre) {
@@ -35,7 +36,7 @@
     }else{
       $vid = $_POST;
       $numeric_fields = ['num_of_season','rating'];
-      $string_fields = ['title', 'synopsis'];
+      $string_fields = ['title'];
       $length_fields = ['title', 'synopsis'];
       $v = new Validator();
 
