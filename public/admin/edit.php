@@ -38,6 +38,7 @@
       $numeric_fields = ['num_of_season','rating'];
       $string_fields = ['title'];
       $length_fields = ['title', 'synopsis'];
+      $release_date = trim($_POST['release_date']);
       $v = new Validator();
 
       foreach ($numeric_fields as $field) {
@@ -56,7 +57,7 @@
         $v->lengthValidator($key);
       }
 
-      $v->validateDate($_POST['release_date']);
+      $v->validateDate($release_date);
 
       $errors = $v->getErrors();
 
