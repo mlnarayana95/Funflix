@@ -18,9 +18,23 @@
     // Check if the request method of the submitted method is equal to POST 
     if('POST' == $_SERVER['REQUEST_METHOD']) {
 
-    // Call to a single validate function that in turns calls all the validations
-    // Keeping all the Validation code in Validator Method
-    $errors = $v->Validation();
+    $string_fields = ['first_name','last_name','city','province','country'];
+
+    foreach($_POST as $key => $value) {
+      $v->required($key);  
+      $v->lengthValidator($key); 
+    }
+
+    foreach($string_fields as $key) {
+      $v->stringValidator($key);
+    }
+
+    $v->validatePhone(esc($_POST['phone']));
+    $v->postalCodeValidator(esc($_POST['postal_code']));
+    $v->emailValidator(esc($_POST['email_address']));
+    $v->passwordValidator($_POST['pass']);
+
+    $errors = $v->getErrors();
 
     $hashed_password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
