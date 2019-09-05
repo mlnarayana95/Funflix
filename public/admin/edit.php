@@ -39,6 +39,9 @@
       $length_fields = ['title', 'synopsis'];
       $v = new Validator();
 
+      foreach ($numeric_fields as $field) {
+        $v->isNumeric($field);
+      }
 
       foreach($_POST as $key => $value) {
         $v->required($key);  
@@ -61,7 +64,7 @@
         header("Location:admin.php");
         die;
       }
-    
+
     }
 
     

@@ -196,6 +196,21 @@ class Validator
 	
 	}
 
+	/**
+	 * Checks if a value is numeric
+	 * @param  String  $field [field name]
+	 * @return self        	  [Error is set]
+	 */
+	public function isNumeric($field)
+	{	
+
+		if(!is_numeric($_POST[$field]))
+		{	
+			$message = 'Please enter a number in the field '. $this->label($field);
+			$this->setErrors($field,$message);
+		}
+	}
+
     /**
      * Get Validation errors
      * @return array
