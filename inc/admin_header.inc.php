@@ -25,7 +25,7 @@ if (isset($_POST['search'])) {
               float: right;
               margin-right: 13px;
               margin-top: 26px;">
-      <a href="login.php?logout=1" class="btn1">Sign Out</a>
+      <a href="../login.php?logout=1" class="btn1">Sign Out</a>
     </p>
     <nav>
       <a id="menu-toggle" href="#navlist"><img src="../images/menu-white.png" alt="menu toggle" /></a> <!-- starts navigation -->

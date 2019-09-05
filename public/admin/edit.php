@@ -7,6 +7,8 @@
     use \App\Models\Video;
     use \App\Models\Genre;
     use \App\Models\Genre_Video;
+    use \App\Validator;
+
     Video::init($dbh);
     $video = new Video();
 
@@ -32,10 +34,34 @@
       }
     }else{
       $vid = $_POST;
-      $video->update($vid);
-      $_SESSION['flash'] = 'Record with Video ID: '. $vid['video_id']. ' has been successfully updated';
-      header("Location:admin.php");
-      die;
+      $numeric_fields = ['num_of_season','rating'];
+      $string_fields = ['title', 'synopsis'];
+      $length_fields = ['title', 'synopsis'];
+      $v = new Validator();
+
+
+      foreach($_POST as $key => $value) {
+        $v->required($key);  
+      }
+
+      foreach ($string_fields as $key) {
+        $v->stringValidator($key);
+      }
+
+      foreach ($length_fields as $key) {
+        $v->lengthValidator($key);
+      }
+
+      $errors = $v->getErrors();
+
+      if(empty($errors))
+      {
+        $video->update($vid);
+        $_SESSION['flash'] = 'Record with Video ID: '. $vid['video_id']. ' has been successfully updated';
+        header("Location:admin.php");
+        die;
+      }
+    
     }
 
     
