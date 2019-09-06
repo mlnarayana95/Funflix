@@ -9,7 +9,8 @@
 
 <header>
     <span id="logo">
-      <a href="index.php"><img id="landing_logo" src="images/logo.png" alt="logo" /></a>
+      <a href="index.php"><img style="height:45px;margin-left: 10px;margin-top:15px;" id="landing_logo" 
+      	src="images/logo.png" alt="logo" /></a>
     </span>
     <div id="header_button">
       <a href="admin/admin.php" class="btn1"><strong>Admin</strong></a>

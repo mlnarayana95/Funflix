@@ -10,6 +10,12 @@
       animation: fadein 2s;
     } 
 
+    #landing_logo{
+      height:45px;
+      margin-left: 10px;
+      margin-top: 15px;
+    }
+
     #user{
       width: 720px;
       margin: 50px auto;

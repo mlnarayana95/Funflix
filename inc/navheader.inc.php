@@ -18,7 +18,7 @@
               margin-top: 26px;">
     <a href="login.php?logout=1" class="btn1">Sign Out</a>
     </p>
-    <nav>
+    <nav style="display: inline-block;">
       <a id="menu-toggle" href="#navlist"><img src="images/menu-white.png" alt="menu toggle" /></a> <!-- starts navigation -->
       <ul>
         <li class="navigation<?=($title=='Funflix Canada - Home') ? ' current' : ''; ?>"><a href="home.php">HOME</a></li>

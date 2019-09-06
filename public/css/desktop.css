@@ -27,7 +27,7 @@
       }
 
       .navigation{
-            margin: 12px;
+        margin: 12px;
         float:left;
         display: inline-block;
       }
@@ -49,8 +49,7 @@
 
       #landing_logo{
         height:45px;
-        margin-left: 10px;
-        margin-top: 15px;
+        margin-left: 10px;   
       }
 
       body{
@@ -242,12 +241,12 @@
       nav li a:active,
       nav li.current a{
         color: #c32121;
+        text-shadow: 2px 2px #000;
         -webkit-transform: scale(1.3);
         -moz-transform: scale(1.3);
         -o-transform: scale(1.3);
         transform: scale(1.3);
         font-weight: bold;
-        text-decoration: none;
       }
 
       a#menu-toggle {
