@@ -20,8 +20,28 @@
   <link rel="icon" sizes="144x144" href="images/apple-icon-144x144.png" />
   <link rel="stylesheet" href="css/desktop.css" />
   <link rel="stylesheet" href="css/mobile.css" />
-  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+  integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="js/slick/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/>
+
   <title><?=$title?></title>
+  <script>
+  $(document).ready(function(){
+      $('.autoplay').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+});
+  });
+  </script>
+
   <?php
 
       if($title == 'Funflix Canada - Watch TV Shows and Movies') {
