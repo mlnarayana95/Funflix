@@ -96,7 +96,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (12,'Narain','Madabhushi','#406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','mlnarayana95@gmail.com','$2y$10$C7HdzETmAWr5rziDNGyvoeCRHV1NgApnttwoDIQN2tpAGtBDEnlDq','2019-08-22 00:19:35',NULL),(13,'Narayana','Mada','406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','narayana@gmail.com','$2y$10$1DKbHEUDWDDN25H1ju9IOurv1mmmn36UVQjIH7/FQecT8Y4ieFuP2','2019-08-22 17:05:58',NULL),(14,'Narain','Madabhushi','406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','mlnarna95@gmail.com','$2y$10$mill2uk0RLrqCA1950dvpea5qwcx15H2Wl3sbWVmR.4MFof7L7.aq','2019-08-22 19:53:45',NULL),(15,'Narain','Narain','406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','rayana95@gmail.com','$2y$10$rQPWeV2Eb4R0ZLqphUBaAekGGC.Itae7cv.6VaEUBpl81KYBGiln6','2019-08-22 21:13:54',NULL),(16,'Lloyd','Guadez','624 Broadway','Winnipeg','R3G2F9','Manitoba','Canada','2048989055','lguadez@gmail.com','$2y$10$iReRtp2OdkMdXVyEN.75HuZO9tG4WW5Ucu3y9Lyd6XNLb7nAi.i0K','2019-08-23 00:30:01',NULL),(17,'Narain','Madabhushi','#406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','mlnarayana95.a@gmail.com','$2y$10$ZdLeIpeQnn8hu4UlECpLeutNjKYXIB0In7Sf8GYqEEOJ8K3T3Zr7e','2019-08-23 00:44:40',NULL),(18,'Narain','Madabhushi','#406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','narain@gmail.com','$2y$10$nT9QvP0fvX4Bdoj8v5mxpOuPdC1q7ZaOsNtreCP9XgTbV30bFNvYy','2019-09-04 19:13:02',NULL);
+INSERT INTO `users` VALUES (1,'Narain','Madabhushi','#406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','mlnarayana95@gmail.com','$2y$10$C7HdzETmAWr5rziDNGyvoeCRHV1NgApnttwoDIQN2tpAGtBDEnlDq','2019-08-22 00:19:35',NULL),(13,'Narayana','Mada','406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','narayana@gmail.com','$2y$10$1DKbHEUDWDDN25H1ju9IOurv1mmmn36UVQjIH7/FQecT8Y4ieFuP2','2019-08-22 17:05:58',NULL),(14,'Narain','Madabhushi','406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','mlnarna95@gmail.com','$2y$10$mill2uk0RLrqCA1950dvpea5qwcx15H2Wl3sbWVmR.4MFof7L7.aq','2019-08-22 19:53:45',NULL),(15,'Narain','Narain','406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','rayana95@gmail.com','$2y$10$rQPWeV2Eb4R0ZLqphUBaAekGGC.Itae7cv.6VaEUBpl81KYBGiln6','2019-08-22 21:13:54',NULL),(16,'Lloyd','Guadez','624 Broadway','Winnipeg','R3G2F9','Manitoba','Canada','2048989055','lguadez@gmail.com','$2y$10$iReRtp2OdkMdXVyEN.75HuZO9tG4WW5Ucu3y9Lyd6XNLb7nAi.i0K','2019-08-23 00:30:01',NULL),(17,'Narain','Madabhushi','#406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','mlnarayana95.a@gmail.com','$2y$10$ZdLeIpeQnn8hu4UlECpLeutNjKYXIB0In7Sf8GYqEEOJ8K3T3Zr7e','2019-08-23 00:44:40',NULL),(18,'Narain','Madabhushi','#406, 595, River Avenue','Winnipeg','R3L0E6','Manitoba','Canada','2044303747','narain@gmail.com','$2y$10$nT9QvP0fvX4Bdoj8v5mxpOuPdC1q7ZaOsNtreCP9XgTbV30bFNvYy','2019-09-04 19:13:02',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +123,7 @@ CREATE TABLE `vid_collection` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_date` datetime DEFAULT NULL,
   PRIMARY KEY (`video_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,6 +147,8 @@ CREATE TABLE `view_list` (
   `list_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `list_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`list_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -157,7 +159,7 @@ CREATE TABLE `view_list` (
 
 LOCK TABLES `view_list` WRITE;
 /*!40000 ALTER TABLE `view_list` DISABLE KEYS */;
-INSERT INTO `view_list` VALUES (1,1,'Horror'),(2,2,'Action'),(3,2,'Horror'),(4,1,'Fun'),(5,3,'MyList');
+INSERT INTO `view_list` VALUES (1,1,'Horror','2019-09-06 22:32:59',NULL),(2,2,'Action','2019-09-06 22:32:59',NULL),(3,2,'Horror','2019-09-06 22:32:59',NULL),(4,1,'Fun','2019-09-06 22:32:59',NULL),(5,3,'MyList','2019-09-06 22:32:59',NULL);
 /*!40000 ALTER TABLE `view_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-05 14:20:59
+-- Dump completed on 2019-09-06 22:34:26
