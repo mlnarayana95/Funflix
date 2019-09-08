@@ -1,0 +1,42 @@
+<style>
+  body{
+      background: #141414;
+      background-size: cover;
+      background-attachment: fixed;
+      opacity: 0.9;
+       	font-family: Arial,sans-serif;	
+      margin: 0 auto; 
+    }
+
+    .left-align-slick > .slick-list > .slick-track {    
+    margin-left:0;
+}
+    
+    #wrapper{
+      text-align: left;
+    }
+
+    #container{
+    	padding:20px;
+    	color: #fff;
+    	font-family: Arial,sans-serif;
+    	text-shadow: 1px 2px 2px #000;
+    }
+        
+    footer{
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+      
+    footer p{
+      text-align: center;
+      } 
+    
+    .vids{
+      max-width: 100%;
+    }
+        
+
+</style>

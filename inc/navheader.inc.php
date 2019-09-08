@@ -25,6 +25,9 @@
         <li class="navigation<?=($title=='Funflix Canada - TV Shows') ? ' current' : ''; ?>"><a href="tvshows.php">TV SHOWS</a></li>
         <li class="navigation<?=($title=='Funflix Canada - Movies') ? ' current' : ''; ?>"><a href="movies.php">MOVIES</a></li>
         <li class="navigation<?=($title=='Funflix Canada - My Profile') ? ' current' : ''; ?>"><a href="my_profile.php">MY PROFILE</a></li>
+        <li class="navigation<?=($title=='Funflix Canada - List') ? ' current' : ''; ?>"><a href="mylist.php">LIST</a></li>
+
       </ul>
-    </nav> 
+    </nav>
+
 </header>

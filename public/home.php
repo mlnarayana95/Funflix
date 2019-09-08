@@ -16,6 +16,7 @@
     Video::init($dbh);
     $video = new Video();
     $list = $video->all();
+
 ?>
 <body>
   <div id="container">
@@ -37,6 +38,7 @@
          
    
     </div>
+
     </main>
 
    <?php require '../inc/footer.inc.php'; ?>

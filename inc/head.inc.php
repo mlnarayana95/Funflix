@@ -33,11 +33,40 @@
   <title><?=$title?></title>
   <script>
   $(document).ready(function(){
-      $('.autoplay').slick({
+  $('.autoplay').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
   slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
 });
   });
   </script>
@@ -60,6 +89,8 @@
           include '../inc/home.inc.css';
       }elseif($title == 'User Information') {
         include '../inc/show_user.inc.css';
+      }elseif($title == 'Funflix Canada - List'){
+        include '../inc/mylist.inc.css';
       }
   ?>
 </head>
