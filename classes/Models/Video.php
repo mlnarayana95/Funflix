@@ -99,4 +99,12 @@ class Video extends Model
 		}
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+
+	public function fetchAllTvShows()
+	{
+		$query = "SELECT * FROM {$this->table} where video_type= 'TVSHOW'";
+		$stmt = static::$dbh->prepare($query);
+		$stmt->execute();
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 }

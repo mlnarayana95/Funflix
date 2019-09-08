@@ -9,34 +9,34 @@
     $title = "Funflix Canada - TV Shows";
     $heading = "TV Shows";
     require '../inc/head.inc.php'; 
+
+
+    use \App\Models\Video;
+
+    Video::init($dbh);
+    $video = new Video();
+    $list = $video->fetchAllTvShows();
+
 ?>
 
 <body>
  <div id="container">
     <?php require '../inc/header_load.inc.php'; ?>
     <div id="wrapper">  
-      <h1><?=$heading?></h1>
-      <div id="trending_now">
-        <h2>Thriller</h2>
-        <div id="trending_now_vids">
-          <div class="zoom" id="box1"><img src="images/Friends.jpg" alt="thriller video"></div>  
-          <div class="zoom" id="box2"><img src="images/sherlock.jpg" alt="thriller video"></div>  
-          <div class="zoom" id="box3"><img src="images/houseofcards.jpg" alt="thriller video"></div> 
-          <div class="zoom" id="box4"><img src="images/arrow.jpg" alt="thriller video"></div>  
-          <div class="zoom" id="box5"><img src="images/blackmirror.jpg" alt="thriller video"></div>  
-        </div>
-      </div>
-      <div id="comedies">
-        <h2>Crime</h2>
-        <div id="comedies_vids">
-        <div class="zoom1" id="box6"><img src="images/office.jpg" alt="crime video"></div>  
-        <div class="zoom1" id="box7"><img src="images/narcos.jpg" alt="crime video"></div> 
-        <div class="zoom1" id="box8"><img src="images/patriotact.jpg" alt="crime video"></div>  
-        <div class="zoom1" id="box9"><img src="images/Daredevil3.jpg" alt="crime video"></div>  
-        <div class="zoom1" id="box10"><img src="images/got.jpg" alt="crime video"></div>  
-        </div>
-      </div>
+      <h2><?=$heading?></h2>
+       <div class="autoplay">  
+      
+          <?php foreach ($list as $video): ?>
+            <div>
+          <a href="detailedview.php?id=<?=$video['video_id']?>">
+              <li style="width: 18%; padding:10px">  <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/></li>
+          </a> 
+          </div>
+          <?php endforeach ?>
+         
+   
     </div>
+      
     <?php require '../inc/footer.inc.php'; ?>
  
   </div>
