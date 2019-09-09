@@ -28,7 +28,7 @@
           <?php foreach ($list as $video): ?>
             <div>
           <a href="detailedview.php?id=<?=$video['video_id']?>">
-              <li style="width: 18%; padding:10px">  <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/></li>
+             <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
           </a> 
           </div>
           <?php endforeach ?>

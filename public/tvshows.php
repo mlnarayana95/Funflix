@@ -27,18 +27,17 @@
        <div class="autoplay">  
       
           <?php foreach ($list as $video): ?>
-            <div>
-          <a href="detailedview.php?id=<?=$video['video_id']?>">
-              <li style="width: 18%; padding:10px">  <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/></li>
-          </a> 
+          <div>
+            <a href="detailedview.php?id=<?=$video['video_id']?>">
+                <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
+            </a> 
           </div>
-          <?php endforeach ?>
-         
-   
-    </div>
+          <?php endforeach ?>    
+        </div>
       
     <?php require '../inc/footer.inc.php'; ?>
  
   </div>
+</div>
 </body>
 </html>

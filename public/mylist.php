@@ -5,7 +5,7 @@
   	
   	require '../app/config.php';
 
-    $title="Funflix Canada - List";
+    $title="Funflix Canada - My List";
 
     require '../inc/head.inc.php'; 
 
@@ -35,19 +35,18 @@
     	 <div id="wrapper">
      	 
           <?php foreach($result as $list): ?>
-          	<?php if(count($list) != 0) : ?>
-            <h2><?=$list[0]['list_name']?></h2>
-            <div>
-            	<?php for($v=0; $v < count($list); $v++) : ?>
-            		<span>
-            		<a href="detailedview.php?id=<?=$list[$v]['video_id']?>">
-		              <li style="width: 18%; padding:10px; display:inline-block;">  <img src="images/<?=$list[$v]['image'] . '.jpg'?>" alt="<?=$list[$v]['title']?>"/></li>
-		          	</a> 
-		          	</span>
-            	<?php endfor; ?>
-          	
-          </div>
-      <?php endif; ?>
+            <?php if(count($list) != 0) : ?>
+              <h2><?=$list[0]['list_name']?></h2>
+              <div>
+              	<?php for($v=0; $v < count($list); $v++) : ?>
+              		<span>
+                		<a href="detailedview.php?id=<?=$list[$v]['video_id']?>">
+    		              <img src="images/<?=$list[$v]['image'] . '.jpg'?>" alt="<?=$list[$v]['title']?>"/>
+    		          	</a> 
+  		          	</span>
+              	<?php endfor; ?>
+              </div>
+            <?php endif; ?>
           <?php endforeach ?>
          
    

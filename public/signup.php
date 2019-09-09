@@ -129,7 +129,7 @@
                 <input type="text" name="city" id="city" required placeholder="City" value="<?= clean('city')?>"/>
               </p>
               <p>
-                <label for="postalcode">Postal Code</label>
+                <label for="postal_code">Postal Code</label>
                 <input type="text" name="postal_code" id="postal_code" placeholder="Postal Code" value="<?= clean('postal_code')?>"/>
               </p>
               <p>
@@ -157,8 +157,8 @@
                 <input type="password" name="confirm_pass" id="confirm_pass" placeholder="Confirm Password"/>
               </p>
             <p id="buttons">
-              <input type="submit"  class="btn1" value="Submit"></input>
-              <input type="button" class="btn1" type="reset" value="Clear" /> &nbsp;
+              <input type="submit"  class="btn1" value="Submit"/>
+              <input class="btn1" type="reset" value="Clear" /> &nbsp;
             </p>
           </form>
         </div>

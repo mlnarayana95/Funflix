@@ -115,4 +115,13 @@ class Video extends Model
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+
+	public function sort($videotype, $property, $order)
+	{
+		$query = "SELECT * FROM {$this->table} where video_type= :video_type ORDER BY $property $order";
+		$params = array(':video_type' => $videotype);
+		$stmt = static::$dbh->prepare($query);
+		$stmt->execute($params);
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 }

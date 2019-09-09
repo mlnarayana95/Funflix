@@ -3,18 +3,22 @@
   use \App\Models\Video;
   use \App\Models\Viewlist;
   use \App\Models\Viewlistvideo;
+  use \App\Models\Genre_Video;
 
   require '../app/config.php';
 
 	Video::init($dbh);
 	Viewlist::init($dbh);
 	Viewlistvideo::init($dbh);
+	Genre_Video::init($dbh);
+	$genrevideo = new Genre_Video();
 
-	if(!empty($_GET['id']))
+	if(  isset($_GET['id']) && (!empty($_GET['id']))  )
 	{
 		$id = $_GET['id'];
 		$video = new Video();
 		$list = $video->one($id);
+		$genreList =  $genrevideo->getGenreOfVideo($id);
 		$_SESSION['video_id'] = $list['video_id'];
 		$title = "Funflix Canada - " . ucwords(strtolower($list['title']));
 		$heading = ucwords(strtolower($list['title']));
@@ -61,7 +65,6 @@
 	<meta name="viewport" content="width=device-width,intial-scale=1.0" />
 	<meta name="descriptiion" content="" />
 	<title></title>
-	
 
 
 	<script>
@@ -156,6 +159,10 @@
 			position: fixed;
 		}
 
+		a{
+			color:#c32625;
+		}
+
 	</style>
 </head>
 <body>
@@ -171,6 +178,7 @@
 			  <li>  <img src="images/<?=$list['image'] . '.jpg'?>" alt="<?=$list['title']?>"/></li>
 		  </a> 
 		  <ul>
+		  	<a href="home.php?genre_id=<?=$genreList[0]['genre_id']?>"><li>Genre: <?=$genreList[0]['genre_name']?></li></a>
 			<li>Language: <?=label($list['language'])?></li>
 			<li>Synopsis: <?=$list['synopsis']?></li>
 			<li>Plot: <?=$list['plot']?></li>

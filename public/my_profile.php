@@ -8,6 +8,12 @@
     require '../app/config.php';
     $title = "Funflix Canada - My Profile";
     $heading = "My Profile";
+    use App\Models\Viewlist;
+
+
+    Viewlist::init($dbh);
+    $viewlist = new Viewlist();
+    $viewlist_result = $viewlist->fetchListsForUser($_SESSION['user_id']);
 
     if(empty($_SESSION['logged_in']) || $_SESSION['logged_in'] != true){
       $_SESSION['flash'] = 'You must be logged in to view a profile';
@@ -41,15 +47,17 @@
 <?php require '../inc/head.inc.php';?>
 <?php require '../inc/header_load.inc.php'; ?>
   <div id="user">
-  <h1><?=$result['first_name'] . " " . $result['last_name']?></h1>
-  <ul>
-    <?php foreach($result as $key => $value) : ?>
-    <?php if($key != 'password' && $key != 'user_id' && $key != 'updated_at') : ?>
-      <li><strong><?=label($key)?></strong> : <?= $value?></li>
-      <?php endif; ?>
-    <?php endforeach; ?>
-  </ul>
+      <h1><?=$result['first_name'] . " " . $result['last_name']?></h1>
+      <ul>
+        <?php foreach($result as $key => $value) : ?>
+        <?php if($key != 'password' && $key != 'user_id' && $key != 'updated_at') : ?>
+          <li><strong><?=label($key)?></strong> : <?= $value?></li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </ul>
   </div> 
+
+
   <?php require '../inc/footer.inc.php'; ?>
 </body>
 </html>

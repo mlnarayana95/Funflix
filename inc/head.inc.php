@@ -26,7 +26,7 @@
   integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="
   crossorigin="anonymous"></script>
 
-  <script type="text/javascript" src="js/slick/slick.min.js"></script>
+  <script src="js/slick/slick.min.js"></script>
   <link rel="stylesheet" type="text/css" href="js/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="js/slick/slick-theme.css"/>
 
@@ -89,7 +89,7 @@
           include '../inc/home.inc.css';
       }elseif($title == 'User Information') {
         include '../inc/show_user.inc.css';
-      }elseif($title == 'Funflix Canada - List'){
+      }elseif($title == 'Funflix Canada - My List'){
         include '../inc/mylist.inc.css';
       }
   ?>
