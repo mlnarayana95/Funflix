@@ -5,6 +5,17 @@
  * last_update: 2019-08-03
  * Author: Narayana Madabhushi, mlnarayana95@gmail.com
  */
+
+
+use \App\Models\Video;
+
+Video::init($dbh);
+
+if (isset($_POST['search'])) {
+  $search_value = $_POST['search'];
+  $video = new Video();
+  $list = $video->searchVideo($search_value);
+}
 ?>
 <header>
     <p  style="display: inline-block;float: left;">
@@ -29,5 +40,18 @@
 
       </ul>
     </nav>
-
+    <?php if ($title != 'Funflix Canada - My Profile'): ?>
+      
+ 
+        <form style="    display: inline-block;
+    top: 14px;
+    position: absolute;
+" method="post" class="form-inline">
+            <input style="padding: 4px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    height: 30px;" class="form-control mr-sm-2" type="text" placeholder="Search with title" name="search" />
+            <button class="btn1" type="submit">Search</button>
+    </form>
+   <?php endif ?>
 </header>

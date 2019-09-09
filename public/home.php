@@ -17,6 +17,8 @@
     $video = new Video();
     $list = $video->all();
 
+    
+
 ?>
 <body>
   <div id="container">
@@ -38,6 +40,7 @@
          
    
     </div>
+    <div></div>
 
     </main>
 

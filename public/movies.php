@@ -15,6 +15,7 @@
     Video::init($dbh);
     $video = new Video();
     $list = $video->fetchAllMovies();
+
 ?>
 <body>
   <div id="container">
@@ -31,9 +32,7 @@
           </a> 
           </div>
           <?php endforeach ?>
-         
-   
-    </div>
+        </div>
         </main>
       </div>
     <?php require '../inc/footer.inc.php'; ?>

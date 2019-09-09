@@ -69,7 +69,7 @@
 		}
 
 		body{
-			background: #13272C;
+			background: #141414;
 		}
 		
 		#container{		
@@ -78,7 +78,7 @@
 		.box{
 			color: #fff;
 			font-family: Arial,sans-serif;
-			background-color: #333;
+			background-color: rgba(40, 40,40, 0.3);
 			padding: 20px;
 		}
 
@@ -92,6 +92,9 @@
 		  <h1 style="display: inline;"><?=$heading?></h1>
 		  <p style="color:#da2c2b;font-weight:bold;display: inline;padding: 15px">(<?=$list['rating']?> / 10)</p>
 		  <p>( <?=$list['video_type']?> )</p>
+		   <a href="#">
+              <li style="width: 18%; padding:10px">  <img src="images/<?=$list['image'] . '.jpg'?>" alt="<?=$list['title']?>"/></li>
+          </a> 
 		  <ul>
 		  	<li>Language: <?=$list['language']?></li>
 		  	<li>Synopsis: <?=$list['synopsis']?></li>
