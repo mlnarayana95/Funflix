@@ -12,7 +12,9 @@
 	Viewlistvideo::init($dbh);
 	Genre_Video::init($dbh);
 	$genrevideo = new Genre_Video();
-
+	$viewlist = new Viewlist();
+	$viewlistvideo = new Viewlistvideo();
+	
 	if(  isset($_GET['id']) && (!empty($_GET['id']))  )
 	{
 		$id = $_GET['id'];
@@ -22,8 +24,6 @@
 		$_SESSION['video_id'] = $list['video_id'];
 		$title = "Funflix Canada - " . ucwords(strtolower($list['title']));
 		$heading = ucwords(strtolower($list['title']));
-		$viewlist = new Viewlist();
-		$viewlistvideo = new Viewlistvideo();
 	}
 
 	if("POST" == $_SERVER['REQUEST_METHOD'])
