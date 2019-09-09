@@ -40,7 +40,7 @@ if (isset($_POST['search'])) {
 
       </ul>
     </nav>
-    <?php if ($title != 'Funflix Canada - My Profile'): ?>
+    <?php if ($title != 'Funflix Canada - My Profile' && $title != 'Funflix Canada - List'): ?>
       
  
         <form style="    display: inline-block;

@@ -19,21 +19,24 @@ class Viewlist extends Model
 	}
 
 
-	public function save($data)
+	public function createNewList($data)
 	{
+		
 		$query1 = "SELECT * FROM {$this->table} where user_id = :user_id and list_name = :list_name";
 
 		$stmt1 = static::$dbh->prepare($query1);
-		
-		$count = $stmt1->rowCount();
 
-		if($count = 0)
-		{
-
-		$query = "INSERT INTO {$this->table} (user_id,list_name) VALUES(:user_id, :list_name)";
 
 		$params = array(':user_id' => $data['user_id'],
 						'list_name' => $data['list_name']);
+
+		$stmt1->execute($params);
+		$count = $stmt1->rowCount();
+
+		if($count == 0)
+		{
+
+		$query = "INSERT INTO {$this->table} (user_id,list_name) VALUES(:user_id, :list_name)";
 
 		$stmt = static::$dbh->prepare($query);
 
@@ -44,7 +47,7 @@ class Viewlist extends Model
 		}
 		else{
 			$_SESSION['flash'] = 'List with that name already exists';
-			return false;
+
 		}
 	}
 }

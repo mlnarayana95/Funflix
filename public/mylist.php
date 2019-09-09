@@ -18,12 +18,13 @@
      $result = [];
      
      foreach ($list_id as $list) {
-       $id = $list['list_id'];
-       array_push($result,$viewlistvideo->fetchVideos($id));
+     
+	       $id = $list['list_id'];
+	       array_push($result,$viewlistvideo->fetchVideos($id));
      }
 
 ?>
-<body>
+<body style="margin:0;">
 
    <?php require '../inc/navheader.inc.php'; ?>
     <main>
@@ -34,8 +35,9 @@
     	 <div id="wrapper">
      	 
           <?php foreach($result as $list): ?>
+          	<?php if(count($list) != 0) : ?>
             <h2><?=$list[0]['list_name']?></h2>
-            <div class="autoplay left-align-slick">
+            <div>
             	<?php for($v=0; $v < count($list); $v++) : ?>
             		<span>
             		<a href="detailedview.php?id=<?=$list[$v]['video_id']?>">
@@ -45,6 +47,7 @@
             	<?php endfor; ?>
           	
           </div>
+      <?php endif; ?>
           <?php endforeach ?>
          
    
@@ -54,7 +57,9 @@
 
     
     </main>
-
+    <div style="margin-bottom:40px;">
+    	
+    </div>
    <?php require '../inc/footer.inc.php'; ?>
   </div>
 </body>
