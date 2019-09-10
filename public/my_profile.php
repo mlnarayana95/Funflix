@@ -5,53 +5,35 @@
  * last_update: 2019-08-03
  * Author: Narayana Madabhushi, mlnarayana95@gmail.com
  */
+
+    use App\Models\Viewlist;
+    use App\Models\Users;
+
     require '../app/config.php';
     $title = "Funflix Canada - My Profile";
     $heading = "My Profile";
-    use App\Models\Viewlist;
-
-
-    Viewlist::init($dbh);
-    $viewlist = new Viewlist();
-    $viewlist_result = $viewlist->fetchListsForUser($_SESSION['user_id']);
+    
+    Users::init($dbh);    
+    $user = new Users();
 
     if(empty($_SESSION['logged_in']) || $_SESSION['logged_in'] != true){
       $_SESSION['flash'] = 'You must be logged in to view a profile';
       header("Location: login.php");
       die;
     }else{
+      $result = $user->one($_SESSION['user_id']);
+    }
 
-    // the last inserted user id from the url
-  $query = 'SELECT *
-              FROM
-              users
-              WHERE user_id = :user_id';
-
-    // Preparing the query
-  $stmt = $dbh->prepare($query);
-
-  // Passing the required parameters 
-  $params = array(
-      ':user_id' => $_SESSION['user_id']
-  );
-
-  // Executing the query with params
-  $stmt->execute($params);
-
-  // Fetch it as an associative array
-  $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-}
 ?>
 
 <?php require '../inc/head.inc.php';?>
 <?php require '../inc/header_load.inc.php'; ?>
   <div id="user">
-      <h1><?=$result['first_name'] . " " . $result['last_name']?></h1>
+      <h1><?=esc($result['first_name']) . " " . esc($result['last_name'])?></h1>
       <ul>
         <?php foreach($result as $key => $value) : ?>
         <?php if($key != 'password' && $key != 'user_id' && $key != 'updated_at') : ?>
-          <li><strong><?=label($key)?></strong> : <?= $value?></li>
+          <li><strong><?=esc(label($key))?></strong> : <?=esc($value)?></li>
           <?php endif; ?>
         <?php endforeach; ?>
       </ul>

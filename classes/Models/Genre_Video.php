@@ -2,12 +2,20 @@
 
 namespace App\Models;
 
+/**
+ * Genre Video Class
+ */
 class Genre_Video extends Model
 {
 	protected $table = 'genre_video';
 
 	protected $key = 'video_id';
 	
+	/**
+	 * Get Genre of Video
+	 * @param  String $id [video_id]
+	 * @return Array      [genres]
+	 */
 	public function getGenreOfVideo($id)
 	{
 
@@ -25,6 +33,11 @@ class Genre_Video extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Get All Videos of a genre
+	 * @param  int    $genreid [genre id]
+	 * @return Array           [Videos]
+	 */
 	public function getAllVideoOfAGenre($genreid)
 	{
 		$query = "SELECT {$this->table}.*,
@@ -44,7 +57,10 @@ class Genre_Video extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
-
+	/**
+	 * Get all comedies both tv shows and movies
+	 * @return [type] [description]
+	 */
 	public function fetchAllComedies()
 	{
 		$genreid = 7;

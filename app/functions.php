@@ -67,3 +67,8 @@ function label($string)
 {	
 	return ucwords(str_replace('_',' ',$string) );
 }
+
+function csrf()
+{
+    return $_SESSION['csrf'];
+}

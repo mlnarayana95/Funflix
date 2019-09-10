@@ -100,6 +100,7 @@
   <h2><?=$heading?></h2>
   <div id="wrapper">
     <form action="edit.php" method="POST">
+    <input type="hidden" name="csrf" value="<?=csrf()?>" />
     <div class="form-group">
       <input type="text" class="form-control" id="video_id" name="video_id" value="<?= $vid['video_id'] ?>" hidden>
     </div>

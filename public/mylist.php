@@ -27,18 +27,18 @@
    <?php require '../inc/navheader.inc.php'; ?>
     <main>
     	<div id="container">
-    		<h2><?=$title?></h2>
+    		<h2><?=esc($title)?></h2>
     	</div>
 
     	<div id="wrapper">
         <?php foreach($result as $list): ?>
           <?php if(count($list) != 0) : ?>
-            <h2><?=$list[0]['list_name']?></h2>
+            <h2><?=esc($list[0]['list_name'])?></h2>
             <div>
               <?php for($v=0; $v < count($list); $v++) : ?>
                 <span>
-                  <a href="detailedview.php?id=<?=$list[$v]['video_id']?>">
-                  <img src="images/<?=$list[$v]['image'] . '.jpg'?>" alt="<?=$list[$v]['title']?>"/>
+                  <a href="detailedview.php?id=<?=esc_attr($list[$v]['video_id'])?>">
+                  <img src="images/<?=esc_attr($list[$v]['image']) . '.jpg'?>" alt="<?=esc_attr($list[$v]['title'])?>"/>
                   </a> 
                 </span>
               <?php endfor; ?>

@@ -10,7 +10,6 @@
     $heading = "TV Shows";
     require '../inc/head.inc.php'; 
 
-
     use \App\Models\Video;
 
     Video::init($dbh);
@@ -29,9 +28,9 @@
          <div class="autoplay">  
           <?php foreach ($search as $video): ?>
             <div>
-                <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>">
-                <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
-                <p><?=$video['title']?></p>
+                <a style="color:#fff;" href="detailedview.php?id=<?=esc_attr($video['video_id'])?>">
+                <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" alt="<?=$video['title']?>"/>
+                <p><?=esc($video['title'])?></p>
                 </a> 
             </div>
 
@@ -39,13 +38,13 @@
     </div>
     <?php else: ?>    
     <div id="wrapper">  
-      <h2><?=$heading?></h2>
+      <h2><?=esc($heading)?></h2>
        <div class="autoplay">  
       
           <?php foreach ($list as $video): ?>
           <div>
-            <a href="detailedview.php?id=<?=$video['video_id']?>">
-                <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
+            <a href="detailedview.php?id=<?=esc_attr($video['video_id'])?>">
+                <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" alt="<?=esc_attr($video['title'])?>"/>
             </a> 
           </div>
           <?php endforeach ?>    

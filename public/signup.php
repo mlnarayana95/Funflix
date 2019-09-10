@@ -8,15 +8,18 @@
     require '../app/config.php';
 
     use \App\Validator;
+    use \App\Models\Users;
 
+    Users::init($dbh);
     $v = new Validator();
-    
+    $user = new Users();  
+
     $heading ="Funflix - Canada Registration Form";
     $title = "Funflix Canada - Sign Up";
     $errors = [];
 
     // Check if the request method of the submitted method is equal to POST 
-    if('POST' == $_SERVER['REQUEST_METHOD']) {
+  if('POST' == $_SERVER['REQUEST_METHOD']) {
 
     $string_fields = ['first_name','last_name','city','province','country'];
 
@@ -37,79 +40,38 @@
     $errors = $v->getErrors();
 
     $hashed_password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+    $_POST['hashed_password'] = $hashed_password;
 
     if (empty($errors)){
-                $query = "INSERT INTO
-                    users
-                        (first_name,
-                        last_name,
-                        street,
-                        city,
-                        postal_code,
-                        province,
-                        country,
-                        phone,
-                        email,
-                        password)
-                        VALUES
-                        (:first_name, 
-                        :last_name, 
-                        :street, 
-                        :city, 
-                        :postal_code,
-                        :province,
-                        :country,
-                        :phone,
-                        :email,
-                        :password)";
             
-            // Preparing the query
-            $stmt = $dbh->prepare($query);
-            
-            // Adding parameters to be passed to the query
-            $params = array(
-                ':first_name' => $_POST['first_name'],
-                ':last_name'=> $_POST['last_name'],
-                ':street'=> $_POST['street'],
-                ':city'=> $_POST['city'],
-                ':postal_code'=> $_POST['postal_code'],
-                ':province' => $_POST['province'],
-                ':country'=> $_POST['country'],
-                ':phone'=> $_POST['phone'],
-                ':email'=> $_POST['email_address'],
-                ':password'=> $hashed_password );
+      $user_id = $user->createUser($_POST);
 
-            // Execute the query
-            $stmt->execute($params);
-
-            // Fetch the last inserted id value
-            $user_id = $dbh->lastInsertId();
-                  // Redirect to the show_user page
-                  if($user_id) {
-                      $_SESSION['logged_in'] = true;
-                      $_SESSION['user_id'] = $user_id;
-                      $_SESSION['flash'] = 'Thank you for registering!';
-                      session_regenerate_id(true);  
-                      header("Location: my_profile.php");
-                      die;
-                  }else {
-                      $errors[] = 'There was a problem creating a new user';
-                  } 
-              }     
+      if($user_id > 1) {
+        $_SESSION['logged_in'] = true;
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['flash'] = 'Thank you for registering!';
+        session_regenerate_id(true);  
+        header("Location: my_profile.php");
+        die;
+      }else {
+         $errors[] = 'There was a problem creating a new user';
+      } 
+    }     
 
   }
 
-    require '../inc/head.inc.php'; 
+  require '../inc/head.inc.php'; 
 
 ?>
     <body>   
        <?php require '../inc/header_load.inc.php'; ?>
       <div id="container">
-        <h1><?=$heading?></h1>
+        <h1><?=esc($heading)?></h1>
         <?php require '../inc/errors.inc.php'; ?> 
         <main>
         <div id="wrapper"> <!-- 960px width to wrap a page -->
            <form id="sign_up" name="sign_up" method="post" action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" novalidate>
+              <input type="hidden" name="csrf" value="<?=csrf()?>" />
                 <h2 style="font-weight: 700;font-family: Tahoma;padding-bottom: 35px;"
                 >Let us know you better</h2>
               <p >    

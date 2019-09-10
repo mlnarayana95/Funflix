@@ -42,8 +42,10 @@
          <div class="autoplay">  
           <?php foreach ($search as $video): ?>
             <div>
-                <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>">
-                <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
+                <a style="color:#fff;" href="detailedview.php?id=
+                <?=esc_attr($video['video_id'])?>">
+                <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" 
+                alt="<?=esc_attr($video['title'])?>"/>
                 <p><?=$video['title']?></p>
                 </a> 
             </div>
@@ -58,7 +60,7 @@
 
       <?php if (isset($genrename)): ?>
         
-      <h2><?=$genrename?></h2>
+      <h2><?=esc($genrename)?></h2>
       <?php else: ?>
         <h2>Comedies</h2>
       <?php endif ?>
@@ -66,9 +68,11 @@
       
           <?php foreach ($list as $video): ?>
             <div>
-                <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>">
-                <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
-                <p><?=$video['title']?></p>
+                <a style="color:#fff;" href="detailedview.php?id=
+                <?=esc_attr($video['video_id'])?>">
+                <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" 
+                alt="<?=esc_attr($video['title'])?>"/>
+                <p><?=esc($video['title'])?></p>
                 </a> 
             </div>
 
@@ -83,8 +87,8 @@
 
             <div>
      
-              <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>"> <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/> 
-              <p><?=$video['title']?></p>
+              <a style="color:#fff;" href="detailedview.php?id=<?=esc_attr($video['video_id'])?>"> <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" alt="<?=esc_attr($video['title'])?>"/> 
+              <p><?=esc($video['title'])?></p>
               </a> 
           </div>
           <?php endforeach ?>
@@ -95,8 +99,8 @@
     <div class="autoplay">
        <?php foreach ($top_rated_tv_shows as $video): ?>
             <div>
-              <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>">  <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>  
-              <p><?=$video['title']?></p>
+              <a style="color:#fff;" href="detailedview.php?id=<?=esc_attr($video['video_id'])?>">  <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" alt="<?=esc_attr($video['title'])?>"/>  
+              <p><?=esc($video['title'])?></p>
               </a>
             </div>
           <?php endforeach ?>

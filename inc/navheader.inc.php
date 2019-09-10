@@ -43,18 +43,18 @@ if (isset($_POST['search'])) {
 
       </ul>
     </nav>
-    <?php if ($title != 'Funflix Canada - My Profile' && $title != 'Funflix Canada - List'): ?>
-      
+    <?php if ($title != 'Funflix Canada - My Profile' && $title != 'Funflix Canada - My List'): ?>
  
-        <form style="    display: inline-block;
-    top: 14px;
-    position: absolute;
-" method="post" class="form-inline">
-            <input style="padding: 4px;
-    border: 2px solid #000;
-    border-radius: 4px;
-    height: 30px;" class="form-control mr-sm-2" type="text" placeholder="Search with title" name="search" />
+        <form style=" display: inline-block;
+                      top: 14px;
+                      position: absolute;" 
+              method="post" class="form-inline">
+            <input type="hidden" name="csrf" value="<?=csrf()?>" />
+            <input style="padding: 4px;border: 2px solid #000;
+            border-radius: 4px;height: 30px;" class="form-control mr-sm-2" 
+            type="text" placeholder="Search with title" name="search" />
+            <input type="hidden" name="csrf" value="<?=csrf()?>" />
             <button class="btn1" type="submit">Search</button>
-    </form>
+        </form>
    <?php endif ?>
 </header>

@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
+/**
+ * View list video
+ */
 class Viewlistvideo extends Model
 {
 	protected $table = 'view_list_video';
 
+	/**
+	 * Fetch Vides of a view list
+	 * @param  int  $listid   [list id]
+	 * @return Array          [Videos]
+	 */
 	public function fetchVideos($listid)
 	{
 		$query = "SELECT {$this->table}.*,
@@ -22,6 +30,11 @@ class Viewlistvideo extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Save video in a list
+	 * @param  String  $data [video]
+	 * @return Int        [last insert id]
+	 */
 	public function saveVideo($data)
 	{
 

@@ -38,6 +38,7 @@ if (isset($_POST['search'])) {
     </nav> 
     <?php if (!isset($_GET['video_id'])): ?>
     <form method="post" class="form-inline">
+            <input type="hidden" name="csrf" value="<?=csrf()?>" />
             <input class="form-control mr-sm-2" type="text" placeholder="Search with title" name="search" />
             <button class="btn1" type="submit">Search</button>
     </form>

@@ -10,6 +10,20 @@ require __DIR__ . '/../vendor/autoload.php';
 
 // Session is started
 session_start();
+
+
+// generate a csrf token if we need one
+if(empty($_SESSION['csrf'])) {
+    $_SESSION['csrf'] = md5( uniqid() . time() );
+}
+
+// test every POST submission for the csrf token
+if('POST' == $_SERVER['REQUEST_METHOD']) {
+    if(empty($_POST['csrf']) || $_POST['csrf'] != $_SESSION['csrf']) {
+        die('Your session appears to have expired.  CSRF token mismatch!');
+    }
+}
+
 //Output buffering enabled 
 ob_start();
 

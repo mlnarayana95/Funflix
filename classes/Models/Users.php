@@ -3,33 +3,73 @@
 namespace App\Models;
 
 /**
- * 	Video Class
+ * Users table
  */
-class Video extends Model
+class Users extends Model
 {
-	protected $table = 'vid_collection';
+  /**
+   * @var string
+   */
+	protected $table = 'users';
 
-	protected $key = 'video_id';
+  /**
+   * @var string
+   */
+	protected $key = 'user_id';
 
 	/**
 	 * Inserts a new record in Video Table
 	 * @param   Video  $video 
 	 * @return  int
 	 */
-	public function save($video)
-	{	
-		$query = "INSERT INTO {$this->table} (title, video_type, language, rating, synopsis, num_of_season, release_date) VALUES(:title, :video_type, :language, :rating, :synopsis, :num_of_season, :release_date)";
+	public function createUser($video)
+	{	      $query = "INSERT INTO
+                    users
+                        (first_name,
+                        last_name,
+                        street,
+                        city,
+                        postal_code,
+                        province,
+                        country,
+                        phone,
+                        email,
+                        password)
+                        VALUES
+                        (:first_name, 
+                        :last_name, 
+                        :street, 
+                        :city, 
+                        :postal_code,
+                        :province,
+                        :country,
+                        :phone,
+                        :email,
+                        :password)";
+            
+            // Preparing the query
+            $stmt = static::$dbh->prepare($query);
+            
+            // Adding parameters to be passed to the query
+            $params = array(
+                ':first_name' => $video['first_name'],
+                ':last_name'=> $video['last_name'],
+                ':street'=> $video['street'],
+                ':city'=> $video['city'],
+                ':postal_code'=> $video['postal_code'],
+                ':province' => $video['province'],
+                ':country'=> $video['country'],
+                ':phone'=> $video['phone'],
+                ':email'=> $video['email_address'],
+                ':password'=> $video['hashed_password'] );
 
-		foreach ($video as $key => $value) {
-			if($key != 'table' && $key != 'key')
-	    	$params[$key] = $value;
-		}
+            // Execute the query
+            $stmt->execute($params);
 
-		$stmt = static::$dbh->prepare($query);
+            // Fetch the last inserted id value
+            $user_id = static::$dbh->lastInsertId();
 
-		$stmt->execute($params);
-
-		return static::$dbh->lastInsertId();
+            return $user_id;
 	}
 		
 

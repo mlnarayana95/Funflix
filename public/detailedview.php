@@ -1,11 +1,11 @@
 <?php
 
-  use \App\Models\Video;
-  use \App\Models\Viewlist;
-  use \App\Models\Viewlistvideo;
-  use \App\Models\Genre_Video;
+	use \App\Models\Video;
+	use \App\Models\Viewlist;
+	use \App\Models\Viewlistvideo;
+	use \App\Models\Genre_Video;
 
-  require '../app/config.php';
+    require '../app/config.php';
 
 	Video::init($dbh);
 	Viewlist::init($dbh);
@@ -55,7 +55,6 @@
 
 	$viewlist_result = $viewlist->fetchListsForUser($_SESSION['user_id']);
 
-
 	require '../inc/head.inc.php'; 
 
 ?>
@@ -65,48 +64,51 @@
 		<div id="wrapper">
 			<div class="box">
 				<div>
-		  			<h1 style="display: inline;"><?=$heading?></h1>
-		  			<p style="color:#da2c2b;font-weight:bold;display: inline;padding: 15px">(<strong><?=$list['rating']?> / 10)</strong></p>
-			        <p>( <?=$list['video_type']?> )</p>
+		  			<h1 style="display: inline;"><?=esc($heading)?></h1>
+		  			<p style="color:#da2c2b;font-weight:bold;display: inline;
+		  			    padding: 15px">(<strong><?=esc($list['rating'])?> / 10)
+		  			    </strong></p>
+			        <p>( <?=esc($list['video_type'])?> )</p>
 		   			<a href="#">
-			  			<img src="images/<?=$list['image'] . '.jpg'?>" alt="<?=$list['title']?>"/>
+			  			<img src="images/<?=esc_attr($list['image']) . '.jpg'?>" 
+			  			alt="<?=esc_attr($list['title'])?>"/>
 		  			</a> 
-		  	<ul>
-		  		<li><a href="home.php?genre_id=<?=$genreList[0]['genre_id']?>">Genre: <?=$genreList[0]['genre_name']?></a></li>
-			<li>Language: <?=label($list['language'])?></li>
-			<li>Synopsis: <?=$list['synopsis']?></li>
-			<li>Plot: <?=$list['plot']?></li>
-			<li>Length: <?=$list['length']?> mins</li>
-			<li>Director: <?=$list['director']?></li>
-			<?php if ($list['video_type'] == 'TVSHOW'): ?>
-				<li>Number of Seasons: <?=$list['num_of_season']?></li>				
-			<?php endif ?>
-		  </ul>
+			  	<ul>
+				   <li><a href="home.php?genre_id=<?=$genreList[0]['genre_id']?>"
+				   	>Genre: <?=esc($genreList[0]['genre_name'])?></a></li>
+					<li>Language: <?=label($list['language'])?></li>
+					<li>Synopsis: <?=esc($list['synopsis'])?></li>
+					<li>Plot: <?=esc($list['plot'])?></li>
+					<li>Length: <?=esc($list['length'])?> mins</li>
+					<li>Director: <?=esc($list['director'])?></li>
+					<?php if ($list['video_type'] == 'TVSHOW'): ?>
+					<li>Number of Seasons: <?=esc($list['num_of_season'])?></li>				
+					<?php endif ?>
+			  	</ul>
 		  	<form method="post">
-		  <p>
+			  	<input type="hidden" name="csrf" value="<?=csrf()?>" />
+			  	<select id="viewlist" name="viewlist">
+					<option value="create_list">Create a new list</option>
+					<?php if (!empty($viewlist_result)): ?>
+						<?php foreach ($viewlist_result as $viewlist): ?>
+							<option value="<?=esc_attr($viewlist['list_id'])?>" 
+									selected="selected">
+								<?=esc($viewlist['list_name'])?>
+							</option>
+						<?php endforeach ?>	
+					<?php endif ?>
+				</select>
 
-			<select id="viewlist" name="viewlist">
-				<option value="create_list">Create a new list</option>
-				<?php if (!empty($viewlist_result)): ?>
-				<?php foreach ($viewlist_result as $viewlist): ?>
-					<option value="<?=$viewlist['list_id']?>" selected="selected">
-						<?=$viewlist['list_name']?>
-					</option>
-				<?php endforeach ?>	
-				<?php endif ?>
-			</select>
-
-			<div id="add_list">
-			<input type="text" id="list_name" name="list_name">
+				<div style="margin-top: 10px;" id="add_list">
+					<input type="text" id="list_name" name="list_name">
+				</div>
+				<p>
+					<input class="btn" style="margin-top:10px " type="submit" 
+					name="button" id="button" value="Add to List">
+				</p>
+			</form>
+			
 			</div>
-			<input class="btn" style="margin-top:10px " type="submit" name="button" id="button" value="Add to List">
-				</form>
-			</div>
-
-
-
-		  
-		
 
 		</div>	
 

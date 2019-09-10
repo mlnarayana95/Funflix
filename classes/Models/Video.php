@@ -100,6 +100,10 @@ class Video extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Fetch all tv shows
+	 * @return Array   [tv shows]
+	 */
 	public function fetchAllTvShows()
 	{
 		$query = "SELECT * FROM {$this->table} where video_type= 'TVSHOW'";
@@ -108,6 +112,10 @@ class Video extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Fetch all the movies
+	 * @return Array [Movies]
+	 */
 	public function fetchAllMovies()
 	{
 		$query = "SELECT * FROM {$this->table} where video_type= 'MOVIES'";
@@ -116,6 +124,13 @@ class Video extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Sorting based on the below passed params
+	 * @param  [String] $videotype 
+	 * @param  [String] $property  [property name]
+	 * @param  [type] $order       [ascending or descending]
+	 * @return Array               [Sorted Array]
+	 */
 	public function sort($videotype, $property, $order)
 	{
 		$query = "SELECT * FROM {$this->table} where video_type= :video_type ORDER BY $property $order";

@@ -21,9 +21,9 @@
 
     if('POST' == $_SERVER['REQUEST_METHOD']) {
 
-        $errors =  $v->loginFormValidate();
+      $errors =  $v->loginFormValidate();
 
-        if(empty($errors) ) {
+      if(empty($errors) ) {
         $query = "SELECT * FROM users WHERE email = :email";
 
         $params = array(
@@ -54,8 +54,8 @@
           $v->setErrors('login','Login Credentials do not match');
           $errors = $v->getErrors();
         }
+      }
     }
-  }
 
     require '../inc/head.inc.php'; 
 ?>
@@ -67,11 +67,12 @@
     <?php require '../inc/errors.inc.php'; ?>   
     <main><!-- Main Content starts here -->
       <div id="login_form">
-        <h1><?=$heading?></h1>
-
+       
+        <h1><?=esc($heading)?></h1>
         <div id="content">
 
           <form id="login" action="login.php" method="post" novalidate>
+            <input type="hidden" name="csrf" value="<?=csrf()?>" />
             <p>
               <input class="login_fields" id="email_address" name="email_address" type="email" placeholder="Email" required value="<?=clean("email_address")?>"/>
             </p>
@@ -89,7 +90,7 @@
       </div>
     </main><!-- Main content ends here -->
 
-   <?php require '../inc/footer.inc.php'; ?>
+    <?php require '../inc/footer.inc.php'; ?>
 
   </div>
 </body>
