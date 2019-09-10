@@ -22,7 +22,7 @@
 		$list = $video->one($id);
 		$genreList =  $genrevideo->getGenreOfVideo($id);
 		$_SESSION['video_id'] = $list['video_id'];
-		$title = "Funflix Canada - " . ucwords(strtolower($list['title']));
+		$title = "Funflix Canada - Detailed View";
 		$heading = ucwords(strtolower($list['title']));
 	}
 
@@ -58,134 +58,21 @@
 
 	require '../inc/head.inc.php'; 
 
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width,intial-scale=1.0" />
-	<meta name="descriptiion" content="" />
-	<title></title>
-
-
-	<script>
-	$(document).ready(function(){
-	$('#viewlist').on('change', function() {
-
-	  if ( this.value == 'create_list')
-	  {
-		$("#add_list").show();
-		$("#button").attr('value', 'Create New List');
-	  }
-	  else
-	  {
-		$("#add_list").hide();
-		$("#button").attr('value', 'Add to List');
-
-	  }
-	});
-
-	if ( $('#viewlist').attr('value') == 'create_list' ) {
-    	$("#add_list").show();
-		$("#button").attr('value', 'Create New List');
-	} else {
-		$("#add_list").hide();
-		$("#button").attr('value', 'Add to List');
-	}
-
-});
-</script>
-	<style type="text/css">
-		#add_list{
-			display: none;
-		}
-
-		body{
-
-			background: #141414;
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
-		}
-
-
-		
-		#container{		
-		}
-
-		.box{
-			color: #fff;
-			font-family: Arial,sans-serif;
-			background-color: rgba(40, 40,40, 0.3);
-			padding: 20px;
-			margin-bottom: 45px;
-		}
-
-		ul{
-			padding: 2px;
-		}
-
-
-
-		select{
-			display: block;
-			padding: 2px;
-			font-size: 1rem;
-			font-weight: 400;
-			color: #495057;
-			background-color: #fff;
-			background-clip: padding-box;
-			border: 1px solid #ced4da;
-			border-radius: .25rem;
-		}
-
-		#list_name{
-		    display: block;
-			padding: 2px;
-			font-size: 1rem;
-			font-weight: 400;
-			color: #495057;
-			background-color: #fff;
-			background-clip: padding-box;
-			border: 1px solid #ced4da;
-			border-radius: .25rem;
-		}
-
-		.btn {
-    border-radius: 6px;
-    background: #c32625;
-    color: #fff;
-    font-weight: bold;
-    border: 1px solid #5f5353;
-    width: 116px;
-    padding: 5px;
-    word-wrap: break-word;
-    height: 43px;
-    margin-left: 1px;
-}
-
-		footer{
-			bottom: 0;
-			position: fixed;
-		}
-
-		a{
-			color:#c32625;
-		}
-
-	</style>
-</head>
+?>
 <body>
-	   <?php require '../inc/header_load.inc.php'; ?>
+	<?php require '../inc/header_load.inc.php'; ?>
 	<div id="container">
 		<div id="wrapper">
-		<div class="box">
-			<div>
-		  <h1 style="display: inline;"><?=$heading?></h1>
-		  <p style="color:#da2c2b;font-weight:bold;display: inline;padding: 15px">(<strong><?=$list['rating']?> / 10)</strong></p>
-		  <p>( <?=$list['video_type']?> )</p>
-		   <a href="#">
-			  <li>  <img src="images/<?=$list['image'] . '.jpg'?>" alt="<?=$list['title']?>"/></li>
-		  </a> 
-		  <ul>
-		  	<a href="home.php?genre_id=<?=$genreList[0]['genre_id']?>"><li>Genre: <?=$genreList[0]['genre_name']?></li></a>
+			<div class="box">
+				<div>
+		  			<h1 style="display: inline;"><?=$heading?></h1>
+		  			<p style="color:#da2c2b;font-weight:bold;display: inline;padding: 15px">(<strong><?=$list['rating']?> / 10)</strong></p>
+			        <p>( <?=$list['video_type']?> )</p>
+		   			<a href="#">
+			  			<img src="images/<?=$list['image'] . '.jpg'?>" alt="<?=$list['title']?>"/>
+		  			</a> 
+		  	<ul>
+		  		<li><a href="home.php?genre_id=<?=$genreList[0]['genre_id']?>">Genre: <?=$genreList[0]['genre_name']?></a></li>
 			<li>Language: <?=label($list['language'])?></li>
 			<li>Synopsis: <?=$list['synopsis']?></li>
 			<li>Plot: <?=$list['plot']?></li>

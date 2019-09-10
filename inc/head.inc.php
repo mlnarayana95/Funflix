@@ -70,9 +70,29 @@
 });
 
 
-$('.single-item').slick({
-  arrows: true
-});
+  $('#viewlist').on('change', function() {
+
+    if ( this.value == 'create_list')
+    {
+    $("#add_list").show();
+    $("#button").attr('value', 'Create New List');
+    }
+    else
+    {
+    $("#add_list").hide();
+    $("#button").attr('value', 'Add to List');
+
+    }
+  });
+
+  if ( $('#viewlist').attr('value') == 'create_list' ) {
+      $("#add_list").show();
+    $("#button").attr('value', 'Create New List');
+  } else {
+    $("#add_list").hide();
+    $("#button").attr('value', 'Add to List');
+  }
+
 
   });
 
@@ -98,7 +118,10 @@ $('.single-item').slick({
         include '../inc/show_user.inc.css';
       }elseif($title == 'Funflix Canada - My List'){
         include '../inc/mylist.inc.css';
+      }elseif($title == 'Funflix Canada - Detailed View'){
+        include '../inc/detailedview.inc.css';
       }
   ?>
+  
 </head>
   
