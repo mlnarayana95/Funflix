@@ -44,4 +44,26 @@ class Genre_Video extends Model
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
+
+	public function fetchAllComedies()
+	{
+		$genreid = 7;
+		$query = "SELECT {$this->table}.*,
+							genre.*,
+							vid_collection.*
+							FROM 
+							{$this->table}
+							JOIN vid_collection 
+							ON ({$this->table}.video_id = vid_collection.video_id)  
+							JOIN genre 
+							ON({$this->table}.genre_id = genre.genre_id)
+							WHERE {$this->table}.genre_id = :genreid";
+
+		$params = array(':genreid' => $genreid);
+		$stmt = static::$dbh->prepare($query);
+		$stmt->execute($params);
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+
 }

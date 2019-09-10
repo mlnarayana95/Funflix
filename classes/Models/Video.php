@@ -124,4 +124,5 @@ class Video extends Model
 		$stmt->execute($params);
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
+
 }

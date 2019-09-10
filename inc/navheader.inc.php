@@ -14,7 +14,7 @@ Video::init($dbh);
 if (isset($_POST['search'])) {
   $search_value = $_POST['search'];
   $video = new Video();
-  $list = $video->searchVideo($search_value);
+  $search = $video->searchVideo($search_value);
 }
 
 

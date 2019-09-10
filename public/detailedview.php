@@ -82,9 +82,16 @@
 		$("#button").attr('value', 'Add to List');
 
 	  }
-
-	
 	});
+
+	if ( $('#viewlist').attr('value') == 'create_list' ) {
+    	$("#add_list").show();
+		$("#button").attr('value', 'Create New List');
+	} else {
+		$("#add_list").hide();
+		$("#button").attr('value', 'Add to List');
+	}
+
 });
 </script>
 	<style type="text/css">
@@ -184,7 +191,9 @@
 			<li>Plot: <?=$list['plot']?></li>
 			<li>Length: <?=$list['length']?> mins</li>
 			<li>Director: <?=$list['director']?></li>
-			<li>Number of Seasons: <?=$list['num_of_season']?></li>
+			<?php if ($list['video_type'] == 'TVSHOW'): ?>
+				<li>Number of Seasons: <?=$list['num_of_season']?></li>				
+			<?php endif ?>
 		  </ul>
 		  	<form method="post">
 		  <p>

@@ -19,7 +19,7 @@
     
     $genrevideo = new Genre_Video();
     $video = new Video();
-    $list = $video->all();
+    $list = $genrevideo->fetchAllComedies();
 
     $top_rated_tv_shows = $video->sort('TVSHOW','rating','DESC');
     $most_recent_tv_shows = $video->sort('TVSHOW','release_date','ASC');
@@ -35,7 +35,22 @@
 <body>
   <div id="container">
    <?php require '../inc/header_load.inc.php'; ?>
-  
+    <?php if ( isset($search)) : ?>
+      <div style="margin-top: 100px;">
+        
+      </div>
+         <div class="autoplay">  
+          <?php foreach ($search as $video): ?>
+            <div>
+                <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>">
+                <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
+                <p><?=$video['title']?></p>
+                </a> 
+            </div>
+
+          <?php endforeach ?>
+    </div>
+    <?php else: ?>    
     <div>
       <img id="daredevil" src="images/daredevil1000px.jpg" alt="main_banner"/>
     </div>
@@ -44,16 +59,19 @@
       <?php if (isset($genrename)): ?>
         
       <h2><?=$genrename?></h2>
-
+      <?php else: ?>
+        <h2>Comedies</h2>
       <?php endif ?>
       <div class="autoplay">  
       
           <?php foreach ($list as $video): ?>
             <div>
-                <a href="detailedview.php?id=<?=$video['video_id']?>">
+                <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>">
                 <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
+                <p><?=$video['title']?></p>
                 </a> 
             </div>
+
           <?php endforeach ?>
          
    
@@ -65,8 +83,9 @@
 
             <div>
      
-              <a href="detailedview.php?id=<?=$video['video_id']?>"> <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/> </a> 
-         
+              <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>"> <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/> 
+              <p><?=$video['title']?></p>
+              </a> 
           </div>
           <?php endforeach ?>
          
@@ -75,13 +94,16 @@
     <h2>Recently Added</h2>
     <div class="autoplay">
        <?php foreach ($top_rated_tv_shows as $video): ?>
-
             <div>
-               <a href="detailedview.php?id=<?=$video['video_id']?>">  <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>  </a>
+              <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>">  <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>  
+              <p><?=$video['title']?></p>
+              </a>
             </div>
           <?php endforeach ?>
     </div>
   </div>
+  <?php endif ?>
+    
    <?php require '../inc/footer.inc.php'; ?>
   </div>
 </body>

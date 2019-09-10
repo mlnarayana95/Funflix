@@ -68,7 +68,14 @@
     // instead of a settings object
   ]
 });
+
+
+$('.single-item').slick({
+  arrows: true
+});
+
   });
+
   </script>
 
   <?php

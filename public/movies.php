@@ -20,6 +20,22 @@
 <body>
   <div id="container">
     <?php require '../inc/header_load.inc.php'; ?>
+     <?php if ( isset($search)) : ?>
+      <div style="margin-top: 100px;">
+        
+      </div>
+         <div class="autoplay">  
+          <?php foreach ($search as $video): ?>
+            <div>
+                <a style="color:#fff;" href="detailedview.php?id=<?=$video['video_id']?>">
+                <img src="images/<?=$video['image'] . '.jpg'?>" alt="<?=$video['title']?>"/>
+                <p><?=$video['title']?></p>
+                </a> 
+            </div>
+
+          <?php endforeach ?>
+    </div>
+    <?php else: ?>    
       <div id="wrapper">
         <h1><?=$heading?></h1>
         <main>
@@ -35,6 +51,7 @@
         </div>
         </main>
       </div>
+    <?php endif; ?>
     <?php require '../inc/footer.inc.php'; ?>
  
   </div>
