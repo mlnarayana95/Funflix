@@ -27,8 +27,10 @@
          <div class="autoplay">  
           <?php foreach ($search as $video): ?>
             <div>
-                <a style="color:#fff;" href="detailedview.php?id=<?=esc_attr($video['video_id'])?>">
-                <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" alt="<?=esc_attr($video['title'])?>"/>
+                <a style="color:#fff;" 
+                href="detailedview.php?id=<?=esc_attr($video['video_id'])?>">
+                <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" 
+                alt="<?=esc_attr($video['title'])?>"/>
                 <p><?=esc($video['title'])?></p>
                 </a> 
             </div>
@@ -44,7 +46,8 @@
           <?php foreach ($list as $video): ?>
             <div>
           <a href="detailedview.php?id=<?=esc_attr($video['video_id'])?>">
-             <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" alt="<?=esc_attr($video['title'])?>"/>
+             <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" 
+             alt="<?=esc_attr($video['title'])?>"/>
           </a> 
           </div>
           <?php endforeach ?>

@@ -38,7 +38,11 @@ class Viewlistvideo extends Model
 	public function saveVideo($data)
 	{
 
-		$query1 = "SELECT * FROM {$this->table} where list_id = :list_id and video_id = :video_id";
+		$query1 = "SELECT * FROM {$this->table}
+				   where
+				   list_id = :list_id 
+				   and 
+				   video_id = :video_id";
 
 		$params = array(':list_id' => $data['viewlist'],
 						':video_id' => $data['video_id']);
@@ -50,7 +54,11 @@ class Viewlistvideo extends Model
 		if($count != 1)
 		{
 
-		$query = "INSERT INTO {$this->table} (list_id,video_id) VALUES(:list_id, :video_id)";
+		$query = "INSERT INTO
+		 		  {$this->table} 
+		 		  (list_id,video_id)
+		 		   VALUES
+		 		  (:list_id, :video_id)";
 
 		$stmt = static::$dbh->prepare($query);
 

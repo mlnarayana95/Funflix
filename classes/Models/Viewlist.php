@@ -16,7 +16,10 @@ class Viewlist extends Model
 	 */
 	public function fetchListsForUser($userid)
 	{
-		$query = "SELECT * FROM {$this->table} WHERE user_id = :id";
+		$query = "SELECT * 
+				  FROM 
+				  {$this->table} 
+				  WHERE user_id = :id";
 		$params = array(':id' => $userid);
 		$stmt = static::$dbh->prepare($query);
 		$stmt->execute($params);
@@ -31,7 +34,11 @@ class Viewlist extends Model
 	public function createNewList($data)
 	{
 		
-		$query1 = "SELECT * FROM {$this->table} where user_id = :user_id and list_name = :list_name";
+		$query1 = "SELECT 
+					*
+					FROM 
+					{$this->table} 
+					where user_id = :user_id and list_name = :list_name";
 
 		$stmt1 = static::$dbh->prepare($query1);
 
@@ -44,7 +51,10 @@ class Viewlist extends Model
 		if($count == 0)
 		{
 
-		$query = "INSERT INTO {$this->table} (user_id,list_name) VALUES(:user_id, :list_name)";
+		$query = "INSERT INTO {$this->table}
+		 (user_id,list_name) 
+		 VALUES
+		 (:user_id, :list_name)";
 
 		$stmt = static::$dbh->prepare($query);
 

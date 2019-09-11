@@ -74,16 +74,23 @@
           <form id="login" action="login.php" method="post" novalidate>
             <input type="hidden" name="csrf" value="<?=csrf()?>" />
             <p>
-              <input class="login_fields" id="email_address" name="email_address" type="email" placeholder="Email" required value="<?=clean("email_address")?>"/>
+              <input class="login_fields" id="email_address" 
+                name="email_address" 
+                type="email" 
+                placeholder="Email" 
+                required value="<?=clean("email_address")?>"/>
             </p>
             <p>
-              <input class="login_fields" id="pass" name="pass" type="password" placeholder="Password" required /> 
+              <input class="login_fields" id="pass" name="pass" 
+              type="password" placeholder="Password" required /> 
             </p>   
             <p> 
-              <input type="submit" id="login_submit" class="btn1" name="login_submit" value="Submit"/>  
+              <input type="submit" id="login_submit" 
+              class="btn1" name="login_submit" value="Submit"/>  
             </p> 
             <p style="display:inline-block;float:left;color:#f3f3f3">
-              Not a user yet? <a style="color:#c32625" href="signup.php">Sign Up</a>
+              Not a user yet? <a style="color:#c32625" 
+              href="signup.php">Sign Up</a>
             </p>     
           </form>
         </div> 

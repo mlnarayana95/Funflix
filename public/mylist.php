@@ -37,8 +37,11 @@
             <div>
               <?php for($v=0; $v < count($list); $v++) : ?>
                 <span>
-                  <a href="detailedview.php?id=<?=esc_attr($list[$v]['video_id'])?>">
-                  <img src="images/<?=esc_attr($list[$v]['image']) . '.jpg'?>" alt="<?=esc_attr($list[$v]['title'])?>"/>
+                  <a
+                    href="detailedview.php?id=<?=esc_attr($list[$v]['video_id'])?>">
+                    <img 
+                    src="images/<?=esc_attr($list[$v]['image']) . '.jpg'?>" 
+                    alt="<?=esc_attr($list[$v]['title'])?>"/>
                   </a> 
                 </span>
               <?php endfor; ?>

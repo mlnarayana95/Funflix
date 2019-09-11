@@ -18,7 +18,22 @@ class Video extends Model
 	 */
 	public function save($video)
 	{	
-		$query = "INSERT INTO {$this->table} (title, video_type, language, rating, synopsis, num_of_season, release_date) VALUES(:title, :video_type, :language, :rating, :synopsis, :num_of_season, :release_date)";
+		$query = "INSERT INTO {$this->table} 
+		(title, 
+		video_type,
+		language,
+		rating,
+		synopsis,
+	    num_of_season,
+	    release_date) 
+	    VALUES
+	    (:title,
+	     :video_type,
+	     :language,
+	     :rating,
+	     :synopsis,
+	     :num_of_season, 
+	     :release_date)";
 
 		foreach ($video as $key => $value) {
 			if($key != 'table' && $key != 'key')
@@ -86,7 +101,10 @@ class Video extends Model
 	public function searchVideo($data)
 	{
 		$search = '%'. $data . '%';
-		$query = "SELECT * FROM vid_collection WHERE title LIKE :search ";
+		$query = "SELECT * 
+				  FROM 
+				  vid_collection
+				  WHERE title LIKE :search ";
 		$stmt = static::$dbh->prepare($query);
 		$params = array(':search' => $search);
 		$stmt->execute($params);
@@ -106,7 +124,8 @@ class Video extends Model
 	 */
 	public function fetchAllTvShows()
 	{
-		$query = "SELECT * FROM {$this->table} where video_type= 'TVSHOW'";
+		$query = "SELECT * FROM {$this->table} 
+				  where video_type= 'TVSHOW'";
 		$stmt = static::$dbh->prepare($query);
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -118,7 +137,9 @@ class Video extends Model
 	 */
 	public function fetchAllMovies()
 	{
-		$query = "SELECT * FROM {$this->table} where video_type= 'MOVIES'";
+		$query = "SELECT * FROM {$this->table} 
+				  where 
+				  video_type= 'MOVIES'";
 		$stmt = static::$dbh->prepare($query);
 		$stmt->execute();
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -133,7 +154,8 @@ class Video extends Model
 	 */
 	public function sort($videotype, $property, $order)
 	{
-		$query = "SELECT * FROM {$this->table} where video_type= :video_type ORDER BY $property $order";
+		$query = "SELECT * FROM {$this->table} 
+		where video_type= :video_type ORDER BY $property $order";
 		$params = array(':video_type' => $videotype);
 		$stmt = static::$dbh->prepare($query);
 		$stmt->execute($params);

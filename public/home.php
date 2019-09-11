@@ -29,7 +29,7 @@
       $list = $genrevideo->getAllVideoOfAGenre($_GET['genre_id']);
       $genrename = $list[0]['genre_name'];
     }
-    
+     
 
 ?>
 <body>
@@ -68,8 +68,8 @@
       
           <?php foreach ($list as $video): ?>
             <div>
-                <a style="color:#fff;" href="detailedview.php?id=
-                <?=esc_attr($video['video_id'])?>">
+                <a style="color:#fff;" 
+                href="detailedview.php?id=<?=esc_attr($video['video_id'])?>">
                 <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" 
                 alt="<?=esc_attr($video['title'])?>"/>
                 <p><?=esc($video['title'])?></p>
@@ -87,23 +87,28 @@
 
             <div>
      
-              <a style="color:#fff;" href="detailedview.php?id=<?=esc_attr($video['video_id'])?>"> <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" alt="<?=esc_attr($video['title'])?>"/> 
+              <a style="color:#fff;" 
+              href="detailedview.php?id=<?=esc_attr($video['video_id'])?>"> 
+              <img src="images/<?=esc_attr($video['image']) . '.jpg'?>"
+               alt="<?=esc_attr($video['title'])?>"/> 
               <p><?=esc($video['title'])?></p>
               </a> 
           </div>
           <?php endforeach ?>
          
-   
     </div>
     <h2>Recently Added</h2>
     <div class="autoplay">
-       <?php foreach ($top_rated_tv_shows as $video): ?>
+      <?php foreach ($top_rated_tv_shows as $video): ?>
             <div>
-              <a style="color:#fff;" href="detailedview.php?id=<?=esc_attr($video['video_id'])?>">  <img src="images/<?=esc_attr($video['image']) . '.jpg'?>" alt="<?=esc_attr($video['title'])?>"/>  
-              <p><?=esc($video['title'])?></p>
-              </a>
+              <a style="color:#fff;" 
+              href="detailedview.php?id=<?=esc_attr($video['video_id'])?>"> 
+              <img src="images/<?=esc_attr($video['image']) . '.jpg'?>"
+               alt="<?=esc_attr($video['title'])?>"/>  
+               <p><?=esc($video['title'])?></p>
+               </a>
             </div>
-          <?php endforeach ?>
+      <?php endforeach ?>
     </div>
   </div>
   <?php endif ?>

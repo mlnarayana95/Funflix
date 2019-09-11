@@ -24,8 +24,8 @@
           <a class="btn2" href="signup.php">GET FIRST 3 MONTHS FREE</a>
         </p>
       </div>
-    </main>
-    <?php require '../inc/footer.inc.php'; ?>
+  </main>
+  <?php require '../inc/footer.inc.php'; ?>
 
   </div>
 </body>
