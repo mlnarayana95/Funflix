@@ -24,13 +24,18 @@
     $top_rated_tv_shows = $video->sort('TVSHOW','rating','DESC');
     $most_recent_tv_shows = $video->sort('TVSHOW','release_date','ASC');
 
+    if(isset($_SESSION['search']))
+    {
+      $search = $_SESSION['search'];
+    }
+
     if( isset($_GET['genre_id']) && (!empty($_GET['genre_id'])) )
     {
       $list = $genrevideo->getAllVideoOfAGenre($_GET['genre_id']);
       $genrename = $list[0]['genre_name'];
     }
      
-
+    unset($_SESSION['search']);
 ?>
 <body>
   <div id="container">
@@ -39,7 +44,7 @@
       <div style="margin-top: 100px;">
         
       </div>
-         <div class="autoplay">  
+         <div class="autoplay"> 
           <?php foreach ($search as $video): ?>
             <div>
                 <a style="color:#fff;" href="detailedview.php?id=

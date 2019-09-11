@@ -15,6 +15,12 @@ if (isset($_POST['search'])) {
   $search_value = $_POST['search'];
   $video = new Video();
   $search = $video->searchVideo($search_value);
+  if($title== 'Funflix Canada - Detailed View')
+  {
+    $_SESSION['search'] = $search;
+    header("Location:home.php");
+    die;
+  }
 }
 
 

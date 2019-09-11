@@ -28,7 +28,9 @@
 
 	if("POST" == $_SERVER['REQUEST_METHOD'])
 	{	
+		if(!isset($_POST['search'])){
 
+	
 		if(!empty($_POST['list_name'])){
 			$newlist_name = $_POST['list_name'];
 			$user_id = $_SESSION['user_id'];
@@ -42,6 +44,7 @@
 			}
 		}
 		else{
+			var_dump($_POST);
 			$_POST['video_id'] = $_SESSION['video_id'];
 			$result = $viewlistvideo->saveVideo($_POST);	
 			if($result > 0)
@@ -50,7 +53,8 @@
 			}
 		}
 
-		
+			}
+
 	}
 
 	$viewlist_result = $viewlist->fetchListsForUser($_SESSION['user_id']);

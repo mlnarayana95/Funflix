@@ -37,12 +37,11 @@ class Viewlistvideo extends Model
 	 */
 	public function saveVideo($data)
 	{
-
+		var_dump($data);
+		die;
 		$query1 = "SELECT * FROM {$this->table}
 				   where
-				   list_id = :list_id 
-				   and 
-				   video_id = :video_id";
+				   list_id = :list_id and video_id = :video_id";
 
 		$params = array(':list_id' => $data['viewlist'],
 						':video_id' => $data['video_id']);
