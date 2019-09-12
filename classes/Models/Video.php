@@ -179,29 +179,41 @@ class Video extends Model
 		$data['release_date'] = trim($data['release_date']);
 
 		$query = "INSERT INTO archive
-		(title, 
-		video_type,
-		language,
-		rating,
-		synopsis,
-	    num_of_season,
-	    release_date) 
-	    VALUES
+		  (title,
+          video_type,
+          language,
+          rating,
+          synopsis,
+          plot,
+          image,
+          length,
+          directorr,
+          num_of_season,
+          release_date)
+          	    VALUES
 	    (:title,
 	     :video_type,
 	     :language,
 	     :rating,
 	     :synopsis,
+	     :plot,
+	     :image,
+	     :length,
+	     :director,
 	     :num_of_season, 
 	     :release_date)";
 
-		$params = array(':title' => $data['title'],
-           ':video_type' => $data['video_type'],
-           ':language' => $data['language'],
-           ':rating' => $data['rating'],
-           ':synopsis' => $data['synopsis'],
-           ':num_of_season' => $data['num_of_season'],
-           ':release_date' => $data['release_date']);
+		$params = array('title' => $data['title'],
+            'video_type' => $data['video_type'],
+            'language' => $data['language'],
+            'rating' => $data['rating'],
+            'synopsis' => $data['synopsis'],
+            'plot' => $data['plot'],
+            'image' => $data['image'],
+            'length' => $data['length'],
+            'director' => $data['director'],
+            'num_of_season' => $data['num_of_season'],
+            'release_date' => $data['release_date']);
 
 		$stmt = static::$dbh->prepare($query);
 		$stmt->execute($params);
