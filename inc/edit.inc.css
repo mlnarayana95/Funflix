@@ -12,6 +12,12 @@
         margin-top:40px;
     }
 
+       #landing_logo{
+      height:45px;
+      margin-left: 10px;
+      margin-top: 15px;
+    }
+
 
     .errors{
            background: #bbb;

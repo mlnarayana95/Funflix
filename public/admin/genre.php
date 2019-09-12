@@ -1,15 +1,15 @@
 <?php
 
     require '../../app/config.php';
-    $title = "Funflix Canada - Admin Home";
-    $heading = "Admin - Home";
+    $title = "Funflix Canada - Admin Genre";
+    $heading = "Admin - Genre";
 
-    use \App\Models\Video;
+    use \App\Models\Genre;
 
 
-    Video::init($dbh);
-    $video = new Video();
-    $list = $video->all();
+    Genre::init($dbh);
+    $genre = new Genre();
+    $list = $genre->all();
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -39,24 +39,18 @@
   <table class="table table-bordered table-hover">
     <thead class="thead-light">
     <tr>
-      <th>Video ID</th>
-      <th>Title</th>
-      <th>Video Type</th>
-      <th>Language</th>
-      <th>Rating</th>
-      <th>Action</th> 
+      <th>Genre ID</th>
+      <th>Genre Name</th>
+      <th>Action</th>
     </tr>
     </thead>
-    <?php foreach ($list as $video): ?>
+    <?php foreach ($list as $genre): ?>
       <tr>
-      <td><?= $video['video_id'] ?></td>
-      <td><?= ucwords(strtolower(($video['title']))) ?></td>
-      <td><?= $video['video_type'] ?></td>
-      <td><?= ucwords(strtolower($video['language'])) ?></td>
-      <td><?= $video['rating'] ?></td>
-      <td><a href="edit.php?video_id=<?= $video['video_id'] ?>">Edit</a> | <a href="#">Delete</a></td>
-      </tr>
-    <?php endforeach ?>
+      <td><?= $genre['genre_id'] ?></td>
+      <td><?= ucwords(strtolower(($genre['genre_name']))) ?></td>
+      
+      <td><a href="edit.php?genre_id=<?= $genre['genre_id'] ?>">Edit</a> | <a href="#">Delete</a></td>
+      </tr>    <?php endforeach ?>
 
   </table>
  </div>

@@ -56,17 +56,6 @@ class Video extends Model
 	public function update($data)
 	{
 		$data['release_date'] = trim($data['release_date']); 
-		$query = 'UPDATE vid_collection
-          SET
-          title = :title,
-          video_type = :video_type,
-          language = :language,
-          rating = :rating,
-          synopsis = :synopsis,
-          num_of_season = :num_of_season,
-          release_date = :release_date
-          WHERE
-          video_id = :video_id';
 
         $query1 = 'UPDATE genre_video
         SET 
@@ -74,22 +63,44 @@ class Video extends Model
         WHERE 
         video_id = :video_id';
 
-      	$stmt = static::$dbh->prepare($query);
       	$stmt1 = static::$dbh->prepare($query1);
-
-      	$params = array('title' => $data['title'],
-              'video_type' => $data['video_type'],
-              'language' => $data['language'],
-              'rating' => $data['rating'],
-              'synopsis' => $data['synopsis'],
-              'num_of_season' => $data['num_of_season'],
-              'release_date' => $data['release_date'],
-          	  'video_id' => $data['video_id']);
 
       	$params1 = array('genre_id' => $data['genre'],
       					'video_id' => $data['video_id']);
 
       	$stmt1->execute($params1);
+
+      	$query = 'UPDATE vid_collection
+          SET
+          title = :title,
+          video_type = :video_type,
+          language = :language,
+          rating = :rating,
+          synopsis = :synopsis,
+          plot = :plot,
+          image = :image,
+          length = :length,
+          director = :director,
+          num_of_season = :num_of_season,
+          release_date = :release_date
+          WHERE
+          video_id = :video_id';
+		
+		$params = array('title' => $data['title'],
+            'video_type' => $data['video_type'],
+            'language' => $data['language'],
+            'rating' => $data['rating'],
+            'synopsis' => $data['synopsis'],
+            'plot' => $data['plot'],
+            'image' => $data['image'],
+            'length' => $data['length'],
+            'director' => $data['director'],
+            'num_of_season' => $data['num_of_season'],
+            'release_date' => $data['release_date'],
+          	'video_id' => $data['video_id']);
+      	
+        $stmt = static::$dbh->prepare($query);
+
         return $stmt->execute($params);
 	}
 
@@ -160,6 +171,67 @@ class Video extends Model
 		$stmt = static::$dbh->prepare($query);
 		$stmt->execute($params);
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public function delete($data)
+	{
+
+		$data['release_date'] = trim($data['release_date']);
+
+		$query = "INSERT INTO archive
+		(title, 
+		video_type,
+		language,
+		rating,
+		synopsis,
+	    num_of_season,
+	    release_date) 
+	    VALUES
+	    (:title,
+	     :video_type,
+	     :language,
+	     :rating,
+	     :synopsis,
+	     :num_of_season, 
+	     :release_date)";
+
+		$params = array(':title' => $data['title'],
+           ':video_type' => $data['video_type'],
+           ':language' => $data['language'],
+           ':rating' => $data['rating'],
+           ':synopsis' => $data['synopsis'],
+           ':num_of_season' => $data['num_of_season'],
+           ':release_date' => $data['release_date']);
+
+		$stmt = static::$dbh->prepare($query);
+		$stmt->execute($params);
+
+		if ($stmt->rowCount() > 0)
+		{
+			$query = 'DELETE FROM
+			vid_collection
+         		WHERE
+        	video_id = :video_id';
+
+	      	$params1 = array('video_id' => $data['video_id']);
+	      	$stmt1 = static::$dbh->prepare($query);
+	      	$stmt1->execute($params1);
+
+	        $query = 'DELETE FROM 
+	        genre_video
+	         WHERE 
+	        video_id = :video_id';
+	        $stmt1 = static::$dbh->prepare($query);
+		    $stmt1->execute($params1);
+
+	        $query = 'DELETE FROM 
+	        view_list_video
+	          WHERE 
+	        video_id = :video_id';
+	        $stmt1 = static::$dbh->prepare($query);
+	        $stmt1->execute($params1);
+	        return $stmt1->rowCount();
+	    }
 	}
 
 }

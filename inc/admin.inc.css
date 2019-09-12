@@ -8,8 +8,26 @@
       -ms-animation: fadein 2s; /* Internet Explorer */
       -o-animation: fadein 2s; /* Opera < 12.1 */
       animation: fadein 2s;
-    } 
+    }
+      nav li a:hover,
 
+      nav li a:active,
+      nav li.current a{
+        color: #c32121;
+        text-shadow: 2px 2px #000;
+        -webkit-transform: scale(1.3);
+        -moz-transform: scale(1.3);
+        -o-transform: scale(1.3);
+        transform: scale(1.3);
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      a:hover{
+        text-decoration: none;
+        color:inherit;
+      }
+      
     .form-control {
       display: block;
       width: 100%;

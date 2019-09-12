@@ -23,7 +23,7 @@
     if(!empty($_GET['video_id']))
     {
       $id = $_GET['video_id'];
-      $vid = $video->one($id); 
+      $vid = $video->one($id);
       $vid['release_date'] =  date("Y-m-d", strtotime($vid['release_date']));
       $vid['associated_genre_id'] = $genre_video->one($id);
       $target_genre_id = ($vid['associated_genre_id']['genre_id']);
@@ -65,7 +65,7 @@
       {
         $video->update($vid);
         $_SESSION['flash'] = 'Record with Video ID: '. $vid['video_id']. ' has been successfully updated';
-        header("Location:admin.php");
+        header("Location:vidcollection.php");
         die;
       }
 
@@ -106,7 +106,7 @@
     </div>
 
     <div class="form-group">
-      <label for="title">Title</label>
+      <label for="title">TITLE</label>
       <input type="text" class="form-control" id="title" name="title" value="<?= $vid['title'] ?>" >
     </div>
 
@@ -167,6 +167,11 @@
       <textarea class="form-control" id="synopsis" name="synopsis" rows="3"><?= $vid['synopsis']?></textarea>
     </div>
 
+    <div class="form-group">
+      <label for="plot">DESCRIPTION</label>
+      <textarea class="form-control" id="plot" name="plot" rows="3"><?= $vid['plot']?></textarea>
+    </div>
+
     <?php if ($vid['video_type'] == 'TVSHOW'): ?>
     <div class="form-group">
       <label for="num_of_season">NUMBER OF SEASONS</label>
@@ -177,6 +182,21 @@
     <div class="form-group">
       <label for="release_date">RELEASE DATE</label>
       <input type="text" class="form-control" id="release_date" name="release_date" value="<?= $vid['release_date'] ?>">
+    </div>
+
+    <div class="form-group">
+      <label for="image">IMAGE (NAME OF FILE)</label>
+      <input type="text" class="form-control" id="image" name="image" value="<?= $vid['image'] ?>">
+    </div>
+
+    <div class="form-group">
+      <label for="length">LENGTH IN MINUTES</label>
+      <input type="text" class="form-control" id="length" name="length" value="<?= $vid['length'] ?>">
+    </div>
+
+    <div class="form-group">
+      <label for="director">DIRECTOR</label>
+      <input type="text" class="form-control" id="director" name="director" value="<?= $vid['director'] ?>">
     </div>
 
     <div class="form-group">
