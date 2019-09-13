@@ -1,5 +1,12 @@
 <?php
 
+
+/**
+ * Detailed View Page
+ * @last_update: 2019-09-13
+ * @author: Narayana Madabhushi, mlnarayana95@gmail.com
+ */
+
 	use \App\Models\Video;
 	use \App\Models\Viewlist;
 	use \App\Models\Viewlistvideo;

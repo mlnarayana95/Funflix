@@ -1,5 +1,13 @@
 <?php
 
+
+/**
+ * Functions Page
+ * @last_update: 2019-09-13
+ * @author: Narayana Madabhushi, mlnarayana95@gmail.com
+ */
+
+
 //functions 
 
 /**
@@ -68,6 +76,10 @@ function label($string)
 	return ucwords(str_replace('_',' ',$string) );
 }
 
+/**
+ * Returns Session's csrf token set
+ * @return [type] [description]
+ */
 function csrf()
 {
     return $_SESSION['csrf'];

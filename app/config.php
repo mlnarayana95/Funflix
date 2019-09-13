@@ -1,15 +1,17 @@
 <?php
 
-/**
- * Config Page
- * @last_update: 2019-08-27
- * @author: Narayana Madabhushi, mlnarayana95@gmail.com
- */
+	/**
+	 * Config Page
+	 * @last_update: 2019-09-13
+	 * @author: Narayana Madabhushi, mlnarayana95@gmail.com
+	 */
+
 // Load the composer autoloader 
 require __DIR__ . '/../vendor/autoload.php';
 
 // Session is started
 session_start();
+
 
 use \App\Models\DatabaseLogger;
 

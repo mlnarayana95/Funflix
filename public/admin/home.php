@@ -1,4 +1,11 @@
 <?php
+  
+
+/**
+ * Admin Home Page
+ * @last_update: 2019-09-13
+ * @author: Narayana Madabhushi, mlnarayana95@gmail.com
+ */
 
     require '../../app/config.php';
     $title = "Funflix Canada - Admin Home";

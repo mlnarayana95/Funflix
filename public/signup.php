@@ -2,7 +2,7 @@
 
   /**
    * SignUp Page 
-   * last_update: 2019-08-09
+   * last_update: 2019-09-13
    * Author: Narayana Madabhushi, mlnarayana95@gmail.com
    */
     require '../app/config.php';

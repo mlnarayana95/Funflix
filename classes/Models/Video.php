@@ -1,5 +1,12 @@
 <?php 
 
+
+/**
+ * Video Page
+ * @last_update: 2019-09-13
+ * @author: Narayana Madabhushi, mlnarayana95@gmail.com
+ */
+
 namespace App\Models;
 
 /**
@@ -282,6 +289,12 @@ class Video extends Model
 	    }
 	}
 	
+	/**
+	 * Returns Count of the movies and tv shows based on the value
+	 * passed to the function
+	 * @param  String $videotype [Video Type]
+	 * @return Array             [Returns Count]
+	 */
 	public function returnCount($videotype = NULL)
 	{
 		$query = "SELECT COUNT(*) FROM 
@@ -295,6 +308,11 @@ class Video extends Model
 		return $stmt->fetch(\PDO::FETCH_ASSOC);
 	}
 
+	/**
+	 * Returns Aggregate Values for tv shows and movies
+	 * @param  String $videotype [Video]
+	 * @return Array             [Aggregate Values]
+	 */
 	public function returnAggregate($videotype)
 	{
 

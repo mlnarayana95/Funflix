@@ -1,7 +1,18 @@
 <?php
 
+
+/**
+ * Database Logger Page
+ * @last_update: 2019-09-13
+ * @author: Narayana Madabhushi, mlnarayana95@gmail.com
+ */
+
 namespace App\Models;
 
+
+/**
+ * Database Logger
+ */
 class DatabaseLogger extends Model
 {	
 
@@ -22,6 +33,10 @@ class DatabaseLogger extends Model
 		return $stmt->execute($params);
 	}
 
+	/**
+	 * Return log data
+	 * @return Array  [Log data]
+	 */
 	public function all()
 	{
 		$query = "SELECT * FROM 
