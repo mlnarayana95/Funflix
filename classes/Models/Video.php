@@ -245,5 +245,36 @@ class Video extends Model
 	        return $stmt1->rowCount();
 	    }
 	}
+	
+	public function returnCount($videotype = NULL)
+	{
+		$query = "SELECT COUNT(*) FROM 
+				 {$this->table} AS COUNT
+				  WHERE 
+				  video_type = :video_type";
+
+		$stmt = static::$dbh->prepare($query);
+		$params = array(':video_type' => $videotype);
+		$stmt->execute($params);
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
+
+	public function returnAggregate($videotype)
+	{
+
+		$query = "SELECT max(length),
+						 min(length),
+						 avg(length)
+						 FROM 
+						 vid_collection
+						 WHERE 
+						 video_type = :video_type";
+
+		$stmt = static::$dbh->prepare($query);
+		$params = array(':video_type' => $videotype);
+		$stmt->execute($params);
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+
+	}
 
 }

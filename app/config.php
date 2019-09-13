@@ -11,6 +11,7 @@ require __DIR__ . '/../vendor/autoload.php';
 // Session is started
 session_start();
 
+use \App\Models\DatabaseLogger;
 
 // generate a csrf token if we need one
 if(empty($_SESSION['csrf'])) {
@@ -31,14 +32,25 @@ ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL);
 
 define('DB_DSN', 'mysql:host=localhost;dbname=funflix_video_db');
-define('DB_USER', 'mlnarayana95');
-define('DB_PASS', 'mypass');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 
 
 // 1. Create a connection 
 $dbh = new PDO(DB_DSN, DB_USER, DB_PASS);
 // set the $dbh to display errors if there are any 
 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+DatabaseLogger::init($dbh);
+
+$logger = new DatabaseLogger();
+		// Create an event
+$event = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']) . ' | ' .
+            	$_SERVER['REQUEST_METHOD'] . ' | ' . $_SERVER['REQUEST_URI'] . ' | '
+            	. $_SERVER['HTTP_USER_AGENT'];
+
+$logger->write($event);
+	
 
 require 'functions.php';
 

@@ -37,5 +37,18 @@ class Model
 		return $stmt->fetch(\PDO::FETCH_ASSOC);
 	}
 
+	public function returnCount($videotype = NULL)
+	{	
+		$query = "SELECT COUNT({$this->key}) AS COUNT FROM {$this->table}";
+		$stmt = static::$dbh->prepare($query);
+		$stmt->execute();
+		return $stmt->fetch(\PDO::FETCH_ASSOC);
+	}
+
+	public function aggregateFunctions()
+	{
+
+	}
+
 }
 
