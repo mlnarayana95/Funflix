@@ -187,7 +187,7 @@ class Video extends Model
           plot,
           image,
           length,
-          directorr,
+          director,
           num_of_season,
           release_date)
           	    VALUES
