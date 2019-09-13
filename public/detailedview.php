@@ -12,6 +12,7 @@
 	use \App\Models\Viewlistvideo;
 	use \App\Models\Genre_Video;
 
+
     require '../app/config.php';
 
 	Video::init($dbh);

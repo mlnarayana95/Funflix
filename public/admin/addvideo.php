@@ -65,7 +65,7 @@
         if($result > 0)
         {
           $_SESSION['flash'] = 
-          'Record with Video ID: '. $vid['video_id']. ' has been successfully added';
+          'Video has been successfully added';
           header("Location:vidcollection.php");
           die;
         }

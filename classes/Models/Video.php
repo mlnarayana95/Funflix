@@ -26,7 +26,7 @@ class Video extends Model
 	public function save($data)
 	{	
 		
-		try {
+		try {	
 		
 		$query = "INSERT INTO {$this->table} 
 		(title, 
@@ -69,7 +69,25 @@ class Video extends Model
 
 		$stmt->execute($params);
 
+		$id = static::$dbh->lastInsertId();
+
+		$query = "INSERT INTO genre_video 
+					(video_id,
+					genre_id)
+					VALUES
+					(:video_id,
+					:genre_id)";
+
+		$params = array('video_id' => $id,
+						'genre_id' => $data['genre']);
+
+		$stmt = static::$dbh->prepare($query);
+
+		$stmt->execute($params);
+
 		return static::$dbh->lastInsertId();
+
+
 
 		} catch (\PDOException $e) {
 

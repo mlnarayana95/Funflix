@@ -173,16 +173,12 @@
         padding: 5px 20px;
       }
             
-      #buttons{
-        margin-left: 90px;
-        margin-top: 50px;
-      }
-      
       #sign_up{
         margin: 0 auto;
         color: #fff;
         max-width: 400px;
         padding: 40px;
+        text-align: center;
         border: 3px #666 solid;
         border-radius: 5px; 
         background: rgba(0,0,0,0.8);    

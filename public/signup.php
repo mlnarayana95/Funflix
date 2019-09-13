@@ -74,7 +74,7 @@
            action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" 
            novalidate>
               <input type="hidden" name="csrf" value="<?=csrf()?>" />
-                <h2 style="font-weight: 700;font-family: Tahoma;padding-bottom: 35px;"
+                <h2 style="font-size:20;font-weight: 700;font-family: Tahoma;padding-bottom: 35px;"
                 >Let us know you better</h2>
               <p >    
                 <label for="first_name">First Name</label>
@@ -134,7 +134,7 @@
                 id="confirm_pass" placeholder="Confirm Password"/>
               </p>
             <p id="buttons">
-              <input type="submit"  class="btn1" value="Submit"/>
+              <input class="btn1" type="submit"   value="Submit" />
               <input class="btn1" type="reset" value="Clear" /> &nbsp;
             </p>
           </form>

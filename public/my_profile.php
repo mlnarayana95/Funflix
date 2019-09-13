@@ -28,9 +28,11 @@
 
 <?php require '../inc/head.inc.php';?>
 <?php require '../inc/header_load.inc.php'; ?>
+  <div id="container"></div>
   <div id="user">
       <h1><?=esc($result['first_name']) . " " . esc($result['last_name'])?></h1>
-      <ul>
+      <ul style=" text-align: center;
+                  display: inline-block;">
         <?php foreach($result as $key => $value) : ?>
         <?php if($key != 'password' && $key != 'user_id' && $key != 'updated_at') : ?>
           <li><strong><?=esc(label($key))?></strong> : <?=esc($value)?></li>
