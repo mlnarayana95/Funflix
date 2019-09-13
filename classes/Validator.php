@@ -189,7 +189,7 @@ class Validator
 		$pattern = '/[$%^&*()+@\d]/';
 		if( preg_match($pattern, $_POST[$field]) == 1 )
 		{
-			$message = 'Special characters are not allowed
+			$message = 'Special characters or digits are not allowed
 			in the field '. $this->label($field);
 			$this->setErrors($field,$message);
 		}

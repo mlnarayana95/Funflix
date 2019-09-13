@@ -9,6 +9,8 @@
     use \App\Models\Genre_Video;
     use \App\Validator;
 
+  if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true)
+    {
     Video::init($dbh);
     $video = new Video();
 
@@ -19,6 +21,54 @@
     Genre_Video::init($dbh);
     $genre_video = new Genre_Video();
     $genre_video_list = $genre_video->all();  
+
+    if("POST" == $_SERVER['REQUEST_METHOD'])
+    {
+
+      $numeric_fields = ['num_of_season','rating','length'];
+      $string_fields = [ 'synopsis','plot','director'];
+      $length_fields = ['title', 'synopsis','plot','image','director'];
+      $release_date = trim($_POST['release_date']);
+      
+      $v = new Validator();
+
+      foreach ($numeric_fields as $field) {
+        $v->isNumeric($field);
+      }
+
+      foreach($_POST as $key => $value) {
+        $v->required($key);  
+      }
+
+      foreach ($string_fields as $key) {
+        $v->stringValidator($key);
+      }
+
+      foreach ($length_fields as $key) {
+        $v->lengthValidator($key);
+      }
+
+      $v->validateDate($release_date);
+
+      $errors = $v->getErrors();
+
+      if(empty($errors))
+      {
+        $result = $video->save($_POST);
+        if($result > 0)
+        {
+          $_SESSION['flash'] = 
+          'Record with Video ID: '. $vid['video_id']. ' has been successfully added';
+          header("Location:vidcollection.php");
+          die;
+        }
+      }
+    }
+  }else{
+      header("Location: ../login.php");
+      $_SESSION['flash'] = 'You need to be admin to view this page';
+      die;
+  }
 
     
 ?><!DOCTYPE html>
@@ -69,13 +119,11 @@
   <div id="wrapper">
     <form action="addvideo.php" method="POST">
     <input type="hidden" name="csrf" value="<?=csrf()?>" />
-    <div class="form-group">
-      <input type="text" class="form-control" id="video_id" name="video_id" value="?>" hidden>
-    </div>
-
+    
     <div class="form-group">
       <label for="title">TITLE</label>
-      <input type="text" class="form-control" id="title" name="title" value="" >
+      <input type="text" class="form-control" id="title" name="title" 
+      value="<?=clean('title')?>" >
     </div>
 
     <div class="form-group">
@@ -116,42 +164,51 @@
 
     <div class="form-group">
       <label for="rating">RATING</label>
-      <input type="text" class="form-control" id="rating" name="rating" value="" >
+      <input type="text" class="form-control" id="rating" name="rating" 
+      value="<?=clean('rating')?>" >
     </div>
 
     <div class="form-group">
       <label for="synopsis">SYNOPSIS</label>
-      <textarea class="form-control" id="synopsis" name="synopsis" rows="3"></textarea>
+      <textarea class="form-control" id="synopsis" name="synopsis" 
+      rows="3"><?=clean('synopsis')?>
+      </textarea>
     </div>
 
     <div class="form-group">
       <label for="plot">DESCRIPTION</label>
-      <textarea class="form-control" id="plot" name="plot" rows="3"></textarea>
+      <textarea class="form-control" id="plot" name="plot" 
+       rows="3"> <?=clean('plot')?> </textarea>
     </div>
 
     <div id="seasons" class="form-group">
       <label for="num_of_season">NUMBER OF SEASONS</label>
-      <input type="text" class="form-control" id="num_of_season" name="num_of_season" value="" >
+      <input type="text" class="form-control" id="num_of_season" name="num_of_season" 
+      value="<?=clean('num_of_season')?>" />
     </div>
    
     <div class="form-group">
       <label for="release_date">RELEASE DATE</label>
-      <input type="text" class="form-control" id="release_date" name="release_date" value="">
+      <input type="text" class="form-control" id="release_date" 
+      name="release_date" value="<?=clean('release_date')?>" >
     </div>
 
     <div class="form-group">
       <label for="image">IMAGE (NAME OF FILE)</label>
-      <input type="text" class="form-control" id="image" name="image" value="">
+      <input type="text" class="form-control" id="image" name="image" 
+      value="<?=clean('image')?>" >
     </div>
 
     <div class="form-group">
       <label for="length">LENGTH IN MINUTES</label>
-      <input type="text" class="form-control" id="length" name="length" value="">
+      <input type="text" class="form-control" id="length" 
+      name="length" value="<?=clean('length')?>" >
     </div>
 
     <div class="form-group">
       <label for="director">DIRECTOR</label>
-      <input type="text" class="form-control" id="director" name="director"  />
+      <input type="text" class="form-control" id="director" name="director" 
+      value="<?=clean('director')?>"  />
     </div>
 
     <div class="form-group">

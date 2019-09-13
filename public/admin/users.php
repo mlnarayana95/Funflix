@@ -6,11 +6,16 @@
 
     use \App\Models\Users;
 
-
+    if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true) { 
     Users::init($dbh);
     $user = new Users();
     $list = $user->all();
-
+    }
+else{
+      header("Location: ../login.php");
+      $_SESSION['flash'] = 'You need to be admin to view this page';
+      die;
+  }
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

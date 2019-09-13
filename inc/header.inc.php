@@ -18,7 +18,6 @@
       </a>
     </span>
     <div id="header_button">
-      <a href="admin/admin.php" class="btn1"><strong>Admin</strong></a>
       <a href="signup.php" class="btn1"><strong>Sign Up</strong></a>
       <a href="login.php" class="btn1"><strong>Sign In</strong></a>
     </div>

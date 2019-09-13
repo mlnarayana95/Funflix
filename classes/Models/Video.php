@@ -16,37 +16,62 @@ class Video extends Model
 	 * @param   Video  $video 
 	 * @return  int
 	 */
-	public function save($video)
+	public function save($data)
 	{	
+		
+		try {
+		
 		$query = "INSERT INTO {$this->table} 
 		(title, 
 		video_type,
 		language,
 		rating,
 		synopsis,
+		plot,
 	    num_of_season,
-	    release_date) 
+	    release_date,
+	    image,
+	    length,
+	    director) 
 	    VALUES
 	    (:title,
 	     :video_type,
 	     :language,
 	     :rating,
 	     :synopsis,
+	     :plot,
 	     :num_of_season, 
-	     :release_date)";
+	     :release_date,
+	 	 :image,
+	 	 :length,
+	 	 :director)";
 
-		foreach ($video as $key => $value) {
-			if($key != 'table' && $key != 'key')
-	    	$params[$key] = $value;
-		}
-
+	 	$params = array('title' => $data['title'],
+           'video_type' => $data['video_type'],
+           'language' => $data['language'],
+           'rating' => $data['rating'],
+           'synopsis' => $data['synopsis'],
+           'plot' => $data['plot'],
+           'image' => $data['image'],
+           'length' => $data['length'],
+           'director' => $data['director'],
+           'num_of_season' => $data['num_of_season'],
+           'release_date' => $data['release_date']);
+	
 		$stmt = static::$dbh->prepare($query);
 
 		$stmt->execute($params);
 
 		return static::$dbh->lastInsertId();
+
+		} catch (\PDOException $e) {
+
+		if ($e->errorInfo[1] == 1062) {
+       		$_SESSION['flash'] = 'Unable to Add New Video. Please check the data and try again';
+
+    	}
 	}
-		
+		}
 
 	/**
 	 * 	Edit existing records in the table using the video_id
@@ -55,6 +80,8 @@ class Video extends Model
 	 */
 	public function update($data)
 	{
+		try {
+			
 		$data['release_date'] = trim($data['release_date']); 
 
         $query1 = 'UPDATE genre_video
@@ -102,6 +129,13 @@ class Video extends Model
         $stmt = static::$dbh->prepare($query);
 
         return $stmt->execute($params);
+        } catch (\PDOException $e) {
+			
+			if ($e->errorInfo[1] == 1062) {
+	       		$_SESSION['flash'] = 'Video with that title and language already exists';
+
+	    	}
+		}
 	}
 
 	/**
@@ -220,19 +254,13 @@ class Video extends Model
 
 		if ($stmt->rowCount() > 0)
 		{
-			$query = 'DELETE FROM
-			vid_collection
-         		WHERE
-        	video_id = :video_id';
-
-	      	$params1 = array('video_id' => $data['video_id']);
-	      	$stmt1 = static::$dbh->prepare($query);
-	      	$stmt1->execute($params1);
+		
 
 	        $query = 'DELETE FROM 
 	        genre_video
 	         WHERE 
 	        video_id = :video_id';
+	        $params1 = array('video_id' => $data['video_id']);
 	        $stmt1 = static::$dbh->prepare($query);
 		    $stmt1->execute($params1);
 
@@ -242,6 +270,14 @@ class Video extends Model
 	        video_id = :video_id';
 	        $stmt1 = static::$dbh->prepare($query);
 	        $stmt1->execute($params1);
+
+	        $query = 'DELETE FROM
+			vid_collection
+         		WHERE
+        	video_id = :video_id';
+
+	      	$stmt1 = static::$dbh->prepare($query);
+	      	$stmt1->execute($params1);
 	        return $stmt1->rowCount();
 	    }
 	}

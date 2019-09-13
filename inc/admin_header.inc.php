@@ -37,7 +37,13 @@ if (isset($_POST['search'])) {
         <li class="navigation<?=($title=='Funflix Canada - Admin View list') ? ' current' : ''; ?>"><a href="viewlist.php">VIEW LIST</a></li>
       </ul>
     </nav> 
-    <?php if (!isset($_GET['video_id'])): ?>
+    <?php if ( !isset($_GET['video_id']) &&
+                ($title != 'Funflix Canada - Admin Home') &&
+                ($title != 'Funflix Canada - Admin Users') && 
+                ($title != 'Funflix Canada - Admin Genre') &&
+                ($title != 'Funflix Canada - Admin View list') &&
+                ($title != 'Funflix Canada - Admin Edit')
+              ): ?>
     <form method="post" class="form-inline">
             <input type="hidden" name="csrf" value="<?=csrf()?>" />
             <input class="form-control mr-sm-2" type="text" placeholder="Search with title" name="search" />

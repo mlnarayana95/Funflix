@@ -14,6 +14,7 @@
     use \App\Models\Video;
     use \App\Models\Genre_Video;
 
+
     Video::init($dbh);
     Genre_Video::init($dbh);
     
@@ -36,6 +37,7 @@
     }
      
     unset($_SESSION['search']);
+
 ?>
 <body>
   <div id="container">

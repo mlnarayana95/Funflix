@@ -10,21 +10,28 @@
     use \App\Models\Video;
     use \App\Models\Viewlist;
 
-    Model::init($dbh);
+    if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true)
+    {
+      Model::init($dbh);
 
-    $user = new Users();
-    $genre = new Genre();
-    $video = new Video();
+      $user = new Users();
+      $genre = new Genre();
+      $video = new Video();
 
-    $users_count = $user->returnCount();
-    $genre_count = $genre->returnCount();
-    $tvshows_count = $video->returnCount('TVSHOW');
-    $movies_count = $video->returnCount('MOVIES');
-    $video_count = $tvshows_count + $movies_count;
+      $users_count = $user->returnCount();
+      $genre_count = $genre->returnCount();
+      $tvshows_count = $video->returnCount('TVSHOW');
+      $movies_count = $video->returnCount('MOVIES');
+      $video_count = $tvshows_count + $movies_count;
 
-    $aggregate_tvshows = $video->returnAggregate('TVSHOW');
-    $aggregate_movies = $video->returnAggregate('MOVIES');
-    $logger_data = $logger->all();
+      $aggregate_tvshows = $video->returnAggregate('TVSHOW');
+      $aggregate_movies = $video->returnAggregate('MOVIES');
+      $logger_data = $logger->all();
+    }else{
+      header("Location: ../login.php");
+      $_SESSION['flash'] = 'You need to be admin to view this page';
+      die;
+  }
 
 ?><!DOCTYPE html>
 <html lang="en">

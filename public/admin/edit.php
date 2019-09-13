@@ -1,7 +1,7 @@
 <?php
 
     require '../../app/config.php';
-    $title = "Funflix Canada - Admin Home";
+    $title = "Funflix Canada - Admin Edit";
     $heading = "Admin - Edit";
 
     use \App\Models\Video;
@@ -9,6 +9,7 @@
     use \App\Models\Genre_Video;
     use \App\Validator;
 
+     if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true){
     Video::init($dbh);
     $video = new Video();
 
@@ -35,9 +36,9 @@
       }
     }else{
       $vid = $_POST;
-      $numeric_fields = ['num_of_season','rating'];
-      $string_fields = ['title'];
-      $length_fields = ['title', 'synopsis'];
+      $numeric_fields = ['num_of_season','rating','length'];
+      $string_fields = ['synopsis','plot','director'];
+      $length_fields = ['title', 'synopsis','plot','image','director'];
       $release_date = trim($_POST['release_date']);
       $v = new Validator();
 
@@ -63,13 +64,24 @@
 
       if(empty($errors))
       {
-        $video->update($vid);
-        $_SESSION['flash'] = 'Record with Video ID: '. $vid['video_id']. ' has been successfully updated';
-        header("Location:vidcollection.php");
-        die;
+        $result = $video->update($vid);
+        if($result == true){
+          $_SESSION['flash'] = 'Record with Video ID: '. $vid['video_id']. ' has been successfully updated';
+          header("Location:vidcollection.php");
+          die;
+        }else
+        {
+
+        }
       }
 
-    }
+    }}
+    else{
+      header("Location: ../login.php");
+      $_SESSION['flash'] = 'You need to be admin to view this page';
+      die;
+  }
+
 
     
 ?><!DOCTYPE html>

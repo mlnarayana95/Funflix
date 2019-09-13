@@ -68,8 +68,8 @@
       <div id="container">
         <h1><?=esc($heading)?></h1>
         <?php require '../inc/errors.inc.php'; ?> 
-        <main>
-        <div id="wrapper"> <!-- 960px width to wrap a page -->
+
+        <div id="signup"> <!-- 960px width to wrap a page -->
            <form id="sign_up" name="sign_up" method="post" 
            action="<?=esc_attr($_SERVER['PHP_SELF'])?>" autocomplete="on" 
            novalidate>
@@ -139,7 +139,7 @@
             </p>
           </form>
         </div>
-        </main>
+
         <?php require '../inc/footer.inc.php'; ?>
     </div>
   </body>

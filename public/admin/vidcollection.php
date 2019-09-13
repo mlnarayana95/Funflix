@@ -5,25 +5,32 @@
     $heading = "Admin - Video Collection";
 
     use \App\Models\Video;
-
-    Video::init($dbh);
-    $video = new Video();
-
-    if(isset($_GET['delete']) && !empty($_GET['delete']))
+    if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true)
     {
-      $video_id = $_GET['delete'];
-      $video_info = $video->one($video_id);
-      $result = $video->delete($video_info);
-      if($result > 0)
+      Video::init($dbh);
+      $video = new Video();
+
+      if(isset($_GET['delete']) && !empty($_GET['delete']))
       {
-        $_SESSION['flash'] = 'Video with ID: '. $video_id. ' deleted successfully';
-        header("Location:vidCollection.php");
-        die;
+        $video_id = $_GET['delete'];
+        $video_info = $video->one($video_id);
+        $result = $video->delete($video_info);
+   
+        if($result > 0)
+        {
+          $_SESSION['flash'] = 'Video with ID: '. $video_id. ' deleted successfully';
+          header("Location:vidCollection.php");
+          die;
+        }
       }
-    }
 
-    $list = $video->all();
-
+      $list = $video->all();
+    }else{
+      header("Location: ../login.php");
+      $_SESSION['flash'] = 'You need to be admin to view this page';
+      die;
+  }
+    
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

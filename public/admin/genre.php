@@ -3,13 +3,21 @@
     require '../../app/config.php';
     $title = "Funflix Canada - Admin Genre";
     $heading = "Admin - Genre";
-
     use \App\Models\Genre;
 
 
-    Genre::init($dbh);
-    $genre = new Genre();
-    $list = $genre->all();
+    if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true) {
+
+        Genre::init($dbh);
+        $genre = new Genre();
+        $list = $genre->all();
+    }else{
+      header("Location: ../login.php");
+      $_SESSION['flash'] = 'You need to be admin to view this page';
+      die;
+  }
+
+
 
 ?><!DOCTYPE html>
 <html lang="en">

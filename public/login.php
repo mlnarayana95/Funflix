@@ -15,6 +15,7 @@
     $v = new Validator();
 
     if(!empty($_GET['logout'])) {
+      $_SESSION['is_admin'] = false;
       logout();
     }
 
@@ -43,12 +44,24 @@
         
         if(password_verify($_POST['pass'], $user['password'])) {
 
-          $_SESSION['logged_in'] = true;
-          $_SESSION['user_id'] = $user['user_id'];
-          $_SESSION['flash'] = 'Welcome! '.$user['first_name'].' '.$user['last_name'].', you have successfully logged in';
-          session_regenerate_id(true);  
-          header("Location: my_profile.php");
-          die;
+          if($user['is_admin'] == false)
+          {
+            $_SESSION['logged_in'] = true;
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['flash'] = 'Welcome! '.$user['first_name'].' '.$user['last_name'].', you have successfully logged in';
+            session_regenerate_id(true);  
+            header("Location: my_profile.php");
+            die;
+          }
+          else{
+            session_regenerate_id(true);
+            $_SESSION['is_admin'] = true;
+            $_SESSION['logged_in'] = true;
+            $_SESSION['flash'] = 'Welcome! '.$user['first_name'].' '.$user['last_name'].', you have successfully logged in';              
+            header("Location: admin/home.php");
+            die;
+           }
+
         }else{
           unset($_SESSION['logged_in']);
           $v->setErrors('login','Login Credentials do not match');

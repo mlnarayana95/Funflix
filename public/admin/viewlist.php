@@ -5,12 +5,16 @@
     $heading = "Admin - View list";
 
     use \App\Models\Viewlist;
-
-
+ if(isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == true)
+  {
     Viewlist::init($dbh);
     $viewlist = new Viewlist();
     $list = $viewlist->all();
-
+  } else{
+      header("Location: ../login.php");
+      $_SESSION['flash'] = 'You need to be admin to view this page';
+      die;
+  }
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
