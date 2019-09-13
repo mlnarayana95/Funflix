@@ -34,7 +34,7 @@ if (isset($_POST['search'])) {
         <li class="navigation<?=($title=='Funflix Canada - Admin Video Collection') ? ' current' : ''; ?>"><a href="vidcollection.php">VIDEO COLLECTION</a></li>
         <li class="navigation<?=($title=='Funflix Canada - Admin Users') ? ' current' : ''; ?>"><a href="users.php">USERS</a></li>
         <li class="navigation<?=($title=='Funflix Canada - Admin Genre') ? ' current' : ''; ?>"><a href="genre.php">GENRE</a></li>
-        <li class="navigation<?=($title=='Funflix Canada - Admin View List') ? ' current' : ''; ?>"><a href="viewlist.php">VIEW LIST</a></li>
+        <li class="navigation<?=($title=='Funflix Canada - Admin View list') ? ' current' : ''; ?>"><a href="viewlist.php">VIEW LIST</a></li>
       </ul>
     </nav> 
     <?php if (!isset($_GET['video_id'])): ?>
