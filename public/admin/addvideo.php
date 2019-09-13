@@ -62,13 +62,11 @@
       if(empty($errors))
       {
         $result = $video->save($_POST);
-        if($result > 0)
-        {
+
           $_SESSION['flash'] = 
           'Video has been successfully added';
           header("Location:vidcollection.php");
           die;
-        }
       }
     }
   }else{
@@ -145,7 +143,7 @@
       <label for="genre">GENRE</label>
       <select class="form-control" id="genre"  name="genre">
         <?php foreach ($genre_list as $genre): ?>
-          <option value="<?= $genre['genre_id'] ?>" selected="selected"><?= $genre['genre_name'] ?></option>
+          <option value="<?= $genre['genre_id'] ?>" ><?= $genre['genre_name'] ?></option>
             <?php endforeach ?>
       </select>
     </div>
@@ -159,7 +157,7 @@
 
         foreach($language_list as $item){
         ?>
-          <option value="<?php echo strtolower($item); ?>" selected ="selected">
+          <option value="<?php echo strtolower($item); ?>" >
             <?php echo $item; ?>
           </option>
  <?php

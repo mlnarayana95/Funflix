@@ -115,7 +115,6 @@
         <th>Log ID</th>
         <th>Log Data</th>
       </tr>
-      <tr>
       
       <?php foreach ($logger_data as $log): ?>
       <tr>
@@ -128,7 +127,6 @@
       </tr>
       <?php endforeach ?>
         
-      </tr>
     </table>
   </div>
   </div>

@@ -27,7 +27,7 @@
         if($result > 0)
         {
           $_SESSION['flash'] = 'Video with ID: '. $video_id. ' deleted successfully';
-          header("Location:vidCollection.php");
+          header("Location:vidcollection.php");
           die;
         }
       }
