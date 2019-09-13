@@ -49,6 +49,13 @@
   <?php require '../../inc/flash.inc.php'; ?>
   <div id="container">
   <h2><?=$heading?></h2>
+  <a href="addvideo.php" class="btn1" 
+    style="height: 30px;
+           padding: 4px;
+           margin-left: 0;
+           margin-bottom: 2px;
+           line-height: 45px;
+           border-radius: 3px;"> Add a new record</a>
   <table class="table table-bordered table-hover">
     <thead class="thead-light">
     <tr>

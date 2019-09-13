@@ -30,6 +30,7 @@ if (isset($_POST['search'])) {
     <nav>
       <a id="menu-toggle" href="#navlist"><img src="../images/menu-white.png" alt="menu toggle" /></a> <!-- starts navigation -->
       <ul>
+        <li class="navigation<?=($title=='Funflix Canada - Admin Home') ? ' current' : ''; ?>"><a href="home.php">HOME</a></li>
         <li class="navigation<?=($title=='Funflix Canada - Admin Video Collection') ? ' current' : ''; ?>"><a href="vidcollection.php">VIDEO COLLECTION</a></li>
         <li class="navigation<?=($title=='Funflix Canada - Admin Users') ? ' current' : ''; ?>"><a href="users.php">USERS</a></li>
         <li class="navigation<?=($title=='Funflix Canada - Admin Genre') ? ' current' : ''; ?>"><a href="genre.php">GENRE</a></li>
