@@ -110,8 +110,9 @@
       </div>
     </main><!-- Main content ends here -->
 
-    <?php require '../inc/footer.inc.php'; ?>
+   
 
   </div>
+   <?php require '../inc/footer.inc.php'; ?>
 </body>
 </html>

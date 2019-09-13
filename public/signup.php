@@ -140,7 +140,8 @@
           </form>
         </div>
 
-        <?php require '../inc/footer.inc.php'; ?>
+       
     </div>
+     <?php require '../inc/footer.inc.php'; ?>
   </body>
 </html>
