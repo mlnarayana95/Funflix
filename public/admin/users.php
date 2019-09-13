@@ -48,7 +48,6 @@ else{
       <th>First Name</th>
       <th>Last Name</th>
       <th>Street</th>
-      <th>Action</th> 
     </tr>
     </thead>
     <?php foreach ($list as $user): ?>
@@ -57,7 +56,6 @@ else{
       <td><?= ucwords(strtolower(($user['first_name']))) ?></td>
       <td><?= ucwords(strtolower($user['last_name'])) ?></td>
       <td><?= $user['street'] ?></td>
-      <td><a href="edit.php?userid=<?= $user['user_id'] ?>">Edit</a> | <a href="#">Delete</a></td>
       </tr>
     <?php endforeach ?>
 

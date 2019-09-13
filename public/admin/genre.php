@@ -49,15 +49,12 @@
     <tr>
       <th>Genre ID</th>
       <th>Genre Name</th>
-      <th>Action</th>
     </tr>
     </thead>
     <?php foreach ($list as $genre): ?>
       <tr>
       <td><?= $genre['genre_id'] ?></td>
-      <td><?= ucwords(strtolower(($genre['genre_name']))) ?></td>
-      
-      <td><a href="edit.php?genre_id=<?= $genre['genre_id'] ?>">Edit</a> | <a href="#">Delete</a></td>
+      <td><?= ucwords(strtolower(($genre['genre_name']))) ?></td>     
       </tr>    <?php endforeach ?>
 
   </table>

@@ -46,7 +46,6 @@
       <th>List ID</th>
       <th>User ID</th>
       <th>List Name</th>
-      <th>Action</th>
     </tr>
     </thead>
     <?php foreach ($list as $viewlist): ?>
@@ -54,7 +53,6 @@
       <td><?= $viewlist['list_id'] ?></td>
       <td><?= $viewlist['user_id'] ?></td>
       <td><?= ucwords(strtolower(($viewlist['list_name']))) ?></td>      
-      <td><a href="edit.php?listid=<?= $viewlist['list_id'] ?>">Edit</a> | <a href="#">Delete</a></td>
       </tr>    <?php endforeach ?>
 
   </table>

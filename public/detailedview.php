@@ -44,7 +44,6 @@
 			}
 		}
 		else{
-			var_dump($_POST);
 			$_POST['video_id'] = $_SESSION['video_id'];
 			$result = $viewlistvideo->saveVideo($_POST);	
 			if($result > 0)

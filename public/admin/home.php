@@ -58,21 +58,15 @@
   <?php require '../../inc/flash.inc.php'; ?>
   <div id="container">
   <h2><?=$heading?></h2>
-  <table class="table table-bordered">
+  <table style="display:inline-table;" class="table table-bordered table-responsive">
     <tr>
-      <th style="         padding: 1.75rem;
-    font-size: 18px;
-    vertical-align: top;">Overview</th>
-      <th style="         padding: 1.75rem;
-    font-size: 18px;
-    vertical-align: top;">TV Show Stats</th>
-      <th style="         padding: 1.75rem;
-    font-size: 18px;
-    vertical-align: top;">Movies Stats</th>
+      <th>Overview</th>
+      <th>TV Show Stats</th>
+      <th>Movies Stats</th>
     </tr>
     <tr>
       <td>
-        <ul>
+        <ul >
           <li><strong>Total Number of Users :</strong> <?=$users_count['COUNT']?></li>
           <li><strong>Total Number of TV Shows :</strong> <?=$tvshows_count['COUNT(*)'] ?></li>
           <li><strong>Total Number of Movies :</strong> <?=$movies_count['COUNT(*)'] ?></li>
@@ -112,7 +106,7 @@
     <table class=" table table-bordered">
       <tr>
         <th>Log ID</th>
-        <th>Log</th>
+        <th>Log Data</th>
       </tr>
       <tr>
       
