@@ -1,5 +1,5 @@
 # My PHP Capstone 
 
-This is my PHP Capstone Project
+This is my PHP Capstone Project. Funflix is a platform for getting information about the latest tv shows and movies
 
-[Capstone Link](https://blog.mydomain.com)
+[Capstone Link](http://funflix.naraincreative.com)
