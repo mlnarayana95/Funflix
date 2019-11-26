@@ -21,7 +21,7 @@
           <h2 id="h2_landing">with plans starting at $8.99/month.</h2>
         </div>
         <p id="join_now">
-          <a class="btn2" href="signup.php">GET FIRST 3 MONTHS FREE</a>
+          <a class="btn2" href="signup.php">GET FIRST MONTH FREE</a>
         </p>
       </div>
   </main>
